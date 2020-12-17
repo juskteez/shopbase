@@ -1,0 +1,52 @@
+{
+  "Products Orders Discount Customers List" : {
+    "Total" : "price_number",
+    "Order ID" : "hash_number",
+    "Date" : "date_full_time",
+    "Customer" : "full_name",
+    "Product Name" : "prod_string",
+    "Product Thumbnail" : "image_url",
+    "Product Type" : "type_string",
+    "Vendor" : "com_string",
+    "SKU ID" : "sku_id",
+    "Sold Out" : "sold_string",
+    "Quantity" : "number",
+    "Views" : "number",
+    "Orders" : "number",
+    "Unit Sales" : "number",
+    "Sale/Order" : "number",
+    "Conversion Rate" : "percent",
+    "Revenue" : "price_number",
+    "Collection Name" : "collection_string",
+    "Collection Thumbnail" : "collection_image_url",
+    "Conditions" : "conditions_string",
+    "Feed Name" : "collection_string",
+    "Total Product" : "number",
+    "Last Refresh" : "ellapsed",
+    "Feed URL" : "url",
+    "Feed Status" : "status_string",
+    "Discount Name" : "random_id",
+    "Used" : "number",
+    "Start" : "date_short",
+    "End" : "date_short",
+    "Address" : "short_address",
+    "Total Orders" : "number_order",
+    "Spent" : "price_number spent"
+  },
+  "Apps List" : {
+    "App Icon" : "app_icon",
+    "App Name" : "app_name",
+    "App Description" : "desc_string",
+    "Tags" : "tag_string"
+  },
+  "Pages List" : {
+    "Page Title" : "page_title",
+    "Page Description" : "desc_string",
+    "Last Modified" : "date_full_time"
+  },
+  "Themes List" : {
+    "Theme Name" : "theme_name",
+    "Style Name" : "app_name",
+    "Theme Thumbnail" : "theme_thumb"
+  }
+}

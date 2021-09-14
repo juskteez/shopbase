@@ -70,3 +70,21 @@ section.featured-collection:first-child
     top: unset
     left: unset
     right: unset
+
+main .collection-product-wrap--add-cart
+  &:hover
+    box-shadow: none
+    &:after
+      display: none
+
+  .btn.btn-primary
+    position: absolute
+    top: auto
+    bottom: 56px
+    opacity: 1
+
+  .rv-widget.rv-widget--badge.rv-inline-flex.rv-a-item-center
+    position: absolute
+    left: 50%
+    top: 16px
+    transform: translate3d(-50%,0,0)

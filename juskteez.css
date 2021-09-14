@@ -94,4 +94,26 @@ section.featured-collection:first-child {
   right: unset;
 }
 
-/*# sourceMappingURL=juskteez.css.map */
+main .collection-product-wrap--add-cart:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+main .collection-product-wrap--add-cart:hover:after {
+  display: none;
+}
+
+main .collection-product-wrap--add-cart .btn.btn-primary {
+  position: absolute;
+  top: auto;
+  bottom: 56px;
+  opacity: 1;
+}
+
+main .collection-product-wrap--add-cart .rv-widget.rv-widget--badge.rv-inline-flex.rv-a-item-center {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+}

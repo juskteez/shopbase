@@ -71,4 +71,27 @@ section.featured-collection:first-child {
   }
 }
 
+.newsletter-section .newsletter-section__wrap.relative {
+  position: unset;
+}
+
+.newsletter-section .newsletter-shadow {
+  position: absolute;
+  padding-bottom: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.newsletter-section .newsletter-wrap {
+  position: relative;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  top: unset;
+  left: unset;
+  right: unset;
+}
+
 /*# sourceMappingURL=juskteez.css.map */

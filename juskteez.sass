@@ -5,22 +5,27 @@ header.header
   &.nav-inline-logo--true
     border-bottom: none
   
-  &.nav-fixed--true
+  &.nav-fixed--true,
+  &-mobile.mobile-nav-fixed--true
     position: relative
     padding-top: 56px
 
     .container-fluid
       position: fixed
       top: 0
-      background-color: rgba(255,255,255,0.88)
-      backdrop-filter: blur(12px)
+      background-color: white
+      // background-color: rgba(255,255,255,0.88)
+      // backdrop-filter: blur(12px)
 
-  .promo_banner
-    height: auto !important
-    display: block !important
-    transition-property: none !important
-    padding: 4px 0 !important
-    order: 1
+    & + .d-block.pagecontent
+      display: none
+
+    .promo_banner
+      height: auto !important
+      display: block !important
+      transition-property: none !important
+      padding: 4px 0 !important
+      order: 1
 
   .container-fluid
     padding: 0
@@ -41,3 +46,7 @@ header.header
 
 section.featured-collection:first-child
   margin-top: 16px
+
+.featured-collection .product-carousel__heading
+  @media only screen and (min-width: 1024px)
+    font-size: 6.75em

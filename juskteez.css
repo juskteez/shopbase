@@ -10,20 +10,22 @@ header.header.nav-inline-logo--true {
   border-bottom: none;
 }
 
-header.header.nav-fixed--true {
+header.header.nav-fixed--true, header.header-mobile.mobile-nav-fixed--true {
   position: relative;
   padding-top: 56px;
 }
 
-header.header.nav-fixed--true .container-fluid {
+header.header.nav-fixed--true .container-fluid, header.header-mobile.mobile-nav-fixed--true .container-fluid {
   position: fixed;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.88);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background-color: white;
 }
 
-header.header .promo_banner {
+header.header.nav-fixed--true + .d-block.pagecontent, header.header-mobile.mobile-nav-fixed--true + .d-block.pagecontent {
+  display: none;
+}
+
+header.header.nav-fixed--true .promo_banner, header.header-mobile.mobile-nav-fixed--true .promo_banner {
   height: auto !important;
   display: block !important;
   -webkit-transition-property: none !important;
@@ -61,6 +63,12 @@ header.header .main-nav-wrapper > .flex .nav {
 
 section.featured-collection:first-child {
   margin-top: 16px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .featured-collection .product-carousel__heading {
+    font-size: 6.75em;
+  }
 }
 
 /*# sourceMappingURL=juskteez.css.map */

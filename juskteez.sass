@@ -1,4 +1,43 @@
 header.header
-  .main-nav-wrapper
-    &>.flex
-      background-color: yellow
+  display: flex
+  flex-wrap: wrap
+  
+  &.nav-inline-logo--true
+    border-bottom: none
+  
+  &.nav-fixed--true
+    position: relative
+    padding-top: 56px
+
+    .container-fluid
+      position: fixed
+      top: 0
+      background-color: rgba(255,255,255,0.88)
+      backdrop-filter: blur(12px)
+
+  .promo_banner
+    height: auto !important
+    display: block !important
+    transition-property: none !important
+    padding: 4px 0 !important
+    order: 1
+
+  .container-fluid
+    padding: 0
+  
+  .main-nav-wrapper > .flex
+    & > *
+      flex: none
+      width: auto
+
+    .logo-text
+      font-family: Garamond, serif
+      text-transform: uppercase
+      font-weight: normal
+
+    .nav
+      flex: 1
+      max-width: none
+
+section.featured-collection:first-child
+  margin-top: 16px

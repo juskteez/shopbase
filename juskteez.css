@@ -112,8 +112,12 @@ main .collection-product-wrap--add-cart .btn.btn-primary {
 
 main .collection-product-wrap--add-cart .rv-widget.rv-widget--badge.rv-inline-flex.rv-a-item-center {
   position: absolute;
-  left: 50%;
-  top: 16px;
-  -webkit-transform: translate3d(-50%, 0, 0);
-  transform: translate3d(-50%, 0, 0);
+  left: 32px;
+  top: 32px;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  z-index: 2;
 }
+
+/*# sourceMappingURL=juskteez.css.map */

@@ -1,0 +1,80 @@
+.col-lg, .col-lg-auto, .col-lg-one-fifth, .col-lg-one-seventh, .col-lg-one-eighth, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col, .col-auto, .col-one-fifth, .col-one-seventh, .col-one-eighth, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1
+  padding-left: 8px
+  padding-right: 8px
+
+.main-content
+  section[class="section"]
+    display: none
+
+  section.section:first-child
+    margin-top: 16px
+  
+  section.featured-collection,
+  .collection-detail
+    .col-12
+      @media only screen and (max-width: 1024px)
+        padding-left: 0
+        padding-right: 0
+        margin-bottom: 0
+
+  section.section
+    .featured-collection--heading
+      margin-bottom: 16px
+    
+    h2.h4
+      margin-bottom: 0
+      font-size: 2.25rem
+      @media only screen and (min-width: 1024px)
+        font-size: 6.75rem
+
+.collection
+
+  &-product-wrap &-detail__product
+    &-image
+      margin-bottom: 8px
+    &-details
+      .title
+        text-transform: uppercase
+        color: $b4
+      .price
+        margin-top: 0
+
+  &-product-wrap &-image-container
+    & > img
+      position: absolute
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      pointer-events: none
+      object-fit: cover
+      object-position: center
+
+    &:before
+      background-color: transparent
+      opacity: 1
+      display: block
+      visibility: visible
+      bottom: auto
+      padding-top: 125%
+      position: relative
+
+  &-product-wrap.collection-product-wrap--add-cart
+    margin-bottom: 32px
+    &:hover
+      box-shadow: none
+      &:after
+        display: none
+
+    .btn.btn-primary
+      padding: 0
+      line-height: 40px
+      transition: 0.125s all ease
+      overflow: visible
+      border: none
+      width: calc(100% - 64px)
+      margin: 8px auto
+      display: block
+      box-shadow: inset 0 0 0 1px $b5
+      background-color: transparent
+      color: $b2

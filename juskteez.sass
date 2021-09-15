@@ -76,6 +76,9 @@ section.featured-collection:first-child
   transition: 0.125s all ease
   background: rgba(white, 0.32)
   backdrop-filter: blur(10px)
+  @media only screen and (max-width: 1024px)
+    right: 8px
+    bottom: 12px
 
   path
     transition: 0.125s all ease
@@ -179,6 +182,8 @@ main
           color: transparent
         &:hover:not(.disabled):not([disabled])
           background-color: red
+          @media only screen and (max-width: 1024px)
+            background-color: initial
         &::before
           content: ""
           position: absolute
@@ -190,6 +195,29 @@ main
           display: inline-block
           overflow: hidden
           height: 100%
+        
+        @media only screen and (max-width: 1024px)
+          height: auto
+          position: relative
+          bottom: unset
+          left: unset
+          right: unset
+          top: unset
+          margin: 8px auto
+          margin-bottom: 32px
+          width: calc(100% - 64px)
+          display: block
+          box-shadow: inset 0 0 0 1px rgba(black,.24)
+          &::before
+            width: calc(100% + 32px)
+            height: 100%
+            left: -16px
+          span
+            color: rgba(black,.8)
+            vertical-align: top
+          
+          &:not(.disabled):not([disabled])
+            background-color: transparent
 
       .rv-widget.rv-widget--badge.rv-inline-flex.rv-a-item-center
         position: absolute

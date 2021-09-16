@@ -1,18 +1,21 @@
 
+$mobile-margin: 96px
+
 .section.image-with-text
-  padding: 10vw 0
+  padding: 0
+  padding-bottom: #{$mobile-margin / 2}
 .image-with-text .feature-set-content-wrap,
 .feature-set-content-wrap
-  max-width: calc(100vw - 64px)
+  max-width: calc(100vw - #{$mobile-margin})
   margin: 0 auto
   &:not(:last-child)
-    margin-bottom: 32px
+    margin-bottom: 8px
   .feature-image
     &::before
       content: ""
       display: block
       width: 100%
-      padding-top: 125%
+      padding-top: 150%
     img
       vertical-align: top
       transition: 0.5s all ease
@@ -61,5 +64,5 @@
       left: 0
       bottom: 0
       height: 100vh
-      height: calc((100vw - 64px) * 1.25)
+      height: calc((100vw - #{$mobile-margin}) * 1.5)
       background-color: transparent

@@ -46,6 +46,7 @@ header.header
     text-transform: uppercase
     font-weight: normal
     font-size: 12px !important
+    line-height: 32px
     @media screen and (max-width: 767px)
       font-size: 18px !important
       color: $b2
@@ -56,6 +57,9 @@ header.header
     .logo
       margin-left: 0
       max-width: none
+      & > a.flex
+        display: inline-block
+        padding-right: 8px
 
     .search-icon, .login-icon, .cart-container
       width: 36px
@@ -63,6 +67,30 @@ header.header
         text-decoration: unset
         transition: unset
         color: initial
+
+      .carticon-label
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+
+      svg
+        display: none
+      .svg-container
+        position: absolute
+        width: 12px
+        height: 12px
+        background-color: transparent
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+      &.search-icon .svg-container
+        background-image: url("jstore-1/icons/header-search.svg")
+      &.login-icon .svg-container
+        background-image: url("jstore-1/icons/header-account.svg")
+      &.cart-container .svg-container
+        background-image: url("jstore-1/icons/header-cart.svg")
 
     .mobile-nav
       width: 32px

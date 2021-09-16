@@ -6,34 +6,6 @@ header.header {
   flex-wrap: wrap;
 }
 
-header.header-mobile .header-wrap {
-  padding: 0;
-}
-
-header.header-mobile .header-wrap .mobile-nav {
-  width: 32px;
-}
-
-header.header-mobile .header-wrap .mobile-nav div {
-  width: 12px;
-  height: 12px;
-}
-
-header.header-mobile .header-wrap .mobile-nav span.d-block {
-  height: 1px;
-  top: auto;
-}
-
-header.header-mobile .header-wrap .mobile-nav span.d-block:nth-of-type(2) {
-  top: 50%;
-  -webkit-transform: translate3d(0, -50%, 0);
-  transform: translate3d(0, -50%, 0);
-}
-
-header.header-mobile .header-wrap .mobile-nav span.d-block:last-child {
-  bottom: 0;
-}
-
 header.header .container-fluid {
   padding: 0 8px;
 }
@@ -106,8 +78,59 @@ header.header-mobile .logo .logo-text {
   }
 }
 
-header.header-mobile .logo {
+header.header-mobile .header-wrap {
+  padding: 0;
+}
+
+header.header-mobile .header-wrap .logo {
   margin-left: 0;
+  max-width: none;
+}
+
+header.header-mobile .header-wrap .search-icon, header.header-mobile .header-wrap .login-icon, header.header-mobile .header-wrap .cart-container {
+  width: 36px;
+}
+
+header.header-mobile .header-wrap .search-icon:hover, header.header-mobile .header-wrap .login-icon:hover, header.header-mobile .header-wrap .cart-container:hover {
+  text-decoration: unset;
+  -webkit-transition: unset;
+  -o-transition: unset;
+  transition: unset;
+  color: initial;
+}
+
+header.header-mobile .header-wrap .mobile-nav {
+  width: 32px;
+}
+
+header.header-mobile .header-wrap .mobile-nav::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 48px;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+}
+
+header.header-mobile .header-wrap .mobile-nav div {
+  width: 12px;
+  height: 12px;
+}
+
+header.header-mobile .header-wrap .mobile-nav span.d-block {
+  height: 1px;
+  top: auto;
+}
+
+header.header-mobile .header-wrap .mobile-nav span.d-block:nth-of-type(2) {
+  top: 50%;
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+}
+
+header.header-mobile .header-wrap .mobile-nav span.d-block:last-child {
+  bottom: 0;
 }
 
 .site-nav .site-nav__item {

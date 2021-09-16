@@ -1,24 +1,6 @@
 header.header
   display: flex
   flex-wrap: wrap
-  &-mobile .header-wrap
-    padding: 0
-
-    .mobile-nav
-      width: 32px
-
-      div
-        width: 12px
-        height: 12px
-
-      span.d-block
-        height: 1px
-        top: auto
-      span.d-block:nth-of-type(2)
-        top: 50%
-        transform: translate3d(0,-50%,0)
-      span.d-block:last-child
-        bottom: 0
 
   .container-fluid
     padding: 0 8px
@@ -68,8 +50,44 @@ header.header
       font-size: 18px !important
       color: $b2
 
-  &-mobile .logo
-    margin-left: 0
+  &-mobile .header-wrap
+    padding: 0
+
+    .logo
+      margin-left: 0
+      max-width: none
+
+    .search-icon, .login-icon, .cart-container
+      width: 36px
+      &:hover
+        text-decoration: unset
+        transition: unset
+        color: initial
+
+    .mobile-nav
+      width: 32px
+
+      &::before
+        content: ""
+        position: absolute
+        width: 40px
+        height: 48px
+        top: 0
+        left: 0
+        border-radius: 4px
+
+      div
+        width: 12px
+        height: 12px
+
+      span.d-block
+        height: 1px
+        top: auto
+      span.d-block:nth-of-type(2)
+        top: 50%
+        transform: translate3d(0,-50%,0)
+      span.d-block:last-child
+        bottom: 0
 
 .site-nav
   & &__item

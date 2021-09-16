@@ -111,11 +111,26 @@ header.header
       span.d-block
         height: 1px
         top: auto
+        transform: translate(0,0) rotateY(0deg)
+        transition-duration: 0.5s
       span.d-block:nth-of-type(2)
         top: 50%
-        transform: translate3d(0,-50%,0)
+        transform: translate(0,-50%) rotate(0deg)
+      span.d-block:nth-of-type(3)
+        top: 50%
+        transform: translate(0,-50%) rotate(90deg) rotateY(90deg)
       span.d-block:last-child
         bottom: 0
+
+.is-noscroll .header-mobile .header-wrap .mobile-nav
+  span.d-block
+    transform: translate(0,0) rotateY(90deg)
+  span.d-block:nth-of-type(2)
+    top: 50%
+    transform: translate(0,-50%) rotate(135deg)
+  span.d-block:nth-of-type(3)
+    top: 50%
+    transform: translate(0,-50%) rotate(225deg) rotateY(0deg)
 
 .site-nav
   & &__item

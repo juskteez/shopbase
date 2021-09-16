@@ -125,3 +125,44 @@ header.header
   & &__link
     color: rgba(black, 0.48)
     transition: 0.125s all ease
+
+.header-mobile .mobile-menu
+  .popover-left__overlay
+    display: none
+  .popover-left__content
+    width: 100%
+    top: 40px
+
+  .mobile-nav-menu__header
+    display: none
+
+  .mobile-nav-menu__item
+    padding: 0
+    a
+      font-family: $typeA
+      font-weight: normal
+      text-transform: uppercase
+      padding: 8px 32px
+      font-size: 18px
+      line-height: 24px
+      padding-top: 9px
+      position: relative
+      overflow: hidden
+      &::before
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: #fff
+        background: linear-gradient(176deg, rgba(0, 0, 0, 0.075) 0%, rgba(0, 0, 0, 0) 32%)
+      &::after
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 1px
+        background: #eee
+        background: linear-gradient(90deg, rgba(black,0.1) 0%, rgba(black,0) 100%)

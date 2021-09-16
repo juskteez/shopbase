@@ -1,7 +1,24 @@
 header.header
   display: flex
   flex-wrap: wrap
-  &-mobile
+  &-mobile .header-wrap
+    padding: 0
+
+    .mobile-nav
+      width: 32px
+
+      div
+        width: 12px
+        height: 12px
+
+      span.d-block
+        height: 1px
+        top: auto
+      span.d-block:nth-of-type(2)
+        top: 50%
+        transform: translate3d(0,-50%,0)
+      span.d-block:last-child
+        bottom: 0
 
   .container-fluid
     padding: 0 8px
@@ -18,8 +35,10 @@ header.header
   &.nav-fixed--true,
   &-mobile.mobile-nav-fixed--true
     position: relative
-    padding-top: 56px
+    padding-top: 40px
     border-bottom: none
+    @media only screen and (min-width: 1200px)
+      padding-top: 56px
 
     .header-wrap
       background-color: transparent
@@ -47,6 +66,10 @@ header.header
     font-size: 12px !important
     @media screen and (max-width: 767px)
       font-size: 18px !important
+      color: $b2
+
+  &-mobile .logo
+    margin-left: 0
 
 .site-nav
   & &__item

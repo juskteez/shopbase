@@ -67,7 +67,7 @@
       position: relative
 
   &-product-wrap.collection-product-wrap--add-cart
-    margin-bottom: 32px
+    margin-bottom: 0
     &:hover
       box-shadow: none
       &:after
@@ -80,8 +80,18 @@
       overflow: visible
       border: none
       width: calc(100% - 64px)
-      margin: 8px auto
+      margin: 0 auto
+      margin-top: 8px
       display: block
       box-shadow: inset 0 0 0 1px $b5
       background-color: transparent
       color: $b2
+
+.featured-collection__grid
+  & > .col-wrap:not(:last-child)
+    padding-bottom: 32px
+
+.featured-collection-button
+  margin-bottom: 0
+  .btn.view-more
+    width: calc(100vw - 64px)

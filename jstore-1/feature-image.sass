@@ -16,6 +16,11 @@ $mobile-margin: 96px
       display: block
       width: 100%
       padding-top: 150%
+      background-color: rgba(32,32,32,0.5)
+      backdrop-filter: blur(8px) saturate(150%)
+      mask-image: linear-gradient(to bottom, transparent 56%, black 96%)
+      position: relative
+      z-index: 1
     img
       vertical-align: top
       transition: 0.5s all ease
@@ -34,6 +39,7 @@ $mobile-margin: 96px
     left: 0
     bottom: 0
     padding: 24px
+    z-index: 1
 
     .title
       margin: 0

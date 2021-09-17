@@ -22,15 +22,22 @@ $mobile-margin: 96px
       mask-image: linear-gradient(to bottom, transparent 56%, black 96%)
       position: relative
       z-index: 1
-    img
-      vertical-align: top
-      transition: 0.5s all ease
+    & > div
       position: absolute
       top: -20%
       left: -10%
       width: 120%
       max-width: none
       height: 120%
+    img
+      vertical-align: top
+      transition: 0s all ease
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      max-width: none
+      height: 100%
       object-fit: cover
       object-position: center
     &:hover img

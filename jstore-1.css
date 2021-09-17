@@ -554,18 +554,28 @@ a.btn {
   z-index: 1;
 }
 
-.image-with-text .feature-set-content-wrap .feature-image img,
-.feature-set-content-wrap .feature-image img {
-  vertical-align: top;
-  -webkit-transition: 0.5s all ease;
-  -o-transition: 0.5s all ease;
-  transition: 0.5s all ease;
+.image-with-text .feature-set-content-wrap .feature-image > div,
+.feature-set-content-wrap .feature-image > div {
   position: absolute;
   top: -20%;
   left: -10%;
   width: 120%;
   max-width: none;
   height: 120%;
+}
+
+.image-with-text .feature-set-content-wrap .feature-image img,
+.feature-set-content-wrap .feature-image img {
+  vertical-align: top;
+  -webkit-transition: 0s all ease;
+  -o-transition: 0s all ease;
+  transition: 0s all ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;

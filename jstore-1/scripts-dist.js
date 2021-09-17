@@ -17,14 +17,23 @@ var featureImageSet = document.querySelectorAll(".feature-set-content-wrap .feat
 var windowHeight = window.innerHeight;
 
 document.addEventListener("scroll", function () {
-  var featureImagePos = [];
+  // let featureImagePos = []
   for (var i = 0; i < featureImageSet.length; i++) {
     var featureImage = featureImageSet[i];
-    var imageHeight = featureImage.offsetHeight;
+    // let imageHeight  = featureImage.offsetHeight
     var offsetTop = featureImage.getBoundingClientRect().top;
-    var offsetScreen = offsetTop - windowHeight;
-    featureImagePos.push(offsetScreen);
+    var offsetScreen = (offsetTop - window.innerHeight) * -1;
+
+    if (offsetScreen > 0) {
+      var progress = offsetScreen / window.innerHeight;
+      var imageWrap = featureImage.firstChild;
+      var wrapTop = imageWrap.offsetTop * -1;
+      var image = imageWrap.querySelector('img');
+      // if (progress > 1) progress = 1
+      image.style["transform"] = "translate3d(0," + progress * wrapTop + "px,0)";
+      // featureImagePos.push(progress * wrapTop)
+    }
   }
-  // console.info(featureImagePos)
+  // if (featureImagePos.length > 0) console.info(featureImagePos)
 });
 //# sourceMappingURL=scripts-dist.js.map

@@ -1,5 +1,4 @@
-console.info("Juskteez Store 1 Initiated")
-
+// Static components
 let hamburger = document.querySelector("header.header-mobile label.mobile-nav")
 
 hamburger.addEventListener("click", () => {
@@ -11,26 +10,73 @@ hamburger.addEventListener("click", () => {
   }
 })
 
-let featureImageSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid")
-let windowHeight = window.innerHeight
+// Dynamic components
+let featureImageCardSet = []
+let featureImageWrapSet = []
+let featureImageSet     = []
+let activeFeatureImage  = []
+let renderFeatureImage  = []
 
-document.addEventListener("scroll", () => {
-  // let featureImagePos = []
-  for (let i = 0; i < featureImageSet.length; i++) {
-    let featureImage = featureImageSet[i]
-    // let imageHeight  = featureImage.offsetHeight
-    let offsetTop    = featureImage.getBoundingClientRect().top
-    let offsetScreen = (offsetTop - window.innerHeight) * -1
+const componentParse = (page="", update=false) => {
+  // Universal components
+  featureImageCardSet = []
+  featureImageWrapSet = []
+  featureImageSet     = []
+  activeFeatureImage  = []
+  renderFeatureImage  = []
+  featureImageCardSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid")
+  for (let i = 0; i < featureImageCardSet.length; i++) {
+    // let imageWrap = featureImageCardSet[i].firstChild
+    featureImageWrapSet.push(featureImageCardSet[i].firstChild)
+    featureImageSet.push(featureImageCardSet[i].firstChild.querySelector('img'))
+    activeFeatureImage.push(false)
+    renderFeatureImage.push(undefined)
+  }
+}
 
-    if (offsetScreen > 0) {
-      let progress   = offsetScreen / (window.innerHeight)
-      let imageWrap  = featureImage.firstChild
-      let wrapTop    = imageWrap.offsetTop * -1
-      let image      = imageWrap.querySelector('img')
-      // if (progress > 1) progress = 1
-      image.style["transform"] = "translate3d(0," + (progress * wrapTop) + "px,0)"
-      // featureImagePos.push(progress * wrapTop)
+componentParse()
+
+let transformFeatureImage = (i) => {
+  let offsetTop    = featureImageCardSet[i].getBoundingClientRect().top
+  let offsetScreen = (offsetTop - window.innerHeight) * -1
+
+  let progress   = offsetScreen / (window.innerHeight)
+  let wrapTop    = featureImageWrapSet[i].offsetTop * -1
+  featureImageSet[i].style["transform"] = "translate(0," + (progress * wrapTop) + "px)"
+  renderFeatureImage[i] = requestAnimationFrame(() => {
+    transformFeatureImage(i)
+  })
+}
+
+let trackFeatureImage = () => {
+  for (let i = 0; i < featureImageCardSet.length; i++) {
+    if (featureImageSet[i]) {
+      let offsetTop    = featureImageCardSet[i].getBoundingClientRect().top
+      let offsetScreen = (offsetTop - window.innerHeight) * -1
+      let nudge        = 120
+      let overScreen   = offsetScreen - featureImageCardSet[i].offsetHeight - nudge
+
+      if (offsetScreen > nudge*-1 && overScreen < window.innerHeight) {
+        if (activeFeatureImage[i] == false) {
+          activeFeatureImage[i] = true
+          // console.log("+ + FeatureImage", i)
+          renderFeatureImage[i] = requestAnimationFrame(() => {
+            transformFeatureImage(i)
+          })
+        }
+      } else {
+        if (activeFeatureImage[i] == true) {
+          activeFeatureImage[i] = false
+          // console.log(" -  FeatureImage", i)
+          cancelAnimationFrame(renderFeatureImage[i])
+        }
+      }
     }
   }
-  // if (featureImagePos.length > 0) console.info(featureImagePos)
+  // featureImagesTransform = requestAnimationFrame(transformFeatureImage)
+}
+
+document.addEventListener("scroll", () => {
+
+  trackFeatureImage()
 })

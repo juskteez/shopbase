@@ -1,6 +1,6 @@
 "use strict";
 
-console.info("Juskteez Store 1 Initiated");
+// Static components
 
 var hamburger = document.querySelector("header.header-mobile label.mobile-nav");
 
@@ -13,27 +13,81 @@ hamburger.addEventListener("click", function () {
   }
 });
 
-var featureImageSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid");
-var windowHeight = window.innerHeight;
+// Dynamic components
+var featureImageCardSet = [];
+var featureImageWrapSet = [];
+var featureImageSet = [];
+var activeFeatureImage = [];
+var renderFeatureImage = [];
+
+var componentParse = function componentParse() {
+  var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+  var update = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  // Universal components
+  featureImageCardSet = [];
+  featureImageWrapSet = [];
+  featureImageSet = [];
+  activeFeatureImage = [];
+  renderFeatureImage = [];
+  featureImageCardSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid");
+  for (var i = 0; i < featureImageCardSet.length; i++) {
+    // let imageWrap = featureImageCardSet[i].firstChild
+    featureImageWrapSet.push(featureImageCardSet[i].firstChild);
+    featureImageSet.push(featureImageCardSet[i].firstChild.querySelector('img'));
+    activeFeatureImage.push(false);
+    renderFeatureImage.push(undefined);
+  }
+};
+
+componentParse();
+
+var transformFeatureImage = function transformFeatureImage(i) {
+  var offsetTop = featureImageCardSet[i].getBoundingClientRect().top;
+  var offsetScreen = (offsetTop - window.innerHeight) * -1;
+
+  var progress = offsetScreen / window.innerHeight;
+  var wrapTop = featureImageWrapSet[i].offsetTop * -1;
+  featureImageSet[i].style["transform"] = "translate(0," + progress * wrapTop + "px)";
+  renderFeatureImage[i] = requestAnimationFrame(function () {
+    transformFeatureImage(i);
+  });
+};
+
+var trackFeatureImage = function trackFeatureImage() {
+  var _loop = function _loop(i) {
+    if (featureImageSet[i]) {
+      var offsetTop = featureImageCardSet[i].getBoundingClientRect().top;
+      var offsetScreen = (offsetTop - window.innerHeight) * -1;
+      var nudge = 120;
+      var overScreen = offsetScreen - featureImageCardSet[i].offsetHeight - nudge;
+
+      if (offsetScreen > nudge * -1 && overScreen < window.innerHeight) {
+        if (activeFeatureImage[i] == false) {
+          activeFeatureImage[i] = true;
+          // console.log("+ + FeatureImage", i)
+          renderFeatureImage[i] = requestAnimationFrame(function () {
+            transformFeatureImage(i);
+          });
+        }
+      } else {
+        if (activeFeatureImage[i] == true) {
+          activeFeatureImage[i] = false;
+          // console.log(" -  FeatureImage", i)
+          cancelAnimationFrame(renderFeatureImage[i]);
+        }
+      }
+    }
+  };
+
+  for (var i = 0; i < featureImageCardSet.length; i++) {
+    _loop(i);
+  }
+  // featureImagesTransform = requestAnimationFrame(transformFeatureImage)
+};
 
 document.addEventListener("scroll", function () {
-  // let featureImagePos = []
-  for (var i = 0; i < featureImageSet.length; i++) {
-    var featureImage = featureImageSet[i];
-    // let imageHeight  = featureImage.offsetHeight
-    var offsetTop = featureImage.getBoundingClientRect().top;
-    var offsetScreen = (offsetTop - window.innerHeight) * -1;
 
-    if (offsetScreen > 0) {
-      var progress = offsetScreen / window.innerHeight;
-      var imageWrap = featureImage.firstChild;
-      var wrapTop = imageWrap.offsetTop * -1;
-      var image = imageWrap.querySelector('img');
-      // if (progress > 1) progress = 1
-      image.style["transform"] = "translate3d(0," + progress * wrapTop + "px,0)";
-      // featureImagePos.push(progress * wrapTop)
-    }
-  }
-  // if (featureImagePos.length > 0) console.info(featureImagePos)
+  trackFeatureImage();
 });
 //# sourceMappingURL=scripts-dist.js.map

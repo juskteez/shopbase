@@ -535,6 +535,8 @@ a.btn {
 .image-with-text .feature-set-content-wrap .feature-image,
 .feature-set-content-wrap .feature-image {
   overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .image-with-text .feature-set-content-wrap .feature-image::before,
@@ -567,9 +569,9 @@ a.btn {
 .image-with-text .feature-set-content-wrap .feature-image img,
 .feature-set-content-wrap .feature-image img {
   vertical-align: top;
-  -webkit-transition: 0s all ease;
-  -o-transition: 0s all ease;
-  transition: 0s all ease;
+  -webkit-transition: 0.5s opacity ease;
+  -o-transition: 0.5s opacity ease;
+  transition: 0.5s opacity ease;
   position: absolute;
   top: 0;
   left: 0;
@@ -580,13 +582,25 @@ a.btn {
   object-fit: cover;
   -o-object-position: center;
   object-position: center;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  will-change: transform;
+  -webkit-animation: none;
+  animation: none;
+  opacity: 0;
+}
+
+.image-with-text .feature-set-content-wrap .feature-image img:not(.progressive)[lazy=loaded],
+.feature-set-content-wrap .feature-image img:not(.progressive)[lazy=loaded] {
+  opacity: 1;
 }
 
 .image-with-text .feature-set-content-wrap .feature-image:hover img,
 .feature-set-content-wrap .feature-image:hover img {
-  -webkit-transform: none;
-  -ms-transform: none;
-  transform: none;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 
 .image-with-text .feature-set-content-wrap .feature-content,

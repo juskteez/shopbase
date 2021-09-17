@@ -73,19 +73,25 @@
       &:after
         display: none
 
-    .btn.btn-primary:not(.btn-loading):not(.disabled):not([disabled])
+    .btn.btn-primary:not(.btn-loading):not(.disabled):not([disabled]),
+    .btn.btn-primary.btn-loading, .btn.btn-primary.disabled, .btn.btn-primary[disabled]
       padding: 0
       line-height: 40px
       transition: 0.125s all ease
       overflow: visible
       border: none
-      width: calc(100% - 64px)
+      width: 100%
+      max-width: calc(100% - 64px)
       margin: 0 auto
       margin-top: 8px
       display: block
       box-shadow: inset 0 0 0 1px $b6
       background-color: transparent
+      overflow: hidden
       color: $b2
+
+    .btn.btn-primary.btn-loading, .btn.btn-primary.disabled, .btn.btn-primary[disabled]
+      color: $b5
 
 .featured-collection__grid
   & > .col-wrap:not(:last-child)

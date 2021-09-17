@@ -1,0 +1,65 @@
+.cart-drawer,
+.cart-drawar
+  & &-container
+    // opacity: 0.75
+    padding: 10px 8px
+    width: 100%
+    box-shadow: none
+    transition: 0.275s all ease
+    will-change: transform, right, left
+  &-header
+    margin-bottom: 14px
+    h5
+      font-size: 0
+      &:before
+        content: "Shopping Cart"
+        font-size: 18px
+
+  & &-icon-close
+    width: 36px
+    height: 40px
+    top: -10px
+    right: -8px
+    &:before,
+    &:after
+      background-color: #b4b4b4
+    &:before
+      width: 40%
+    &:after
+      height: 40%
+
+  & &-empty
+    color: $b4
+    pointer-events: none
+
+  & &-container &-footer
+    padding: 10px 0
+    padding-bottom: 48px
+
+.inside-modal.prd-modal.product
+  // opacity: 0.75
+  .inside-modal__body__content
+    padding: 10px 8px
+  .inside-modal__body__icon-close
+    width: 36px
+    height: 40px
+    &:before,
+    &:after
+      background-color: #b4b4b4
+      transition: none
+    &:before
+      height: 1px
+      width: 40%
+    &:after
+      width: 1px
+      height: 40%
+  .prd-modal__head:before
+    content: "Pick your favor"
+    font-family: $typeA
+    font-size: 18px
+    line-height: 1.2
+    text-transform: uppercase
+    color: $b2
+    display: block
+    width: 100%
+    margin-bottom: 16px

@@ -1,5 +1,25 @@
-button.btn,
-a.btn
+
+button.btn[class*="btn"],
+a.btn[class*="btn"]
   font-family: $typeA
   letter-spacing: 1.25px
   font-size: 1.25rem
+  &.btn:not(.btn-loading):not(.disabled):not([disabled]),
+  &.btn[disabled], &.btn.btn-loading, &.btn.disabled
+    text-decoration: none
+    outline: none
+    transition: none
+    border: none
+    opacity: 1
+
+  &.btn-subtle:not(.btn-loading):not(.disabled):not([disabled])
+    background-color: rgba($b1,0.1)
+    color: $b2
+
+  &.btn-primary:not(.btn-loading):not(.disabled):not([disabled])
+    background-color: $b1
+    color: white
+
+  &.btn-view:not(.btn-loading):not(.disabled):not([disabled])
+    background-color: rgba(white, .88)
+    color: $b2

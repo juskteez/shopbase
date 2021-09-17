@@ -8,6 +8,7 @@ $mobile-margin: 96px
 .feature-set-content-wrap
   max-width: calc(100vw - #{$mobile-margin})
   margin: 0 auto
+  padding: 0
   &:not(:last-child)
     margin-bottom: 8px
   .feature-image
@@ -18,9 +19,10 @@ $mobile-margin: 96px
       display: block
       width: 100%
       padding-top: 150%
-      background-color: rgba(32,32,32,0.5)
-      backdrop-filter: blur(8px) saturate(150%)
-      mask-image: linear-gradient(to bottom, transparent 56%, black 96%)
+      background-color: rgba(32,32,32,0.64)
+      // background-color: red
+      backdrop-filter: blur(10px) saturate(200%)
+      mask-image: linear-gradient(to bottom, transparent 64%, black 96%)
       position: relative
       z-index: 1
     & > div
@@ -75,12 +77,21 @@ $mobile-margin: 96px
     .btn
       margin-top: 12px
       padding: 8px 12px
+      position: static
+
+      &::after
+        content: ""
+        position: absolute
+        width: 100%
+        height: calc((100vw - #{$mobile-margin}) * 1.5)
+        background-color: transparent
+        bottom: 0
+        left: 0
 
     a:not(.btn)
       text-transform: uppercase
       color: transparent
       font-size: 0.01px
-      letter-spacing: 1.25px
       position: absolute
       width: 100%
       left: 0

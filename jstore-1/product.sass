@@ -1,0 +1,122 @@
+.product
+
+  &__price
+    .flex.flex-wrap
+      justify-content: center
+    *
+      font-family: $typeB
+      font-size: 12px
+      line-height: 18px
+      font-weight: normal
+      vertical-align: top
+    
+    & &-span
+      font-size: 16px
+      font-weight: bold
+      display: inline-block
+      color: red
+    
+    & &-original
+      order: -1
+      width: 100%
+      text-align: center
+      margin: 0 0 2px 0
+      color: $n3
+      display: block
+
+    & &-sale-msg
+      border-radius: 0
+      padding: 0 5px
+      font-size: 12px
+      line-height: 18px
+      margin-left: 5px
+      text-transform: capitalize
+      display: inline-block
+      background-color: rgba(255,48,0,.24)
+      color: rgba(255,24,0,.88)
+
+  &__variant-label,
+  &__quantity label
+    text-transform: uppercase
+    color: $b4
+    font-size: 11px
+    letter-spacing: 0.5px
+    text-align: center
+
+  &__size-guide-dash
+    color: transparent
+    width: 12px
+    margin: 0 4px
+    &::before
+      background-color: $b6
+
+  &__variant-button
+    justify-content: center
+
+  &__variant-button &__image-gr
+    margin-bottom: 0
+
+  &__variant-button &__image-option,
+  &__variant-button &__image-option[lazy=loaded]
+    margin-right: 0
+    margin-bottom: 0
+    width: 48px
+    height: 64px !important
+    position: relative
+    box-shadow: 0 0 0 1px #e7e7e7
+  &__variant-button &__image-option--active,
+  &__variant-button &__image-option--active[lazy=loaded]
+    z-index: 1
+    box-shadow: 0 0 0 1px #4b4b4b
+
+  &__option
+    width: 40px
+    height: 40px
+    padding: 0
+    text-align: center
+    margin: 0
+    border: none
+    box-shadow: 0 0 0 1px #e7e7e7
+    background-color: white
+    transition: 0.125s all ease
+    &:focus:not([disabled])
+      box-shadow: 0 0 0 1px #191919
+    &--active:not([disabled])
+      box-shadow: 0 0 0 1px #191919
+
+.button-quantity
+  &__layout-vertical
+    margin: 0 auto
+    border: none
+    position: relative
+    height: 40px
+    max-width: 120px
+    width: 100%
+
+    &__increase,
+    &__decrease
+      width: 100%
+      height: 100%
+      border: none
+      position: relative
+
+    input
+      width: 56px
+      height: 100%
+      background-color: transparent
+
+.plus,
+.minus
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  width: 10px
+  &::before,
+  &::after
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%) rotate(90deg)
+    width: 100%
+  &::before
+    transform: translate(-50%,-50%) rotate(0)

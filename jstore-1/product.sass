@@ -1,5 +1,81 @@
 .product
 
+  &-template
+    padding-top: 0
+
+  &-template &.section
+    margin-top: 0
+
+  & &-slider.media-gallery-carousel
+    margin: 0 -8px
+    .media-gallery-carousel__slide
+      .VueCarousel-wrapper
+        &:before
+          content: ""
+          display: block
+          width: 100%
+          padding-top: 125%
+      .VueCarousel-inner
+        height: 100% !important
+        position: absolute
+        width: 100%
+        top: 0
+        left: 0
+
+      &-image
+        height: 100%
+      &-image img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        object-position: center
+
+    .thumbnail-carousel,
+    .media-gallery-carousel__thumbs
+      margin: 0
+      .VueCarousel-inner,
+      &.media-gallery-carousel__thumbs
+        display: block
+        transform: none !important
+        width: 100%
+        padding: 8px
+        overflow-y: auto
+        -webkit-overflow-scrolling: touch
+        text-align: center
+        white-space: nowrap
+
+      $thumbSize: 32px
+
+      &-slide,
+      .media-gallery-carousel__thumb
+        width: $thumbSize
+        max-width: $thumbSize
+        height: $thumbSize
+        border: none
+        background-color: #fff
+        margin: 0
+        display: inline-block
+        overflow: visible
+        position: relative
+        box-shadow: 0 0 0 1px $n1
+        transition: none
+        img
+          width: 100%
+          height: 100%
+          object-fit: contains
+          object-position: center
+          margin: 0
+          border: none
+        &.active-thumb,
+        &--active
+          box-shadow: 0 0 0 1px $n5
+          z-index: 1
+
+  &__name
+    font-size: 18px
+    text-align: center
+    margin-bottom: 0
+
   &__price
     .flex.flex-wrap
       justify-content: center
@@ -52,9 +128,11 @@
 
   &__variant-button
     justify-content: center
+    text-align: center
 
   &__variant-button &__image-gr
     margin-bottom: 0
+    justify-content: center
 
   &__variant-button &__image-option,
   &__variant-button &__image-option[lazy=loaded]
@@ -63,11 +141,11 @@
     width: 48px
     height: 64px !important
     position: relative
-    box-shadow: 0 0 0 1px #e7e7e7
+    box-shadow: 0 0 0 1px $n1
   &__variant-button &__image-option--active,
   &__variant-button &__image-option--active[lazy=loaded]
     z-index: 1
-    box-shadow: 0 0 0 1px #4b4b4b
+    box-shadow: 0 0 0 1px $n5
 
   &__option
     width: 40px
@@ -83,6 +161,9 @@
       box-shadow: 0 0 0 1px #191919
     &--active:not([disabled])
       box-shadow: 0 0 0 1px #191919
+
+  &__description
+    overflow: hidden
 
 .button-quantity
   &__layout-vertical

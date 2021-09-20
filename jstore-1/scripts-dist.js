@@ -132,6 +132,39 @@ var trackFeatureImage = function trackFeatureImage() {
   }
 };
 
+var searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon');
+
+searchTrigger.addEventListener("click", function () {
+  setTimeout(function () {
+    var searchModal = document.querySelector('.header-section .search-modal');
+    var searchInput = document.querySelector('.header-section .search-modal__header .search-group input');
+    if (searchInput) {
+      // console.log(searchInput)
+      if (searchInput.classList.contains("empty")) {
+        if (!searchModal.classList.contains("empty_input")) searchModal.classList.add("empty_input");
+      }
+      // let searchTimeout = false
+      searchInput.addEventListener("input", function (e) {
+        var searchKeywords = searchInput.value.trim();
+        var noResult = searchModal.querySelector(".search-modal__no-result");
+        // clearTimeout(searchTimeout)
+        // if (!searchModal.classList.contains("inputing")) searchModal.classList.add("inputing")
+        if (noResult) {
+          if (!noResult.classList.contains("inputing")) noResult.classList.add("inputing");
+        }
+        if (searchKeywords.length == 0 || searchKeywords == "") {
+          if (!searchModal.classList.contains("empty_input")) searchModal.classList.add("empty_input");
+        } else {
+          if (searchModal.classList.contains("empty_input")) searchModal.classList.remove("empty_input");
+        }
+        // searchTimeout = setTimeout( () => {
+        //   if (searchModal.classList.contains("inputing")) searchModal.classList.remove("inputing")
+        // },200)
+      });
+    }
+  }, 150);
+});
+
 document.addEventListener("scroll", function () {
 
   trackFeatureImage();

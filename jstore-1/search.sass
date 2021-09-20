@@ -21,11 +21,15 @@
   100%
     opacity: 0
 
+@keyframes searched
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
 .header-section
   .search-modal
     animation-duration: 0s
-    // background-color: rgba(white,0.8)
-    // backdrop-filter: blur(16px)
     &.fadeIn
       animation: searchModalIn 0.275s ease forwards
     &.fadeOut
@@ -40,11 +44,13 @@
         animation: searchOut 0.275s ease forwards
 
     &__result
-      animation: none !important
+      min-height: 100px
+      // background-color: red
+      animation: searched 0.275s ease forwards !important
       transform: none !important
       transition: none !important
-      opacity: 1 !important
-      display: block !important
+      // opacity: 1 !important
+      // display: block !important
 
     &__header
       margin: 0
@@ -98,9 +104,6 @@
         right: auto
         left: 15px
 
-    &__body
-      padding: 0
-
     &__products
       margin-bottom: 0
       padding-bottom: 8px
@@ -148,3 +151,16 @@
     &__no-result
       padding: 16px 40px
       color: $b4
+
+    &__body
+      padding: 0
+
+    &__body .loading-spinner
+      padding-bottom: 48px
+      opacity: 0.56
+      & ~ *
+        display: none
+
+    &.empty_input .search-modal__body,
+    &__no-result.inputing
+      display: none

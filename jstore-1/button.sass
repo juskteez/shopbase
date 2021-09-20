@@ -1,7 +1,7 @@
 
 button.btn[class*="btn"],
 a.btn[class*="btn"]
-  font-family: $typeA
+  // font-family: $typeA
   letter-spacing: 1.25px
   font-size: 1.25rem
   &.btn:not(.btn-loading):not(.disabled):not([disabled]),
@@ -23,3 +23,6 @@ a.btn[class*="btn"]
   &.btn-view:not(.btn-loading):not(.disabled):not([disabled])
     background-color: rgba(white, .88)
     color: $b2
+
+  &.btn-outline
+    box-shadow: inset 0 0 0 1px $b5

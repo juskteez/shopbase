@@ -19,13 +19,19 @@ $mobile-margin: 96px
       display: block
       width: 100%
       padding-top: 150%
+      background-color: transparent
+      position: relative
+    &::after
+      content: ""
+      display: block
       background-color: rgba(32,32,32,0.64)
       // background-color: red
       backdrop-filter: blur(10px) saturate(200%)
+      -webkit-mask-image: linear-gradient(to bottom, transparent 64%, black 96%)
       mask-image: linear-gradient(to bottom, transparent 64%, black 96%)
-      position: relative
       z-index: 1
-    & > div
+    & > div,
+    &::after
       position: absolute
       top: -20%
       left: -10%

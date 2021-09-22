@@ -20,6 +20,7 @@ const mutationCallback = function(mutationsList, observer) {
 const observer = new MutationObserver(mutationCallback);
 
 // Dynamic components
+let pageBody = false
 let featureImageCardSet = []
 let featureImageWrapSet = []
 let featureImageSet     = []
@@ -28,6 +29,7 @@ let renderFeatureImage  = []
 
 const componentParse = (reinit) => {
   // Universal components
+  pageBody = document.querySelector(".default-layout > main.main-content").firstChild
   featureImageWrapSet = []
   featureImageSet     = []
   activeFeatureImage  = []
@@ -40,10 +42,25 @@ const componentParse = (reinit) => {
     activeFeatureImage.push(false)
     renderFeatureImage.push(undefined)
   }
+
+  let footer_links = document.querySelectorAll('.footer_link a[href*="/policies/"]')
+  for (let n = 0; n<footer_links.length; n++) {
+    let link_text = footer_links[n].textContent
+
+    if (link_text.includes(" policy")) {
+      footer_links[n].setAttribute("replace-text", link_text.replace(" policy", ""))
+    }
+  }
+  
+  if (pageBody.classList.contains("product-template")) {
+    if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page")
+  } else {
+    if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page")
+  }
 }
 
 // Initation process
-const initation = (reinit) => {
+const initation = (reinit=false) => {
   componentParse(reinit)
 }
 

@@ -1,3 +1,28 @@
+$scrollbar_size: 8px
+
+::-webkit-scrollbar
+  width: $scrollbar_size
+  height: $scrollbar_size
+
+::-webkit-scrollbar-track
+  background: transparent
+
+::-webkit-scrollbar-thumb
+  background: $b5
+  border-radius: 10px
+  width: 6px
+  height: 6px
+  border: 1px solid rgba(0,0,0,0)
+  background-clip: padding-box
+
+::-webkit-scrollbar-thumb:hover
+  background: $b4
+  background-clip: padding-box
+
+.product-details-page header.header
+  &-mobile.mobile-nav-fixed--true .container-fluid
+    position: absolute
+
 header.header
   display: flex
   flex-wrap: wrap

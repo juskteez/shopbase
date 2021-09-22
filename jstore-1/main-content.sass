@@ -5,6 +5,8 @@
 .row
   margin-left: -8px
   margin-right: -8px
+  & > .col-12.mt40:empty
+    display: none
 
 .main-content
   section[class="section"]
@@ -98,6 +100,7 @@
     padding-bottom: 32px
 
 .featured-collection-button
-  margin-bottom: 0
+  margin: 8px 0 0 0
+  width: 100%
   .btn.view-more
-    width: calc(100vw - 64px)
+    width: calc(100% - 64px)

@@ -1,7 +1,6 @@
 'use strict';
 
 // Mutation object creation
-
 var mutationNode = document.getElementsByTagName('TITLE')[0];
 var mutationConfig = { attributes: true, childList: true, subtree: true };
 
@@ -43,6 +42,7 @@ var mutationCallback = function mutationCallback(mutationsList, observer) {
 var observer = new MutationObserver(mutationCallback);
 
 // Dynamic components
+var pageBody = false;
 var featureImageCardSet = [];
 var featureImageWrapSet = [];
 var featureImageSet = [];
@@ -51,6 +51,7 @@ var renderFeatureImage = [];
 
 var componentParse = function componentParse(reinit) {
   // Universal components
+  pageBody = document.querySelector(".default-layout > main.main-content").firstChild;
   featureImageWrapSet = [];
   featureImageSet = [];
   activeFeatureImage = [];
@@ -63,10 +64,27 @@ var componentParse = function componentParse(reinit) {
     activeFeatureImage.push(false);
     renderFeatureImage.push(undefined);
   }
+
+  var footer_links = document.querySelectorAll('.footer_link a[href*="/policies/"]');
+  for (var n = 0; n < footer_links.length; n++) {
+    var link_text = footer_links[n].textContent;
+
+    if (link_text.includes(" policy")) {
+      footer_links[n].setAttribute("replace-text", link_text.replace(" policy", ""));
+    }
+  }
+
+  if (pageBody.classList.contains("product-template")) {
+    if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page");
+  } else {
+    if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page");
+  }
 };
 
 // Initation process
-var initation = function initation(reinit) {
+var initation = function initation() {
+  var reinit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
   componentParse(reinit);
 };
 

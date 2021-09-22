@@ -1,0 +1,87 @@
+.product-template .rv-widget--widget-card
+  padding: 8px 0
+  border-top: none
+  .rv-widget__listing-body .rv-widget__first-write-review,
+  .rv-widget__overall-text
+    font-family: $typeA
+    font-size: 24px
+    line-height: 24px
+    font-weight: normal
+    letter-spacing: -0.5px
+
+  .rv-widget__overall-store
+    font-family: $typeA
+    text-transform: uppercase
+    a
+      font-size: 10px
+      display: inline-block
+      color: $b4
+      font-weight: bold
+      overflow: hidden
+      position: relative
+      white-space: nowrap
+      letter-spacing: 0.5px
+      &:before,
+      &:after
+        content: ""
+        display: inline-block
+        width: 0
+        height: 10px
+        background-color: red
+        margin-left: -4.2px
+      &:after
+        margin-left: 0
+        margin-right: -4.6px
+
+  .rv-widget__rating-bar
+    margin: 8px 0
+
+    .rv-widget__summary-breakdown
+      justify-content: center
+
+  .rv-widget__summary-text
+    width: 16px
+    // background-color: $b6
+    text-align: center
+    font-size: 10px
+    font-weight: bold
+    color: $b2
+    margin-right: 0
+
+  .review-icon-symbols
+    margin-right: 0
+    width: 10px
+    height: 10px
+
+  .rv-widget__summary-proportion
+    border-radius: 3px
+    overflow: hidden
+    margin: 0 8px
+    max-width: 180px
+    progress[value]
+      height: 6px
+      border-radius: 3px
+
+  .rv-widget__summary-count
+    font-size: 10px
+    width: 36px
+
+  .rv-widget__add-review button.rv-widget__btn
+    padding: 12px 16px
+    border-radius: 0
+    max-width: calc(100% - 48px)
+    margin: 0 auto
+    text-transform: uppercase
+    span
+      font-family: $typeA
+      letter-spacing: 1.25px
+      font-size: 1.25rem
+      line-height: 16px
+      font-weight: normal
+
+    .review-icon-symbols
+      position: absolute
+      right: 12px
+      margin: 0
+      path
+        stroke: white

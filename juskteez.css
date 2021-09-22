@@ -1,0 +1,115 @@
+header.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+header.header .container-fluid {
+  padding: 0;
+}
+
+header.header .main-nav-wrapper > .flex > * {
+  -webkit-box-flex: 0;
+  -ms-flex: none;
+  flex: none;
+  width: auto;
+}
+
+header.header .main-nav-wrapper > .flex .nav {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: none;
+}
+
+header.header.nav-fixed--true, header.header-mobile.mobile-nav-fixed--true {
+  position: relative;
+  padding-top: 56px;
+  border-bottom: none;
+}
+
+header.header.nav-fixed--true .header-wrap, header.header-mobile.mobile-nav-fixed--true .header-wrap {
+  background-color: transparent;
+}
+
+header.header.nav-fixed--true .container-fluid, header.header-mobile.mobile-nav-fixed--true .container-fluid {
+  position: fixed;
+  top: 0;
+  background-color: white;
+}
+
+header.header.nav-fixed--true + .d-block.pagecontent, header.header-mobile.mobile-nav-fixed--true + .d-block.pagecontent {
+  display: none;
+}
+
+header.header.nav-fixed--true .promo_banner, header.header-mobile.mobile-nav-fixed--true .promo_banner {
+  height: auto !important;
+  display: block !important;
+  -webkit-transition-property: none !important;
+  -o-transition-property: none !important;
+  transition-property: none !important;
+  padding: 4px 0 !important;
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+header.header .logo .logo-text,
+header.header-mobile .logo .logo-text {
+  font-family: Garamond, serif;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 12px !important;
+}
+
+@media screen and (max-width: 767px) {
+  header.header .logo .logo-text,
+  header.header-mobile .logo .logo-text {
+    font-size: 18px !important;
+  }
+}
+
+.site-nav .site-nav__item {
+  text-transform: uppercase;
+  font-family: Garamond, serif;
+}
+
+.site-nav .site-nav__link {
+  color: rgba(0, 0, 0, 0.48);
+  -webkit-transition: 0.125s all ease;
+  -o-transition: 0.125s all ease;
+  transition: 0.125s all ease;
+}
+
+.scroll-to-top {
+  right: 32px;
+  bottom: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  -webkit-transition: 0.125s all ease;
+  -o-transition: 0.125s all ease;
+  transition: 0.125s all ease;
+  background: rgba(255, 255, 255, 0.32);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+@media only screen and (max-width: 1024px) {
+  .scroll-to-top {
+    right: 8px;
+    bottom: 12px;
+  }
+}
+
+.scroll-to-top path {
+  -webkit-transition: 0.125s all ease;
+  -o-transition: 0.125s all ease;
+  transition: 0.125s all ease;
+  fill: rgba(0, 0, 0, 0.24);
+}
+
+/*# sourceMappingURL=juskteez.css.map */

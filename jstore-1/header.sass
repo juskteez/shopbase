@@ -1,0 +1,194 @@
+header.header
+  display: flex
+  flex-wrap: wrap
+
+  .container-fluid
+    padding: 0 8px
+  
+  .main-nav-wrapper > .flex
+    & > *
+      flex: none
+      width: auto
+
+    .nav
+      flex: 1
+      max-width: none
+
+  &.nav-fixed--true,
+  &-mobile.mobile-nav-fixed--true
+    position: relative
+    padding-top: 40px
+    border-bottom: none
+    @media only screen and (min-width: 1200px)
+      padding-top: 56px
+
+    .header-wrap
+      background-color: transparent
+
+    .container-fluid
+      position: fixed
+      top: 0
+      background-color: white
+
+    & + .d-block.pagecontent
+      display: none
+
+    .promo_banner
+      height: auto !important
+      display: block !important
+      transition-property: none !important
+      padding: 4px 0 !important
+      order: 1
+
+  .logo .logo-text,
+  &-mobile .logo .logo-text
+    font-family: $typeA
+    text-transform: uppercase
+    font-weight: normal
+    font-size: 12px !important
+    line-height: 32px
+    @media screen and (max-width: 767px)
+      font-size: 18px !important
+      color: $b2
+
+  &-mobile .header-wrap
+    padding: 0
+
+    .logo
+      margin-left: 0
+      max-width: none
+      & > a.flex
+        display: inline-block
+        padding-right: 8px
+
+    .search-icon, .login-icon, .cart-container
+      width: 36px
+      &:hover
+        text-decoration: unset
+        transition: unset
+        color: initial
+
+      .carticon-label
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+
+      svg
+        display: none
+      .svg-container
+        position: absolute
+        width: 12px
+        height: 12px
+        background-color: transparent
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+      &.search-icon .svg-container
+        background-image: url("jstore-1/icons/header-search.svg")
+      &.login-icon .svg-container
+        background-image: url("jstore-1/icons/header-account.svg")
+      &.cart-container .svg-container
+        background-image: url("jstore-1/icons/header-cart.svg")
+      &.cart-container .cart-number
+        top: 8px
+        right: 4px
+        width: 14px
+        height: 14px
+        font-size: 8px
+        line-height: 16px
+        padding: 0
+        font-weight: bold
+        text-align: center
+
+    .mobile-nav
+      width: 32px
+
+      &::before
+        content: ""
+        position: absolute
+        width: 40px
+        height: 48px
+        top: 0
+        left: 0
+        border-radius: 4px
+
+      div
+        width: 12px
+        height: 12px
+
+      span.d-block
+        height: 1px
+        top: auto
+        transform: translate(0,0) rotateY(0deg)
+        transition: 0.375s all ease
+      span.d-block:nth-of-type(2)
+        top: 50%
+        transform: translate(0,-50%) rotate(0deg)
+      span.d-block:nth-of-type(3)
+        top: 50%
+        transform: translate(0,-50%) rotate(90deg) rotateY(90deg)
+      span.d-block:last-child
+        bottom: 0
+
+.nav-active .header-mobile .header-wrap .mobile-nav
+  span.d-block
+    transform: translate(0,0) rotateY(90deg)
+  span.d-block:nth-of-type(2)
+    top: 50%
+    transform: translate(0,-50%) rotate(135deg)
+  span.d-block:nth-of-type(3)
+    top: 50%
+    transform: translate(0,-50%) rotate(225deg) rotateY(0deg)
+
+.site-nav
+  & &__item
+    text-transform: uppercase
+    font-family: $typeA
+
+  & &__link
+    color: rgba(black, 0.48)
+    transition: 0.125s all ease
+
+.header-mobile .mobile-menu
+  .popover-left__overlay
+    display: none
+  .popover-left__content
+    will-change: transform, left
+    width: 100%
+    top: 40px
+
+  .mobile-nav-menu__header
+    display: none
+
+  .mobile-nav-menu__item
+    padding: 0
+    a
+      font-family: $typeA
+      font-weight: normal
+      text-transform: uppercase
+      padding: 8px 32px
+      font-size: 18px
+      line-height: 24px
+      padding-top: 9px
+      position: relative
+      overflow: hidden
+      &::before
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: #fff
+        background: linear-gradient(176deg, rgba(0, 0, 0, 0.075) 0%, rgba(0, 0, 0, 0) 32%)
+      &::after
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 1px
+        background: #eee
+        background: linear-gradient(90deg, rgba(black,0.075) 0%, rgba(black,0) 100%)

@@ -1,0 +1,227 @@
+.cart-drawer,
+.cart-drawar
+  & &-container
+    // opacity: 0.75
+    padding: 10px 0
+    width: 100%
+    box-shadow: none
+    transition: 0.275s all ease
+    will-change: transform, right, left
+  &-header
+    margin-bottom: 8px
+    h5
+      font-size: 0
+      &:before
+        content: "Shopping Cart"
+        font-size: 18px
+        display: block
+        margin-bottom: 2px
+        text-align: center
+
+  & &-icon-close
+    width: 36px
+    height: 40px
+    top: -10px
+    right: 0
+    &:before,
+    &:after
+      background-color: $n2
+    &:before
+      width: 40%
+    &:after
+      height: 38%
+
+  & &-empty
+    color: $b4
+    pointer-events: none
+    text-align: center
+    p
+      font-size: 16px
+      font-family: $typeA
+      letter-spacing: 0.25px
+
+  & &-container &-footer
+    padding: 10px 0
+    padding-bottom: 24px
+    margin: 0
+
+    .mini-total-line
+      display: flex
+      justify-content: center
+      font-size: 16px
+      .h6
+        vertical-align: top
+        line-height: 18px
+      .h6:first-child
+        text-align: right
+      .h6:last-child
+        font-weight: bold
+        padding: 0 4px
+        color: red
+        font-family: $typeB
+        font-size: 14px
+        transform: translate(0,-1px)
+
+    .mini-total-line__text
+      text-align: center
+      color: $b4
+
+    button.btn.btn-primary
+      margin: 0 auto
+      width: calc(100% - 32px)
+      display: block
+      height: 56px
+      padding: 0
+      font-size: 18px
+      letter-spacing: 1.5px
+      font-weight: normal
+      .svg-container
+        display: inline-block
+        margin-right: 0
+        width: 24px
+        height: 24px
+        position: relative
+        vertical-align: middle
+        transform: translate(0,-1px)
+      .svg-container svg
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        margin-right: 0
+
+.product-cart
+  flex-wrap: nowrap
+  justify-content: space-between
+  align-items: center
+  border-top: 1px solid $n1
+  padding: 0 16px
+  padding-top: 8px
+
+  &-wrapper
+    position: relative
+  &
+    margin-bottom: 8px
+
+  &__image
+    width: 80px
+    height: auto
+    margin-right: 0
+    &:before
+      content: ""
+      display: block
+      width: 100%
+      padding-top: 125%
+    & > a,
+    & > img
+      position: absolute
+      top: 0
+      left: 0
+    img
+      width: 100%
+      height: 100%
+      object-fit: contain
+      object-position: center
+      background-color: #fff
+
+  &__details
+    flex-wrap: nowrap
+    width: calc(100% - 80px)
+    align-items: center
+    padding-left: 8px
+
+  &__quantity
+    width: 100%
+    margin-top: -6px
+
+  &__details &__name
+    text-transform: uppercase
+    font-size: 12px
+    color: $b1
+    margin-bottom: 0
+    a
+      color: inherit
+  &__details &__price
+    font-family: $typeB
+    font-size: 16px
+    margin-bottom: 8px
+    &--original
+      font-size: 12px
+    &+.mb12
+      margin-bottom: 0
+  &__details &__options
+    color: $b1
+  &__action
+    width: 120px
+    min-width: 120px
+    position: relative
+    flex-wrap: wrap
+    justify-content: center
+
+  &__action &__remove
+    margin: 0
+    margin-top: 8px
+    color: $b4
+    transition: none
+
+.inside-modal.prd-modal.product
+  // opacity: 0.75
+  .inside-modal__body__content
+    padding: 10px 0
+  .inside-modal__body__icon-close
+    width: 36px
+    height: 40px
+    &:before,
+    &:after
+      background-color: $n2
+      transition: none
+    &:before
+      height: 1px
+      width: 40%
+    &:after
+      width: 1px
+      height: 38%
+  .prd-modal__head:before
+    content: "Pick your favor"
+    font-family: $typeA
+    font-size: 18px
+    line-height: 1.2
+    text-transform: uppercase
+    color: $b1
+    display: block
+    width: 100%
+    margin-bottom: 16px
+    text-align: center
+  .prd-modal__head
+    display: block
+  .prd-modal__image
+    max-width: 300px
+    width: 40vw
+    margin: 0 auto
+    margin-bottom: 8px
+    .aspect-ratio
+      border: none
+      background-color: transparent
+      img
+        height: 100%
+
+  .prd-modal__desc
+    max-width: none
+    text-align: center
+    .prd-modal__name
+      color: $b4
+      font-size: 12px
+      font-family: $typeB
+
+  .prd-modal__body
+    padding-bottom: 88px
+    .product__cart-form
+      position: fixed
+      bottom: 24px
+      width: calc(100% - 32px)
+      left: 16px
+      button.btn.btn-buy-now
+        height: 56px
+        font-size: 18px
+        letter-spacing: 1.5px
+        font-weight: normal

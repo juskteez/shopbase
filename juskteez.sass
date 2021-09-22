@@ -1,0 +1,70 @@
+$typeA: Garamond, serif
+$typeB: Aleo, serif
+
+$b1: black
+$b2: rgba($b1, .80)
+$b3: rgba($b1, .64)
+$b4: rgba($b1, .48)
+$b5: rgba($b1, .24)
+$b6: rgba($b1, .08)
+
+header.header
+  display: flex
+  flex-wrap: wrap
+  &-mobile
+
+  .container-fluid
+    padding: 0
+  
+  .main-nav-wrapper > .flex
+    & > *
+      flex: none
+      width: auto
+
+    .nav
+      flex: 1
+      max-width: none
+
+  &.nav-fixed--true,
+  &-mobile.mobile-nav-fixed--true
+    position: relative
+    padding-top: 56px
+    border-bottom: none
+
+    .header-wrap
+      background-color: transparent
+
+    .container-fluid
+      position: fixed
+      top: 0
+      background-color: white
+
+    & + .d-block.pagecontent
+      display: none
+
+    .promo_banner
+      height: auto !important
+      display: block !important
+      transition-property: none !important
+      padding: 4px 0 !important
+      order: 1
+
+  .logo .logo-text,
+  &-mobile .logo .logo-text
+    font-family: $typeA
+    text-transform: uppercase
+    font-weight: normal
+    font-size: 12px !important
+    @media screen and (max-width: 767px)
+      font-size: 18px !important
+
+.site-nav
+  & &__item
+    text-transform: uppercase
+    font-family: $typeA
+
+  & &__link
+    color: rgba(black, 0.48)
+    transition: 0.125s all ease
+
+@import jstore-1/scrolltotop

@@ -1,0 +1,62 @@
+.scroll-to-top
+  right: 32px
+  bottom: 32px
+  width: 48px
+  height: 48px
+  border-radius: 50%
+  border: none
+  transition: 0.125s all ease
+  background: rgba(white, 0.32)
+  backdrop-filter: blur(10px)
+  @media only screen and (max-width: 1024px)
+    right: 8px
+    bottom: 12px
+
+  path
+    transition: 0.125s all ease
+    fill: rgba(black, 0.24)
+
+.footer-section
+  text-align: center
+
+  .h5.site-footer__header,
+  .footer-copyright
+    text-transform: uppercase
+    font-family: $typeA
+    color: $b4
+    font-size: 12px
+
+  .site-footer__body
+    padding-top: 0
+    li.footer_link
+      display: inline-block
+      margin: 0 6px
+
+  // .footer-item:nth-last-child(2)
+  //   max-width: 240px
+  //   margin-left: auto
+  //   margin-right: auto
+
+  footer > .container-fluid > .row:first-child
+    .hidden-xs
+      display: block !important
+  
+  .footer-section__second
+    text-align: center
+
+  a[href="/policies/ip"].is-uppercase
+    text-transform: none
+
+  .site-footer__information > *
+    margin-bottom: 0
+
+.currency-language_action
+  padding: 4px 5px
+  color: $b4
+  .svg-container
+    margin-right: 0
+  svg
+    width: 12px
+    height: 12px
+    path
+      fill: $b5

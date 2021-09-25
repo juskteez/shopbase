@@ -2,12 +2,11 @@
 
 // Mutation object creation
 var mutationNode = document.getElementsByTagName('TITLE')[0];
-var mutationConfig = { attributes: true, childList: true, subtree: true };
+var mutationConfig = { attributes: true, childList: true, subtree: true
 
-// Callback function to execute when mutations are observed
-var mutationCallback = function mutationCallback(mutationsList, observer) {
+  // Callback function to execute when mutations are observed
+};var mutationCallback = function mutationCallback(mutationsList, observer) {
   // Use traditional 'for loops' for IE 11
-  console.log("Mutation Callback");
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -53,6 +52,7 @@ var searchTrigger = false;
 var searchServed = false;
 var hamburger = false;
 var hamburgerServed = false;
+var awkwardLoad = false;
 
 var clickServe = function clickServe(element, trigger, callback) {
   if (element) {
@@ -67,19 +67,30 @@ var clickServe = function clickServe(element, trigger, callback) {
 };
 
 var componentParse = function componentParse(reinit) {
-  console.log("Virtual reload");
+  if (awkwardLoad) {
+    mutationNode = document.getElementsByTagName('TITLE')[0];
+    if (mutationNode) {
+      observer.disconnect();
+      observer.observe(mutationNode, mutationConfig);
+      awkwardLoad = false;
+    } else {
+      awkwardLoad = true;
+    }
+  }
   // Universal components
   pageBody = document.querySelector(".default-layout > main.main-content") || false;
   // pageBody  = storeBody.firstChild
+
+  searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon');
+  hamburger = document.querySelector("header.header-mobile label.mobile-nav");
+  searchServed = clickServe(searchTrigger, searchServed, searchClick);
+  hamburgerServed = clickServe(hamburger, hamburgerServed, hamburgerTrigger);
+
   featureImageWrapSet = [];
   featureImageSet = [];
   activeFeatureImage = [];
   renderFeatureImage = [];
-  searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon');
-  hamburger = document.querySelector("header.header-mobile label.mobile-nav");
   featureImageCardSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid");
-  searchServed = clickServe(searchTrigger, searchServed, searchClick);
-  hamburgerServed = clickServe(hamburger, hamburgerServed, hamburgerTrigger);
   for (var i = 0; i < featureImageCardSet.length; i++) {
     // let imageWrap = featureImageCardSet[i].firstChild
     featureImageWrapSet.push(featureImageCardSet[i].firstChild);
@@ -89,19 +100,21 @@ var componentParse = function componentParse(reinit) {
   }
 
   var footer_links = document.querySelectorAll('.footer_link a[href*="/policies/"]');
-  console.log(footer_links);
   for (var n = 0; n < footer_links.length; n++) {
     var link_text = footer_links[n].textContent;
-    console.log("replace footer texts");
 
     if (link_text.includes(" policy")) {
       footer_links[n].setAttribute("replace-text", link_text.replace(" policy", ""));
     }
   }
 
-  if (pageBody) {
-    if (pageBody.firstChild.classList.contains("product-template")) {
-      if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page");
+  if (pageBody instanceof Element) {
+    if (pageBody.firstChild) {
+      if (pageBody.firstChild.classList.contains("product-template")) {
+        if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page");
+      } else {
+        if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page");
+      }
     } else {
       if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page");
     }
@@ -115,13 +128,16 @@ var initation = function initation() {
   componentParse(reinit);
 };
 
-// Initation on page loaded
-// window.onload = function() {
-//   initation();
-// }
-
 // Begin detect page changes
-observer.observe(mutationNode, mutationConfig);
+if (mutationNode) {
+  observer.observe(mutationNode, mutationConfig);
+} else {
+  // Initation on page loaded
+  awkwardLoad = true;
+  var bodyTemp = document.querySelector("#app");
+  var cfgTemp = { attributes: true, childList: true, subtree: false };
+  observer.observe(bodyTemp, cfgTemp);
+}
 
 // Static components
 var hamburgerTrigger = function hamburgerTrigger() {

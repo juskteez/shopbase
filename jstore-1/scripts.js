@@ -1,11 +1,10 @@
 // Mutation object creation
-const mutationNode   = document.getElementsByTagName('TITLE')[0];
-const mutationConfig = { attributes: true, childList: true, subtree: true };
+let mutationNode     = document.getElementsByTagName('TITLE')[0]
+const mutationConfig = { attributes: true, childList: true, subtree: true }
 
 // Callback function to execute when mutations are observed
 const mutationCallback = function(mutationsList, observer) {
   // Use traditional 'for loops' for IE 11
-  console.log("Mutation Callback")
   for(let mutation of mutationsList) {
     if (mutation.type === 'childList') {
       //console.log('A child node has been added or removed.');
@@ -31,6 +30,7 @@ let searchTrigger       = false
 let searchServed        = false
 let hamburger           = false
 let hamburgerServed     = false
+let awkwardLoad         = false
 
 const clickServe = (element, trigger, callback) => {
   if (element) {
@@ -45,19 +45,30 @@ const clickServe = (element, trigger, callback) => {
 }
 
 const componentParse = (reinit) => {
-  console.log("Virtual reload")
+  if (awkwardLoad) {
+    mutationNode = document.getElementsByTagName('TITLE')[0]
+    if (mutationNode) {
+      observer.disconnect()
+      observer.observe(mutationNode, mutationConfig)
+      awkwardLoad = false
+    } else {
+      awkwardLoad = true
+    }
+  }
   // Universal components
   pageBody = document.querySelector(".default-layout > main.main-content") || false
   // pageBody  = storeBody.firstChild
+
+  searchTrigger       = document.querySelector('header.header-mobile .header-wrap a.search-icon')
+  hamburger           = document.querySelector("header.header-mobile label.mobile-nav")
+  searchServed        = clickServe(searchTrigger, searchServed, searchClick)
+  hamburgerServed     = clickServe(hamburger, hamburgerServed, hamburgerTrigger)
+
   featureImageWrapSet = []
   featureImageSet     = []
   activeFeatureImage  = []
   renderFeatureImage  = []
-  searchTrigger       = document.querySelector('header.header-mobile .header-wrap a.search-icon')
-  hamburger           = document.querySelector("header.header-mobile label.mobile-nav")
   featureImageCardSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid")
-  searchServed        = clickServe(searchTrigger, searchServed, searchClick)
-  hamburgerServed     = clickServe(hamburger, hamburgerServed, hamburgerTrigger)
   for (let i = 0; i < featureImageCardSet.length; i++) {
     // let imageWrap = featureImageCardSet[i].firstChild
     featureImageWrapSet.push(featureImageCardSet[i].firstChild)
@@ -67,19 +78,21 @@ const componentParse = (reinit) => {
   }
 
   let footer_links = document.querySelectorAll('.footer_link a[href*="/policies/"]')
-  console.log(footer_links)
   for (let n = 0; n<footer_links.length; n++) {
     let link_text = footer_links[n].textContent
-    console.log("replace footer texts")
 
     if (link_text.includes(" policy")) {
       footer_links[n].setAttribute("replace-text", link_text.replace(" policy", ""))
     }
   }
   
-  if (pageBody) {
-    if (pageBody.firstChild.classList.contains("product-template")) {
-      if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page")
+  if (pageBody instanceof Element) {
+    if (pageBody.firstChild) {
+      if (pageBody.firstChild.classList.contains("product-template")) {
+        if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page")
+      } else {
+        if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page")
+      }
     } else {
       if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page")
     }
@@ -91,13 +104,16 @@ const initation = (reinit=false) => {
   componentParse(reinit)
 }
 
-// Initation on page loaded
-// window.onload = function() {
-//   initation();
-// }
-
 // Begin detect page changes
-observer.observe(mutationNode, mutationConfig);
+if (mutationNode) {
+  observer.observe(mutationNode, mutationConfig)
+} else {
+  // Initation on page loaded
+  awkwardLoad  = true
+  let bodyTemp = document.querySelector("#app")
+  let cfgTemp  = { attributes: true, childList: true, subtree: false }
+  observer.observe(bodyTemp, cfgTemp)
+}
 
 // Static components
 const hamburgerTrigger = () => {

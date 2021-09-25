@@ -1,3 +1,7 @@
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+  font-family: "EB Garamond", serif;
+}
+
 @keyframes searchIn {
   0% {
     transform: translate3d(0, -100%, 0);
@@ -125,7 +129,7 @@ header.header.nav-fixed--true .promo_banner, header.header-mobile.mobile-nav-fix
 
 header.header .logo .logo-text,
 header.header-mobile .logo .logo-text {
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   text-transform: uppercase;
   font-weight: normal;
   font-size: 12px !important;
@@ -266,7 +270,7 @@ header.header-mobile .header-wrap .mobile-nav span.d-block:last-child {
 
 .site-nav .site-nav__item {
   text-transform: uppercase;
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
 }
 
 .site-nav .site-nav__link {
@@ -293,7 +297,7 @@ header.header-mobile .header-wrap .mobile-nav span.d-block:last-child {
 }
 
 .header-mobile .mobile-menu .mobile-nav-menu__item a {
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   font-weight: normal;
   text-transform: uppercase;
   padding: 8px 32px;
@@ -354,10 +358,14 @@ header.header-mobile .header-wrap .mobile-nav span.d-block:last-child {
   text-align: center;
 }
 
+.footer-section:not(.footer-section--home):not(.footer-section--hide-line-top) {
+  border: none;
+}
+
 .footer-section .h5.site-footer__header,
 .footer-section .footer-copyright {
   text-transform: uppercase;
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   color: rgba(0, 0, 0, 0.48);
   font-size: 12px;
 }
@@ -423,6 +431,7 @@ header.header-mobile .header-wrap .mobile-nav span.d-block:last-child {
 
 button.btn[class*="btn"],
 a.btn[class*="btn"] {
+  font-family: "EB Garamond", serif;
   letter-spacing: 1.25px;
   font-size: 1.25rem;
   line-height: 16px;
@@ -469,12 +478,14 @@ a.btn[class*="btn"].btn-outline {
   padding-right: 8px;
 }
 
-.row {
+.row,
+.product-cart-wrapper {
   margin-left: -8px;
   margin-right: -8px;
 }
 
-.row > .col-12.mt40:empty {
+.row > .col-12.mt40:empty,
+.product-cart-wrapper > .col-12.mt40:empty {
   display: none;
 }
 
@@ -482,7 +493,15 @@ a.btn[class*="btn"].btn-outline {
   display: none;
 }
 
-.main-content section.section:first-child {
+.main-content .collection-detail {
+  margin-top: 0;
+}
+
+.main-content section.section:first-child,
+.main-content .breadcrumb-collection,
+.main-content .collection__breadcrumb,
+.main-content .cart-section,
+.main-content .cart__heading + .row {
   margin-top: 16px;
 }
 
@@ -495,23 +514,93 @@ a.btn[class*="btn"].btn-outline {
   }
 }
 
-.main-content section.section .featured-collection--heading {
+.main-content section.section .featured-collection--heading,
+.main-content section.section .collection__heading,
+.main-content .collection-header .featured-collection--heading,
+.main-content .collection-header .collection__heading,
+.main-content .collection .featured-collection--heading,
+.main-content .collection .collection__heading,
+.main-content .cart-section .featured-collection--heading,
+.main-content .cart-section .collection__heading {
   margin-bottom: 16px;
 }
 
-.main-content section.section h2.h4 {
+.main-content section.section h2.h4,
+.main-content section.section h1,
+.main-content .collection-header h2.h4,
+.main-content .collection-header h1,
+.main-content .collection h2.h4,
+.main-content .collection h1,
+.main-content .cart-section h2.h4,
+.main-content .cart-section h1 {
   margin-bottom: 0;
   font-size: 2.25rem;
+  text-align: center;
+  line-height: 1;
+  padding: 4px 24px;
 }
 
 @media only screen and (min-width: 1024px) {
-  .main-content section.section h2.h4 {
+  .main-content section.section h2.h4,
+  .main-content section.section h1,
+  .main-content .collection-header h2.h4,
+  .main-content .collection-header h1,
+  .main-content .collection h2.h4,
+  .main-content .collection h1,
+  .main-content .cart-section h2.h4,
+  .main-content .cart-section h1 {
     font-size: 6.75rem;
   }
 }
 
-.main-content section.section h2.h4 + [class*="sub-heading"] {
+.main-content section.section h2.h4 + [class*="sub-heading"],
+.main-content section.section h1 + [class*="sub-heading"],
+.main-content .collection-header h2.h4 + [class*="sub-heading"],
+.main-content .collection-header h1 + [class*="sub-heading"],
+.main-content .collection h2.h4 + [class*="sub-heading"],
+.main-content .collection h1 + [class*="sub-heading"],
+.main-content .cart-section h2.h4 + [class*="sub-heading"],
+.main-content .cart-section h1 + [class*="sub-heading"] {
   margin-top: 8px;
+}
+
+.main-content .cart__heading:before {
+  content: "Shopping ";
+}
+
+.heading-content {
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.heading-content:not(:first-child) {
+  margin-top: 8px;
+}
+
+.heading-content p {
+  margin-bottom: 8px;
+}
+
+.heading-content a {
+  color: rgba(0, 0, 0, 0.64);
+  text-decoration: underline;
+}
+
+.collection-header > div:first-child + .flex > div:first-child {
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.collection-header .select-box {
+  margin: 0;
+}
+
+.collection-header .select-box select {
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+
+.collection-header .select-box .base-select__icon {
+  right: 0;
 }
 
 .collection-product-wrap .collection-detail__product-image {
@@ -582,7 +671,8 @@ a.btn[class*="btn"].btn-outline {
   color: rgba(0, 0, 0, 0.24);
 }
 
-.featured-collection__grid > .col-wrap:not(:last-child) {
+.featured-collection__grid > .col-12:not(:last-child),
+.product-grid > .col-12:not(:last-child) {
   padding-bottom: 32px;
 }
 
@@ -593,6 +683,42 @@ a.btn[class*="btn"].btn-outline {
 
 .featured-collection-button .btn.view-more {
   width: calc(100% - 64px);
+}
+
+.collection-card .collection--image {
+  max-width: calc(100% - 24px);
+  border: 2px solid black;
+}
+
+.collection-card .collection--image:before {
+  padding-top: 75%;
+}
+
+.collection-card .collection--image > img.product-image__content {
+  transform: none;
+}
+
+.collection-card .collection--name {
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 auto;
+  background-color: black;
+  color: white !important;
+  max-width: calc(100% - 24px);
+  padding: 3px 0;
+}
+
+.collection-card.collection-product-wrap {
+  margin-bottom: 0;
+}
+
+#list-collections .collection {
+  padding-bottom: 24px;
+}
+
+#list-collections .collection > .row > .col-12 {
+  margin-bottom: 20px;
 }
 
 .cart-drawer .cart-drawer-container,
@@ -681,130 +807,1357 @@ a.btn[class*="btn"].btn-outline {
 .cart-drawar
 .cart-drawar-empty p {
   font-size: 16px;
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   letter-spacing: 0.25px;
 }
 
+.cart-summary-container {
+  padding: 0;
+  padding-top: 8px;
+}
+
 .cart-drawer .cart-drawer-container .cart-drawer-footer,
-.cart-drawar .cart-drawer-container .cart-drawer-footer, .cart-drawer
+.cart-drawer .cart-summary,
+.cart-drawar .cart-drawer-container .cart-drawer-footer,
+.cart-drawar .cart-summary,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer,
+.cart-summary-container .cart-summary, .cart-drawer
 .cart-drawar-container .cart-drawer-footer,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer, .cart-drawer .cart-drawer-container
 .cart-drawar-footer,
 .cart-drawar .cart-drawer-container
+.cart-drawar-footer,
+.cart-summary-container .cart-drawer-container
 .cart-drawar-footer, .cart-drawer
 .cart-drawar-container
 .cart-drawar-footer,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer {
+.cart-drawar-footer,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer {
   padding: 10px 0;
   padding-bottom: 24px;
   margin: 0;
+  text-align: center;
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line,
-.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line, .cart-drawer
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line,
+.cart-drawer .cart-summary .mini-total-line,
+.cart-drawer .cart-summary .total-line,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line,
+.cart-drawar .cart-summary .mini-total-line,
+.cart-drawar .cart-summary .total-line,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line,
+.cart-summary-container .cart-summary .mini-total-line,
+.cart-summary-container .cart-summary .total-line, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line,
+.cart-drawar
 .cart-drawar-container .cart-drawer-footer .mini-total-line,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer .mini-total-line, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer .total-line,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line,
+.cart-drawar .cart-drawer-container
 .cart-drawar-footer .mini-total-line,
 .cart-drawar .cart-drawer-container
-.cart-drawar-footer .mini-total-line, .cart-drawer
+.cart-drawar-footer .total-line,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line,
+.cart-drawar
 .cart-drawar-container
 .cart-drawar-footer .mini-total-line,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer .mini-total-line {
+.cart-drawar-footer .total-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line {
   display: flex;
   justify-content: center;
   font-size: 16px;
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line .h6,
-.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .h6, .cart-drawer
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line .h6,
+.cart-drawer .cart-summary .mini-total-line .h6,
+.cart-drawer .cart-summary .total-line .h6,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .h6,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line .h6,
+.cart-drawar .cart-summary .mini-total-line .h6,
+.cart-drawar .cart-summary .total-line .h6,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line .h6,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line .h6,
+.cart-summary-container .cart-summary .mini-total-line .h6,
+.cart-summary-container .cart-summary .total-line .h6, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line .h6,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line .h6,
+.cart-drawar
 .cart-drawar-container .cart-drawer-footer .mini-total-line .h6,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer .mini-total-line .h6, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer .total-line .h6,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line .h6,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line .h6, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line .h6,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line .h6,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line .h6, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line .h6,
+.cart-drawar .cart-drawer-container
 .cart-drawar-footer .mini-total-line .h6,
 .cart-drawar .cart-drawer-container
-.cart-drawar-footer .mini-total-line .h6, .cart-drawer
+.cart-drawar-footer .total-line .h6,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line .h6, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6,
+.cart-drawar
 .cart-drawar-container
 .cart-drawar-footer .mini-total-line .h6,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer .mini-total-line .h6 {
+.cart-drawar-footer .total-line .h6,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line .h6,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line .h6,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line .h6, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6 {
   vertical-align: top;
   line-height: 18px;
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:first-child,
-.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:first-child, .cart-drawer
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-drawer .cart-summary .mini-total-line .h6:first-child,
+.cart-drawer .cart-summary .total-line .h6:first-child,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-drawar .cart-summary .mini-total-line .h6:first-child,
+.cart-drawar .cart-summary .total-line .h6:first-child,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-summary-container .cart-summary .mini-total-line .h6:first-child,
+.cart-summary-container .cart-summary .total-line .h6:first-child, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-drawar
 .cart-drawar-container .cart-drawer-footer .mini-total-line .h6:first-child,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer .mini-total-line .h6:first-child, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line .h6:first-child, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line .h6:first-child,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6:first-child,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line .h6:first-child, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line .h6:first-child,
+.cart-drawar .cart-drawer-container
 .cart-drawar-footer .mini-total-line .h6:first-child,
 .cart-drawar .cart-drawer-container
-.cart-drawar-footer .mini-total-line .h6:first-child, .cart-drawer
+.cart-drawar-footer .total-line .h6:first-child,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line .h6:first-child, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6:first-child,
+.cart-drawar
 .cart-drawar-container
 .cart-drawar-footer .mini-total-line .h6:first-child,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer .mini-total-line .h6:first-child {
+.cart-drawar-footer .total-line .h6:first-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6:first-child, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6:first-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6:first-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6:first-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6:first-child, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line .h6:first-child,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line .h6:first-child,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line .h6:first-child, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6:first-child,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6:first-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6:first-child, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6:first-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6:first-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6:first-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6:first-child {
   text-align: right;
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:last-child,
-.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:last-child, .cart-drawer
+.cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawer .cart-summary .mini-total-line .h6:last-child,
+.cart-drawer .cart-summary .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-summary .total-line .h6:last-child,
+.cart-drawer .cart-summary .total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawar .cart-summary .mini-total-line .h6:last-child,
+.cart-drawar .cart-summary .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-summary .total-line .h6:last-child,
+.cart-drawar .cart-summary .total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-summary-container .cart-summary .mini-total-line .h6:last-child,
+.cart-summary-container .cart-summary .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-summary .total-line .h6:last-child,
+.cart-summary-container .cart-summary .total-line .cart-total-discount__price, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawar
 .cart-drawar-container .cart-drawer-footer .mini-total-line .h6:last-child,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer .mini-total-line .h6:last-child, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .h6:last-child,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line .h6:last-child,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line .cart-total-discount__price, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
 .cart-drawar-footer .mini-total-line .h6:last-child,
 .cart-drawar .cart-drawer-container
-.cart-drawar-footer .mini-total-line .h6:last-child, .cart-drawer
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-drawar
 .cart-drawar-container
 .cart-drawar-footer .mini-total-line .h6:last-child,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer .mini-total-line .h6:last-child {
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .h6:last-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line .h6:last-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line .cart-total-discount__price, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .h6:last-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .h6:last-child,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .cart-total-discount__price {
   font-weight: bold;
   padding: 0 4px;
   color: red;
   font-family: Merriweather, serif;
   font-size: 14px;
-  transform: translate(0, -1px);
+}
+
+.cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawer .cart-summary .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-summary .total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawar .cart-summary .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-summary .total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-summary-container .cart-summary .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-summary .total-line .cart-total-discount__price, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line .cart-total-discount__price, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line .cart-total-discount__price, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line .cart-total-discount__price, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line .cart-total-discount__price,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line .cart-total-discount__price {
+  color: #009e23;
+}
+
+.cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line.discount-line,
+.cart-drawer .cart-summary .mini-total-line.discount-line,
+.cart-drawer .cart-summary .total-line.discount-line,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line.discount-line,
+.cart-drawar .cart-summary .mini-total-line.discount-line,
+.cart-drawar .cart-summary .total-line.discount-line,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line.discount-line,
+.cart-summary-container .cart-summary .mini-total-line.discount-line,
+.cart-summary-container .cart-summary .total-line.discount-line, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line {
+  margin-bottom: 2px;
+}
+
+.cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer .cart-summary .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer .cart-summary .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-summary .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-summary .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-summary .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-summary .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child svg,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child svg {
+  width: 12px;
+  height: 12px;
+}
+
+.cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer .cart-drawer-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer .cart-summary .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer .cart-summary .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-summary .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-summary .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-summary .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-summary .total-line.discount-line .is-uppercase:first-child p, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line.discount-line .is-uppercase:first-child p,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .total-line.discount-line .is-uppercase:first-child p {
+  font-family: "EB Garamond", serif;
+  margin-left: 2px;
+  font-size: .9166666667em;
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer .mini-total-line__text,
-.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line__text, .cart-drawer
+.cart-drawer .cart-summary .mini-total-line__text,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .mini-total-line__text,
+.cart-drawar .cart-summary .mini-total-line__text,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .mini-total-line__text,
+.cart-summary-container .cart-summary .mini-total-line__text, .cart-drawer
 .cart-drawar-container .cart-drawer-footer .mini-total-line__text,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer .mini-total-line__text, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line__text,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .mini-total-line__text, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .mini-total-line__text,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .mini-total-line__text,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .mini-total-line__text, .cart-drawer .cart-drawer-container
 .cart-drawar-footer .mini-total-line__text,
 .cart-drawar .cart-drawer-container
+.cart-drawar-footer .mini-total-line__text,
+.cart-summary-container .cart-drawer-container
 .cart-drawar-footer .mini-total-line__text, .cart-drawer
 .cart-drawar-container
 .cart-drawar-footer .mini-total-line__text,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer .mini-total-line__text {
+.cart-drawar-footer .mini-total-line__text,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .mini-total-line__text, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line__text,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line__text,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .mini-total-line__text, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .mini-total-line__text,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .mini-total-line__text,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .mini-total-line__text, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line__text,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line__text,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .mini-total-line__text, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line__text,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line__text,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .mini-total-line__text {
   text-align: center;
   color: rgba(0, 0, 0, 0.48);
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer button.btn.btn-primary,
-.cart-drawar .cart-drawer-container .cart-drawer-footer button.btn.btn-primary, .cart-drawer
+.cart-drawer .cart-summary button.btn.btn-primary,
+.cart-drawar .cart-drawer-container .cart-drawer-footer button.btn.btn-primary,
+.cart-drawar .cart-summary button.btn.btn-primary,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer button.btn.btn-primary,
+.cart-summary-container .cart-summary button.btn.btn-primary, .cart-drawer
 .cart-drawar-container .cart-drawer-footer button.btn.btn-primary,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer button.btn.btn-primary, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer button.btn.btn-primary,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer button.btn.btn-primary, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary, .cart-drawer .cart-drawer-container
 .cart-drawar-footer button.btn.btn-primary,
 .cart-drawar .cart-drawer-container
+.cart-drawar-footer button.btn.btn-primary,
+.cart-summary-container .cart-drawer-container
 .cart-drawar-footer button.btn.btn-primary, .cart-drawer
 .cart-drawar-container
 .cart-drawar-footer button.btn.btn-primary,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer button.btn.btn-primary {
+.cart-drawar-footer button.btn.btn-primary,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer button.btn.btn-primary, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary {
   margin: 0 auto;
   width: calc(100% - 32px);
   display: block;
@@ -816,45 +2169,199 @@ a.btn[class*="btn"].btn-outline {
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container,
-.cart-drawar .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container, .cart-drawer
+.cart-drawer .cart-summary button.btn.btn-primary .svg-container,
+.cart-drawar .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container,
+.cart-drawar .cart-summary button.btn.btn-primary .svg-container,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container,
+.cart-summary-container .cart-summary button.btn.btn-primary .svg-container, .cart-drawer
 .cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary .svg-container,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary .svg-container,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary .svg-container, .cart-drawer .cart-drawer-container
 .cart-drawar-footer button.btn.btn-primary .svg-container,
 .cart-drawar .cart-drawer-container
+.cart-drawar-footer button.btn.btn-primary .svg-container,
+.cart-summary-container .cart-drawer-container
 .cart-drawar-footer button.btn.btn-primary .svg-container, .cart-drawer
 .cart-drawar-container
 .cart-drawar-footer button.btn.btn-primary .svg-container,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer button.btn.btn-primary .svg-container {
+.cart-drawar-footer button.btn.btn-primary .svg-container,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer button.btn.btn-primary .svg-container, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary .svg-container,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary .svg-container,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary .svg-container, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container {
   display: inline-block;
   margin-right: 0;
   width: 24px;
   height: 24px;
   position: relative;
   vertical-align: middle;
-  transform: translate(0, -1px);
+  transform: translate(0, -2px);
 }
 
 .cart-drawer .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
-.cart-drawar .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container svg, .cart-drawer
+.cart-drawer .cart-summary button.btn.btn-primary .svg-container svg,
+.cart-drawar .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
+.cart-drawar .cart-summary button.btn.btn-primary .svg-container svg,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container .cart-summary button.btn.btn-primary .svg-container svg, .cart-drawer
 .cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
 .cart-drawar
-.cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container svg, .cart-drawer .cart-drawer-container
+.cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer button.btn.btn-primary .svg-container svg, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer button.btn.btn-primary .svg-container svg, .cart-drawer .cart-drawer-container
 .cart-drawar-footer button.btn.btn-primary .svg-container svg,
 .cart-drawar .cart-drawer-container
+.cart-drawar-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container .cart-drawer-container
 .cart-drawar-footer button.btn.btn-primary .svg-container svg, .cart-drawer
 .cart-drawar-container
 .cart-drawar-footer button.btn.btn-primary .svg-container svg,
 .cart-drawar
 .cart-drawar-container
-.cart-drawar-footer button.btn.btn-primary .svg-container svg {
+.cart-drawar-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer button.btn.btn-primary .svg-container svg, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary .svg-container svg,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer button.btn.btn-primary .svg-container svg, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer button.btn.btn-primary .svg-container svg {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   margin-right: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.cart-drawer .cart-drawer-container .cart-drawer-footer .banner-trust img,
+.cart-drawer .cart-summary .banner-trust img,
+.cart-drawar .cart-drawer-container .cart-drawer-footer .banner-trust img,
+.cart-drawar .cart-summary .banner-trust img,
+.cart-summary-container .cart-drawer-container .cart-drawer-footer .banner-trust img,
+.cart-summary-container .cart-summary .banner-trust img, .cart-drawer
+.cart-drawar-container .cart-drawer-footer .banner-trust img,
+.cart-drawar
+.cart-drawar-container .cart-drawer-footer .banner-trust img,
+.cart-summary-container
+.cart-drawar-container .cart-drawer-footer .banner-trust img, .cart-drawer
+.cart-summary-container-container .cart-drawer-footer .banner-trust img,
+.cart-drawar
+.cart-summary-container-container .cart-drawer-footer .banner-trust img,
+.cart-summary-container
+.cart-summary-container-container .cart-drawer-footer .banner-trust img, .cart-drawer .cart-drawer-container
+.cart-drawar-footer .banner-trust img,
+.cart-drawar .cart-drawer-container
+.cart-drawar-footer .banner-trust img,
+.cart-summary-container .cart-drawer-container
+.cart-drawar-footer .banner-trust img, .cart-drawer
+.cart-drawar-container
+.cart-drawar-footer .banner-trust img,
+.cart-drawar
+.cart-drawar-container
+.cart-drawar-footer .banner-trust img,
+.cart-summary-container
+.cart-drawar-container
+.cart-drawar-footer .banner-trust img, .cart-drawer
+.cart-summary-container-container
+.cart-drawar-footer .banner-trust img,
+.cart-drawar
+.cart-summary-container-container
+.cart-drawar-footer .banner-trust img,
+.cart-summary-container
+.cart-summary-container-container
+.cart-drawar-footer .banner-trust img, .cart-drawer .cart-drawer-container
+.cart-summary-container-footer .banner-trust img,
+.cart-drawar .cart-drawer-container
+.cart-summary-container-footer .banner-trust img,
+.cart-summary-container .cart-drawer-container
+.cart-summary-container-footer .banner-trust img, .cart-drawer
+.cart-drawar-container
+.cart-summary-container-footer .banner-trust img,
+.cart-drawar
+.cart-drawar-container
+.cart-summary-container-footer .banner-trust img,
+.cart-summary-container
+.cart-drawar-container
+.cart-summary-container-footer .banner-trust img, .cart-drawer
+.cart-summary-container-container
+.cart-summary-container-footer .banner-trust img,
+.cart-drawar
+.cart-summary-container-container
+.cart-summary-container-footer .banner-trust img,
+.cart-summary-container
+.cart-summary-container-container
+.cart-summary-container-footer .banner-trust img {
+  width: calc(100% - 32px);
+  margin-top: 16px;
 }
 
 .product-cart {
@@ -984,7 +2491,7 @@ a.btn[class*="btn"].btn-outline {
 
 .inside-modal.prd-modal.product .prd-modal__head:before {
   content: "Pick your favor";
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   font-size: 18px;
   line-height: 1.2;
   text-transform: uppercase;
@@ -1097,7 +2604,7 @@ a.btn[class*="btn"].btn-outline {
 .header-section .search-modal__header .search-group input {
   padding: 0 0 0 40px;
   font-size: 18px;
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   background-color: transparent;
 }
 
@@ -1217,10 +2724,20 @@ a.btn[class*="btn"].btn-outline {
 
 .product-template {
   padding-top: 0;
+  padding-bottom: 32px;
 }
 
 .product-template .product.section {
   margin-top: 0;
+}
+
+.product.product__personalized-mobile-layout > .container-page:first-child > .row > .col-12:first-child {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.product .personalize-header .product__name + .rv-widget--badge {
+  display: none;
 }
 
 .product .product-slider.media-gallery-carousel {
@@ -1265,10 +2782,12 @@ a.btn[class*="btn"].btn-outline {
   transform: none !important;
   width: 100%;
   padding: 8px;
-  overflow-y: auto;
+  overflow: hidden;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   text-align: center;
   white-space: nowrap;
+  height: 56px !important;
 }
 
 .product .product-slider.media-gallery-carousel .thumbnail-carousel-slide,
@@ -1298,6 +2817,9 @@ a.btn[class*="btn"].btn-outline {
   object-position: center;
   margin: 0;
   border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .product .product-slider.media-gallery-carousel .thumbnail-carousel-slide.active-thumb, .product .product-slider.media-gallery-carousel .thumbnail-carousel-slide--active,
@@ -1327,6 +2849,10 @@ a.btn[class*="btn"].btn-outline {
   line-height: 18px;
   font-weight: normal;
   vertical-align: top;
+}
+
+.product__price-sku .product__sku-review {
+  display: none;
 }
 
 .product__price .product__price-span {
@@ -1403,23 +2929,37 @@ a.btn[class*="btn"].btn-outline {
 }
 
 .product__option {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   text-align: center;
   margin: 0;
   border: none;
   box-shadow: 0 0 0 1px #e7e7e7;
   background-color: white;
-  transition: 0.125s all ease;
+  transition: 0s all ease;
+  font-size: 10px;
+  font-weight: bold;
+  min-width: 31px;
 }
 
-.product__option:focus:not([disabled]) {
+.product__option:focus:not([disabled]), .product__option--active:not([disabled]) {
   box-shadow: 0 0 0 1px #191919;
+  z-index: 1;
 }
 
-.product__option--active:not([disabled]) {
-  box-shadow: 0 0 0 1px #191919;
+.product__option.product__option--color-swatches, .product__option.product__option--color-swatches:not([disabled]) {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125), inset 0 0 0 2px rgba(255, 255, 255, 0);
+  margin-left: 1px;
+  width: 31px;
+}
+
+.product__option.product__option--color-swatches:first-child, .product__option.product__option--color-swatches:not([disabled]):first-child {
+  margin-left: 0;
+}
+
+.product__option.product__option--color-swatches.product__option--active, .product__option.product__option--color-swatches:not([disabled]).product__option--active {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.8), inset 0 0 0 4px white;
 }
 
 .product__cart-form {
@@ -1459,7 +2999,7 @@ a.btn[class*="btn"].btn-outline {
 
 .product__summary {
   padding-top: 16px;
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   text-align: center;
   color: rgba(0, 0, 0, 0.48);
   margin-bottom: 16px;
@@ -1510,7 +3050,7 @@ a.btn[class*="btn"].btn-outline {
 }
 
 .product__description .toggle_heading {
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   letter-spacing: 1px;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.48) !important;
@@ -1544,7 +3084,7 @@ a.btn[class*="btn"].btn-outline {
 
 .product__description br + b {
   color: rgba(0, 0, 0, 0.8);
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   font-size: 1.3334em;
 }
 
@@ -1807,7 +3347,7 @@ a.btn[class*="btn"].btn-outline {
 
 .product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__first-write-review,
 .product-template .rv-widget--widget-card .rv-widget__overall-text {
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   font-size: 24px;
   line-height: 24px;
   font-weight: normal;
@@ -1815,7 +3355,7 @@ a.btn[class*="btn"].btn-outline {
 }
 
 .product-template .rv-widget--widget-card .rv-widget__overall-store {
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   text-transform: uppercase;
 }
 
@@ -1893,7 +3433,7 @@ a.btn[class*="btn"].btn-outline {
 }
 
 .product-template .rv-widget--widget-card .rv-widget__add-review button.rv-widget__btn span {
-  font-family: Garamond, serif;
+  font-family: "EB Garamond", serif;
   letter-spacing: 1.25px;
   font-size: 1.25rem;
   line-height: 16px;
@@ -1908,4 +3448,1091 @@ a.btn[class*="btn"].btn-outline {
 
 .product-template .rv-widget--widget-card .rv-widget__add-review button.rv-widget__btn .review-icon-symbols path {
   stroke: white;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new {
+  margin: 8px auto;
+  padding: 0;
+  border: none;
+  width: calc(100% - 48px);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter {
+  box-shadow: inset 0 0 0 1px #e7e7e7;
+  font-family: "EB Garamond", serif;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter .rv-widget__filter-select select {
+  border: none;
+  padding: 8px 24px 8px 8px;
+  line-height: 16px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter .rv-widget__filter-select .app-select:after {
+  border-width: 1px;
+  border-radius: 0;
+  width: 6px;
+  height: 6px;
+  border-color: rgba(0, 0, 0, 0.24);
+  margin-top: -0.35em;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter .rv-widget__filter-checkbox {
+  height: unset;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter .app-checkbox__check {
+  border-radius: 0;
+  width: 12px;
+  height: 12px;
+  margin-left: 8px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter .app-checkbox__label {
+  line-height: 16px;
+  padding: 8px;
+  font-size: 0;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__filter .app-checkbox__label:before {
+  content: "Show photos";
+  line-height: 16px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__review-type {
+  font-family: "EB Garamond", serif;
+  margin-top: 0;
+  font-size: 17px;
+  letter-spacing: -0.5px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__review-type span {
+  line-height: 20px;
+  padding: 10px 0;
+  width: 50%;
+  color: black;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__review-type span:nth-of-type(2n+2) {
+  text-align: right;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__filter-widget-new.rv-widget__filter-widget-new .rv-widget__review-type span.rv-widget__review-type--disable {
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body {
+  padding: 0;
+  width: calc(100% - 48px);
+  margin: 0 auto;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__no-review-icon {
+  border-radius: 0;
+  background-color: currentColor;
+  color: rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__no-review-icon:before {
+  border-top-color: currentColor;
+  border-width: 6px;
+  margin-left: -6px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__no-review {
+  font-family: "EB Garamond", serif;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  color: rgba(0, 0, 0, 0.24);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__review-listing + .rv-widget__review-listing {
+  margin-top: 12px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post {
+  padding: 16px;
+  text-align: center;
+  background-color: currentColor;
+  color: rgba(0, 0, 0, 0.08);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post:before {
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-color: currentColor transparent transparent transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: -6px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post-heading {
+  font-family: "EB Garamond", serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post-content {
+  font-size: 12px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post-image {
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post-image .rv-widget__post-image-container {
+  border-radius: 0;
+  border-color: rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+  margin-right: 1px;
+  position: relative;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post-image .rv-widget__post-image-container:last-child {
+  margin-right: 0;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__post-image .rv-widget__post-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid white;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user {
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  position: relative;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__avatar {
+  margin-right: 0;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__avatar:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.16);
+  top: 0;
+  left: 0;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__avatar img {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__date,
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__post-star {
+  position: absolute;
+  top: 12px;
+  line-height: 10px;
+  font-size: 10px;
+  margin: 0;
+  left: 50%;
+  transform: translate(24px, 0);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__post-star {
+  left: auto;
+  right: 50%;
+  transform: translate(-24px, 0);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__post-star .review-icon-symbols {
+  margin: 0 1px;
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__author {
+  font-family: "EB Garamond", serif;
+  letter-spacing: -0.5px;
+  line-height: 1.34;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.product-template .rv-widget--widget-card .rv-widget__listing-body .rv-widget__user .rv-widget__user-name {
+  justify-content: center;
+}
+
+.checkout-layout * {
+  font-family: Merriweather, serif;
+}
+
+.checkout-layout .logo {
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 24px;
+}
+
+.checkout-layout .logo span {
+  font-family: "EB Garamond", serif;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.checkout-layout .fieldset {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.checkout-layout .fieldset:before, .checkout-layout .fieldset:after {
+  display: none;
+}
+
+.checkout-layout .scoped .notice {
+  padding: 8px;
+  text-align: center;
+}
+
+.checkout-layout .scoped .notice .wrap {
+  display: block;
+}
+
+.checkout-layout .scoped .notice__icon {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 6px;
+}
+
+.checkout-layout .scoped .notice__text {
+  font-size: 10px;
+}
+
+.checkout-layout .scoped .wrap {
+  padding: 0 8px;
+}
+
+.checkout-layout .scoped .banner {
+  padding: 16px 0;
+}
+
+.checkout-layout .scoped .main .main__content .section {
+  border: none;
+  padding-top: 8px;
+}
+
+.checkout-layout .scoped .main .main__content .section.section-billing-address {
+  padding-top: 0;
+}
+
+.checkout-layout .scoped .section__header {
+  margin-bottom: 8px;
+}
+
+.checkout-layout .scoped .section__header > .layout-flex {
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkout-layout .scoped .section__header .payment-trusted-badge {
+  padding-bottom: 4px;
+}
+
+.checkout-layout .scoped .section__header .payment-trusted-badge img {
+  max-height: 20px;
+  width: auto !important;
+  margin-right: 8px;
+}
+
+.checkout-layout .scoped .section__header .payment-trusted-badge img:last-child {
+  transform: translate(0%, 1.5px);
+  max-height: 18px;
+  margin-right: 0;
+}
+
+.checkout-layout .scoped .section-shipping-address {
+  padding-bottom: 24px;
+}
+
+.checkout-layout .scoped .step__sections {
+  padding-top: 24px;
+  padding-bottom: 0;
+  border: none;
+}
+
+.checkout-layout .scoped .section__caption,
+.checkout-layout .scoped .section__content {
+  text-align: center;
+}
+
+.checkout-layout .scoped .shipping-selector {
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.checkout-layout .scoped .shipping-selector__name {
+  color: black;
+}
+
+.checkout-layout .scoped .shipping-selector__amount {
+  font-weight: bold;
+  color: black;
+}
+
+.checkout-layout .scoped .step__footer,
+.checkout-layout .scoped .content-box {
+  margin-top: 8px;
+}
+
+.checkout-layout .scoped .content-box {
+  border-radius: 0;
+}
+
+.checkout-layout .scoped .content-box .content-box__row {
+  padding: 0;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .fieldset {
+  padding: 8px;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex {
+  margin: 0;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex__item {
+  padding: 0;
+}
+
+.checkout-layout .scoped .content-box .content-box__row label.s-radio {
+  vertical-align: top;
+  display: flex;
+  width: 100%;
+  text-align: center;
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: normal;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .s-radio .s-check {
+  border-color: rgba(0, 0, 0, 0.24);
+  box-shadow: none;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin-left: 12px;
+  z-index: 2;
+  transition: none;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .s-radio input[type=radio] + .s-check:before {
+  width: 6px;
+  height: 6px;
+  transition: none;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .s-radio input[type=radio]:checked ~ .s-check {
+  background-color: #0082E5;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .s-radio input[type=radio]:checked ~ .s-control-label {
+  background-color: rgba(0, 0, 0, 0.08);
+  z-index: 1;
+  color: black;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .s-control-label {
+  padding-left: 0;
+  text-align: center;
+  width: 100%;
+  padding: 12px;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.checkout-layout .scoped .content-box .content-box__row .s-radio + .subtitle {
+  font-size: 10px;
+  margin: 0;
+  display: none;
+}
+
+.checkout-layout .scoped .content-box .content-box__row.content-box__row--secondary:not(.content-box__row--header) {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.checkout-layout .scoped .content-box .content-box__row.content-box__row--secondary.content-box__row--header {
+  background-color: transparent;
+}
+
+.checkout-layout .scoped .content-box .content-box__row.content-box__row--secondary.content-box__row--header .s-radio + .subtitle {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex__item .payment-icon-list {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0);
+  margin: 0;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex__item .payment-icon-list [aria-labelledby="icon_paypal-con"] {
+  display: none;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex__item .payment-icon-list svg {
+  width: 24px;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex__item .payment-icon-list .payment-icon:first-child {
+  margin-left: 0;
+}
+
+.checkout-layout .scoped .content-box .content-box__row .layout-flex__item .payment-method-label {
+  color: transparent;
+}
+
+.checkout-layout .scoped .layout-flex--loose-horizontal {
+  margin: 0;
+}
+
+.checkout-layout .scoped .layout-flex--loose-horizontal .have_an_account_login_link {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+}
+
+.checkout-layout .scoped .layout-flex--loose-horizontal .have_an_account_login_link:not(:first-child) {
+  margin-top: 4px;
+}
+
+.checkout-layout .scoped .layout-flex--loose-horizontal > .layout-flex__item {
+  padding: 0;
+}
+
+.checkout-layout .scoped .dynamic-checkout__title {
+  font-family: "EB Garamond", serif;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+
+.checkout-layout .scoped .dynamic-checkout__content {
+  margin-top: 8px;
+}
+
+.checkout-layout .scoped .dynamic-checkout__content .paypal-buttons {
+  vertical-align: top;
+}
+
+.checkout-layout .scoped .alternative-separator--payment {
+  margin: 8px auto;
+  width: 300px;
+}
+
+.checkout-layout .scoped .layout-flex--medium-tight-horizontal {
+  justify-content: center;
+  margin: 0;
+  align-items: center;
+}
+
+.checkout-layout .scoped .layout-flex--medium-tight-horizontal * {
+  font-family: "EB Garamond", serif;
+}
+
+.checkout-layout .scoped .layout-flex--medium-tight-horizontal > .layout-flex__item {
+  padding: 0 2px;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  letter-spacing: -0.5px;
+}
+
+.checkout-layout .scoped .layout-flex--medium-tight-horizontal svg {
+  max-height: 16px;
+  max-width: 16px;
+  vertical-align: middle;
+}
+
+.checkout-layout .scoped .field {
+  padding: 0;
+}
+
+.checkout-layout .scoped .field:not(.field--empty) {
+  margin-bottom: 8px;
+}
+
+.checkout-layout .scoped .field:last-child, .checkout-layout .scoped .field.field--half:nth-last-of-type(2) {
+  margin-bottom: 0;
+}
+
+.checkout-layout .scoped .field .field-message {
+  margin: 0;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.checkout-layout .scoped .field .field-message--error {
+  color: red;
+}
+
+.checkout-layout .scoped .field .s-select {
+  height: 40px;
+}
+
+.checkout-layout .scoped .field .s-select:not(.is-multiple):not(.is-loading)::after {
+  border-color: rgba(0, 0, 0, 0.48);
+  border-radius: 0;
+  border-width: 1px;
+  width: 8px;
+  height: 8px;
+  right: 16px;
+}
+
+.checkout-layout .scoped .field .field__icon {
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+}
+
+.checkout-layout .scoped .stripe-form .StripeElement,
+.checkout-layout .scoped .stripe-form .field .s-input__inner {
+  border-radius: 0;
+  transition: none;
+  border-color: rgba(0, 0, 0, 0.24);
+  box-shadow: none;
+  height: 40px;
+  max-height: 40px;
+  padding: 0 12px;
+  text-align: left;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.checkout-layout .scoped .stripe-form .StripeElement--focus,
+.checkout-layout .scoped .stripe-form .field .s-input__inner--focus {
+  border-color: rgba(0, 0, 0, 0.64);
+}
+
+.checkout-layout .scoped .field .s-input__inner,
+.checkout-layout .scoped .field .s-select select {
+  border-radius: 0;
+  height: 40px;
+  transition-duration: 0s;
+  text-align: center;
+  padding: 0;
+  font-family: "EB Garamond", serif;
+  font-size: 17px;
+  line-height: 18px;
+  letter-spacing: -0.5px;
+  border-width: 1px;
+  outline-width: 1px;
+  border-color: rgba(0, 0, 0, 0.24);
+  box-shadow: none;
+}
+
+.checkout-layout .scoped .field .s-input__inner:not(:placeholder-shown),
+.checkout-layout .scoped .field .s-select select:not(:placeholder-shown) {
+  padding-top: 8px;
+}
+
+.checkout-layout .scoped .field .s-input__inner:focus,
+.checkout-layout .scoped .field .s-select select:focus {
+  border-color: rgba(0, 0, 0, 0.64);
+}
+
+.checkout-layout .scoped .field .s-input__inner.is-invalid,
+.checkout-layout .scoped .field .s-select select.is-invalid {
+  border-color: red;
+}
+
+.checkout-layout .scoped .field.field--half {
+  width: calc( 50% - 4px);
+}
+
+.checkout-layout .scoped .field select {
+  padding-top: 12px;
+}
+
+.checkout-layout .scoped .is-show-floating-label .s-label {
+  text-align: center;
+  margin-top: 2px;
+  font-family: "EB Garamond", serif;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.checkout-layout .scoped .is-show-floating-label .s-label.centered-placeholder {
+  font-family: "EB Garamond", serif;
+  font-size: 17px;
+  text-transform: none;
+  line-height: 40px;
+  margin: 0;
+  top: 0;
+}
+
+.checkout-layout .scoped .s-label {
+  transition-duration: 0s;
+}
+
+.checkout-layout .scoped .blank-slate {
+  padding-top: 0;
+  padding-bottom: 16px;
+}
+
+.checkout-layout .scoped .blank-slate__icon {
+  display: none;
+}
+
+.checkout-layout .scoped .blank-slate p {
+  color: rgba(0, 0, 0, 0.64);
+  font-family: "EB Garamond", serif;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.275px;
+  font-style: italic;
+  margin: 0;
+  padding: 0 16px;
+}
+
+.checkout-layout .scoped .s-button {
+  border-radius: 0;
+  border: none;
+  font-family: "EB Garamond", serif;
+  background-color: #0082E5;
+}
+
+.checkout-layout .scoped .s-button .step__complete-order--emphasis span {
+  font-family: "EB Garamond", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-layout .scoped .s-button .step__complete-order--subdued span {
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+.checkout-layout .scoped .s-button .step__complete-order--subdued span:last-child {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.checkout-layout .scoped .s-button .step__complete-order--shield-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 32px;
+  width: 32px;
+}
+
+.checkout-layout .scoped .s-button .step__complete-order--shield-icon path[fill="#FFF"] {
+  fill: #3FB5FF;
+}
+
+.checkout-layout .scoped .s-button[disabled="disabled"] .step__complete-order--emphasis span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.checkout-layout .scoped .s-button[disabled="disabled"] .step__complete-order--shield-icon path[fill="#FFF"] {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.checkout-layout .scoped .s-button[disabled="disabled"]:after {
+  opacity: 0.3;
+}
+
+.checkout-layout .scoped .s-checkbox {
+  align-items: flex-start;
+}
+
+.checkout-layout .scoped .s-checkbox input[type=checkbox] + .s-check {
+  border-radius: 0;
+  border-color: rgba(0, 0, 0, 0.24);
+  width: 16px;
+  height: 16px;
+  background-size: 10px;
+  transition: 0s;
+}
+
+.checkout-layout .scoped .s-checkbox input[type=checkbox]:checked + .s-check {
+  border-color: transparent;
+}
+
+.checkout-layout .scoped .s-checkbox input[type=checkbox]:checked ~ .s-control-label {
+  color: black;
+}
+
+.checkout-layout .scoped .s-checkbox .s-control-label {
+  text-align: left;
+  line-height: 1.334;
+}
+
+.checkout-layout .scoped .field__input-btn {
+  height: 40px;
+  line-height: 16px;
+  padding: 12px 16px;
+  text-transform: uppercase;
+  transition-duration: 0s;
+}
+
+.checkout-layout .scoped .order-summary__section {
+  padding: 8px 0;
+  border: none;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product-table {
+  max-width: calc( 100% - 48px);
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product__image {
+  padding: 0;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product-thumbnail {
+  width: 48px;
+  height: 64px;
+  border-radius: 0;
+  margin: 4px 0;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product-thumbnail:after {
+  display: none;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product-thumbnail__quantity {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  line-height: 16px;
+  text-align: center;
+  top: -8px;
+  right: -8px;
+  min-width: 0;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product__description {
+  padding: 0;
+  padding-left: 8px;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product__name {
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product__spacing-container {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.checkout-layout .scoped .order-summary .checkout-product__price {
+  padding: 0;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.checkout-layout .scoped .order-summary__section .total-line {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.checkout-layout .scoped .order-summary__section .total-line td {
+  padding: 2px 4px;
+}
+
+.checkout-layout .scoped .order-summary__section .total-line__name {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.checkout-layout .scoped .order-summary__section .total-line-table:first-child {
+  margin-top: 8px;
+}
+
+.checkout-layout .scoped .order-summary__section .total-line-table__footer .total-line {
+  padding: 16px 0;
+}
+
+.checkout-layout .scoped .order-summary__section .total-line-table__footer .total-line td:before {
+  display: none;
+}
+
+.checkout-layout .scoped .order-summary__section .total-line__price {
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.checkout-layout .scoped .order-summary__section .total-line:nth-last-child(2):nth-of-type(2) .total-line__price {
+  color: #009e23;
+  word-spacing: -3px;
+}
+
+.checkout-layout .scoped .order-summary__section .total-line .payment-due__price {
+  color: red;
+}
+
+.checkout-layout .scoped .order-summary__section .policy-list {
+  text-align: center;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.checkout-layout .scoped .order-summary__section .policy-list__item:last-child {
+  margin-right: 0;
+}
+
+.checkout-layout .scoped .order-summary__section .policy-list a {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.checkout-layout .scoped .order-summary__section .policy-list a[href*="-policy"]:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 8px;
+  margin-right: -32px;
+}
+
+.checkout-layout .scoped .order-summary__section--total-lines {
+  position: relative;
+}
+
+.checkout-layout .scoped .order-summary__section--total-lines:before, .checkout-layout .scoped .order-summary__section--total-lines:after,
+.checkout-layout .scoped .order-summary__section--total-lines .total-line-table:first-child:before,
+.checkout-layout .scoped .order-summary__section--total-lines .total-line-table:first-child:after {
+  content: "";
+  display: block;
+  width: 48px;
+  border-top: 1px dotted rgba(0, 0, 0, 0.24);
+  margin: 0 auto;
+  margin-top: 8px;
+  padding-bottom: 8px;
+}
+
+.checkout-layout .scoped .order-summary__section--total-lines .total-line-table:first-child:before,
+.checkout-layout .scoped .order-summary__section--total-lines .total-line-table:first-child:after {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translate(-50%, 0);
+  width: 8px;
+  border-top-style: solid;
+}
+
+.checkout-layout .scoped .order-summary__section--total-lines .total-line-table:first-child:after {
+  top: auto;
+  bottom: 8px;
+}
+
+.checkout-layout .scoped .order-summary__section--discount {
+  padding: 0;
+  justify-content: center;
+  display: flex;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .fieldset {
+  width: 100%;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tags-list {
+  flex-direction: column;
+  width: unset;
+  margin: 0;
+  background-color: rgba(80, 206, 113, 0.2);
+  position: relative;
+  pointer-events: none;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .layout-flex__item {
+  padding: 0;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .layout-flex__item:first-child {
+  position: absolute;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tags-list__title {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(8, 128, 24, 0.4);
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tag {
+  border: none;
+  background-color: transparent;
+  padding: 12px 30px;
+  padding-top: 20px;
+  text-align: center;
+  min-width: 144px;
+  line-height: 16px;
+  font-size: 18px;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tag:before,
+.checkout-layout .scoped .order-summary__section--discount .tag:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #f3f3f3;
+  border-radius: 50%;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tag:after {
+  left: 100%;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tag__wrapper {
+  justify-content: center;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .reduction-code__icon {
+  display: none;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .reduction-code__text {
+  color: #009e23;
+  font-family: "EB Garamond", serif;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tag__button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 30px;
+  height: 24px;
+  margin: 0;
+  display: block;
+  padding: 6px;
+  pointer-events: all;
+}
+
+.checkout-layout .scoped .order-summary__section--discount .tag__button svg {
+  width: 12px;
+  height: 12px;
+  vertical-align: top;
+  fill: rgba(8, 128, 24, 0.4);
+}
+
+.checkout-layout .os-header {
+  text-align: center;
+}
+
+.checkout-layout .os-header .os-order-number {
+  text-transform: uppercase;
+  margin-bottom: 0;
+  color: purple;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.checkout-layout .os-header .os-header__title {
+  font-family: "EB Garamond", serif;
+  font-style: italic;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.checkout-layout .os-header__hanging-icon {
+  display: none;
+}
+
+.checkout-layout .scoped .os-step__title {
+  margin: 8px 0;
+  padding: 0 8px;
+  font-family: "EB Garamond", serif;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.checkout-layout .scoped .os-step__description {
+  padding: 0 8px;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.checkout-layout .scoped .os-step__subtitle {
+  margin: 0;
+  font-family: "EB Garamond", serif;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.checkout-layout .scoped .os-step__subtitle ~ .payment-method-list li {
+  justify-content: center;
+}
+
+.checkout-layout .scoped .section__column {
+  margin: 0;
+}
+
+.checkout-layout .scoped .section__column address.address:first-line {
+  font-weight: bold;
+}
+
+.checkout-layout .scoped .os-step__info, .checkout-layout .scoped address.address,
+.checkout-layout .scoped .os-step__subtitle ~ .payment-method-list {
+  margin-bottom: 8px;
+  font-size: 12px;
+  line-height: 1.675;
+  color: black;
+}
+
+.checkout-layout .scoped .os-step__info:after, .checkout-layout .scoped address.address:after,
+.checkout-layout .scoped .os-step__subtitle ~ .payment-method-list:after {
+  content: "";
+  width: 32px;
+  border-top: 1px dotted rgba(0, 0, 0, 0.24);
+  display: block;
+  margin: 0 auto;
+  margin-top: 8px;
+}
+
+.checkout-layout .scoped .section__column:last-child .os-step__info:last-child:after, .checkout-layout .scoped .section__column:last-child address.address:last-child:after,
+.checkout-layout .scoped .section__column:last-child .os-step__subtitle ~ .payment-method-list:last-child:after {
+  display: none;
+}
+
+.checkout-layout .scoped .step__footer__info {
+  justify-content: center;
 }

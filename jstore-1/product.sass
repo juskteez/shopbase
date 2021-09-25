@@ -2,9 +2,18 @@
 
   &-template
     padding-top: 0
+    padding-bottom: 32px
 
   &-template &.section
     margin-top: 0
+
+  &.product__personalized-mobile-layout
+    & > .container-page:first-child > .row > .col-12:first-child
+      display: flex
+      flex-direction: column-reverse
+
+  .personalize-header .product__name+.rv-widget--badge
+    display: none
 
   & &-slider.media-gallery-carousel
     margin: 0 -8px
@@ -33,19 +42,21 @@
     .thumbnail-carousel,
     .media-gallery-carousel__thumbs
       margin: 0
+
+      $thumbSize: 32px
+
       .VueCarousel-inner,
       &.media-gallery-carousel__thumbs
         display: block
         transform: none !important
         width: 100%
         padding: 8px
-        overflow-y: auto
+        overflow: hidden
+        overflow-x: auto
         -webkit-overflow-scrolling: touch
         text-align: center
         white-space: nowrap
-
-      $thumbSize: 32px
-
+        height: #{$thumbSize + 24px} !important
       &-slide,
       .media-gallery-carousel__thumb
         width: $thumbSize
@@ -66,6 +77,9 @@
           object-position: center
           margin: 0
           border: none
+          position: absolute
+          top: 0
+          left: 0
         &.active-thumb,
         &--active
           box-shadow: 0 0 0 1px $n5
@@ -85,6 +99,9 @@
       line-height: 18px
       font-weight: normal
       vertical-align: top
+
+    &-sku .product__sku-review
+      display: none
     
     & &-span
       font-size: 16px
@@ -148,19 +165,33 @@
     box-shadow: 0 0 0 1px $n5
 
   &__option
-    width: 40px
-    height: 40px
+    width: 32px
+    height: 32px
     padding: 0
     text-align: center
     margin: 0
     border: none
     box-shadow: 0 0 0 1px #e7e7e7
     background-color: white
-    transition: 0.125s all ease
-    &:focus:not([disabled])
-      box-shadow: 0 0 0 1px #191919
+    transition: 0s all ease
+    font-size: 10px
+    font-weight: bold
+    min-width: 31px
+    &:focus:not([disabled]),
     &--active:not([disabled])
       box-shadow: 0 0 0 1px #191919
+      z-index: 1
+
+    &.product__option--color-swatches,
+    &.product__option--color-swatches:not([disabled])
+      box-shadow: inset 0 0 0 1px rgba(black,.125), inset 0 0 0 2px rgba(white, 0)
+      margin-left: 1px
+      width: 31px
+      &:first-child
+        margin-left: 0
+
+      &.product__option--active
+        box-shadow: inset 0 0 0 1px $b2, inset 0 0 0 4px rgba(white, 1)
 
   &__cart-form
     margin-bottom: 0

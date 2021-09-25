@@ -40,12 +40,23 @@
       font-family: $typeA
       letter-spacing: 0.25px
 
-  & &-container &-footer
+
+.cart-summary-container
+  padding: 0
+  padding-top: 8px
+
+.cart-drawer,
+.cart-drawar,
+.cart-summary-container
+  & &-container &-footer,
+  .cart-summary
     padding: 10px 0
     padding-bottom: 24px
     margin: 0
+    text-align: center
 
-    .mini-total-line
+    .mini-total-line,
+    .total-line
       display: flex
       justify-content: center
       font-size: 16px
@@ -54,13 +65,28 @@
         line-height: 18px
       .h6:first-child
         text-align: right
-      .h6:last-child
+      .h6:last-child,
+      .cart-total-discount__price
         font-weight: bold
         padding: 0 4px
         color: red
         font-family: $typeB
         font-size: 14px
-        transform: translate(0,-1px)
+
+      .cart-total-discount__price
+        color: $posi1
+
+      &.discount-line
+        margin-bottom: 2px
+
+      &.discount-line .is-uppercase:first-child
+        svg
+          width: 12px
+          height: 12px
+        p
+          font-family: $typeA
+          margin-left: 2px
+          font-size: .9166666667em
 
     .mini-total-line__text
       text-align: center
@@ -82,13 +108,19 @@
         height: 24px
         position: relative
         vertical-align: middle
-        transform: translate(0,-1px)
+        transform: translate(0,-2px)
       .svg-container svg
         position: absolute
         top: 50%
         left: 50%
         transform: translate(-50%,-50%)
         margin-right: 0
+        height: 16px
+        width: 16px
+
+    .banner-trust img
+      width: calc(100% - 32px)
+      margin-top: 16px
 
 .product-cart
   flex-wrap: nowrap

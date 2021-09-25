@@ -2,7 +2,8 @@
   padding-left: 8px
   padding-right: 8px
 
-.row
+.row,
+.product-cart-wrapper
   margin-left: -8px
   margin-right: -8px
   & > .col-12.mt40:empty
@@ -12,7 +13,14 @@
   section[class="section"]
     display: none
 
-  section.section:first-child
+  .collection-detail
+    margin-top: 0
+
+  section.section:first-child,
+  .breadcrumb-collection,
+  .collection__breadcrumb,
+  .cart-section,
+  .cart__heading+.row
     margin-top: 16px
   
   section.featured-collection,
@@ -23,20 +31,59 @@
         padding-right: 0
         margin-bottom: 0
 
-  section.section
-    .featured-collection--heading
+  section.section,
+  .collection-header,
+  .collection,
+  .cart-section
+    .featured-collection--heading,
+    .collection__heading
       margin-bottom: 16px
     
-    h2.h4
+    h2.h4,
+    h1
       margin-bottom: 0
       font-size: 2.25rem
+      text-align: center
+      line-height: 1
+      padding: 4px 24px
       @media only screen and (min-width: 1024px)
         font-size: 6.75rem
 
       &+[class*="sub-heading"]
         margin-top: 8px
 
+  .cart__heading:before
+    content: "Shopping "
+
+.heading-content
+  color: $b3
+  &:not(:first-child)
+    margin-top: 8px
+  p
+    margin-bottom: 8px
+  a
+    color: $b3
+    text-decoration: underline
+
 .collection
+
+  &-header
+    & > div:first-child + .flex
+      & > div:first-child
+        // display: none
+        color: $b3
+
+    .select-box
+      margin: 0
+
+      select
+        padding: 8px
+        border: none
+        outline: none
+
+      .base-select__icon
+        right: 0
+      //   left: 0
 
   &-product-wrap &-detail__product
     &-image
@@ -95,8 +142,9 @@
     .btn.btn-primary.btn-loading, .btn.btn-primary.disabled, .btn.btn-primary[disabled]
       color: $b5
 
-.featured-collection__grid
-  & > .col-wrap:not(:last-child)
+.featured-collection__grid,
+.product-grid
+  & > .col-12:not(:last-child)
     padding-bottom: 32px
 
 .featured-collection-button
@@ -104,3 +152,29 @@
   width: 100%
   .btn.view-more
     width: calc(100% - 64px)
+
+.collection-card
+  .collection--image
+    max-width: calc(100% - 24px)
+    border: 2px solid $b1
+    &:before
+      padding-top: 75%
+    & > img.product-image__content
+      transform: none
+  .collection--name
+    font-size: 12px
+    text-transform: uppercase
+    line-height: 1
+    margin: 0 auto
+    background-color: $b1
+    color: white !important
+    max-width: calc(100% - 24px)
+    padding: 3px 0
+  
+  &.collection-product-wrap
+    margin-bottom: 0
+
+#list-collections .collection
+  padding-bottom: 24px
+  & > .row > .col-12
+    margin-bottom: 20px

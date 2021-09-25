@@ -1,0 +1,590 @@
+.checkout-layout
+  *
+    font-family: $typeB
+  .logo
+    text-transform: uppercase
+    text-align: center
+    line-height: 24px
+    span
+      font-family: $typeA
+      display: inline-block
+      vertical-align: top
+
+  .fieldset
+    margin: 0
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    &:before, &:after
+      display: none
+
+  .scoped
+    .notice
+      padding: 8px
+      text-align: center
+      .wrap
+        display: block
+      &__icon
+        display: block
+        margin: 0 auto
+        margin-bottom: 6px
+      &__text
+        font-size: 10px
+    .wrap
+      padding: 0 8px
+    .banner
+      padding: 16px 0
+
+    .main .main__content .section
+      border: none
+      padding-top: 8px
+
+      &.section-billing-address
+        padding-top: 0
+
+    .section__header
+      margin-bottom: 8px
+      & > .layout-flex
+        flex-direction: column
+        align-items: center
+
+      .payment-trusted-badge
+        padding-bottom: 4px
+        img
+          max-height: 20px
+          width: auto !important
+          margin-right: 8px
+        img:last-child
+          // position: absolute
+          transform: translate(00%,1.5px)
+          max-height: 18px
+          margin-right: 0
+
+    .section-shipping-address
+      padding-bottom: 24px
+
+    .step__sections
+      padding-top: 24px
+      padding-bottom: 0
+      border: none
+
+    .section__caption,
+    .section__content
+      text-align: center
+
+    .shipping-selector
+      color: $b4
+      &__name
+        color: $b1
+      &__amount
+        font-weight: bold
+        color: $b1
+
+    .step__footer,
+    .content-box
+      margin-top: 8px
+
+    .content-box
+      border-radius: 0
+      .content-box__row
+        padding: 0
+
+        .fieldset
+          padding: 8px
+
+        .layout-flex
+          margin: 0
+        .layout-flex__item
+          padding: 0
+
+        label.s-radio
+          vertical-align: top
+          display: flex
+          width: 100%
+          text-align: center
+          padding: 0
+          text-transform: uppercase
+          font-size: 13px
+          line-height: 16px
+          font-weight: normal
+
+        .s-radio .s-check
+          border-color: $b5
+          box-shadow: none
+          position: absolute
+          width: 12px
+          height: 12px
+          margin-left: 12px
+          z-index: 2
+          transition: none
+
+        .s-radio input[type=radio]+.s-check:before
+          width: 6px
+          height: 6px
+          transition: none
+
+        .s-radio input[type=radio]:checked
+          & ~ .s-check
+            background-color: $safe1
+          & ~ .s-control-label
+            // box-shadow: 0 0 0 1px $n1
+            background-color: $b7
+            z-index: 1
+            color: $b1
+
+        .s-control-label
+          padding-left: 0
+          text-align: center
+          width: 100%
+          padding: 12px
+          color: $b3
+
+        .s-radio+.subtitle
+          font-size: 10px
+          margin: 0
+          display: none
+
+        &.content-box__row--secondary:not(.content-box__row--header)
+          border: none
+          background-color: $b7
+
+        &.content-box__row--secondary.content-box__row--header
+          background-color: transparent
+
+          .s-radio+.subtitle
+            background-color: $b7
+
+        .layout-flex__item
+          .payment-icon-list
+            position: absolute
+            left: 50%
+            top: 10px
+            transform: translate(-50%,0)
+            margin: 0
+
+            [aria-labelledby="icon_paypal-con"]
+              display: none
+
+            svg
+              width: 24px
+
+            .payment-icon:first-child
+              margin-left: 0
+
+          .payment-method-label
+            color: transparent
+
+    .layout-flex--loose-horizontal
+      margin: 0
+
+      .have_an_account_login_link
+        display: block
+        text-align: center
+        width: 100%
+        font-size: 12px
+        &:not(:first-child)
+          margin-top: 4px
+
+      & > .layout-flex__item
+        padding: 0
+
+    .dynamic-checkout__title
+      font-family: $typeA
+      font-weight: normal
+      letter-spacing: 0.5px
+
+    .dynamic-checkout__content
+      margin-top: 8px
+
+      .paypal-buttons
+        vertical-align: top
+
+    .alternative-separator--payment
+      margin: 8px auto
+      width: 300px
+
+    .layout-flex--medium-tight-horizontal
+      justify-content: center
+      margin: 0
+      align-items: center
+      *
+        font-family: $typeA
+
+      & > .layout-flex__item
+        padding: 0 2px
+        font-weight: normal
+        font-size: 24px
+        line-height: 32px
+        letter-spacing: -0.5px
+
+      svg
+        max-height: 16px
+        max-width: 16px
+        vertical-align: middle
+
+    .field
+      padding: 0
+      &:not(.field--empty)
+        margin-bottom: 8px
+      &:last-child,
+      &.field--half:nth-last-of-type(2)
+        margin-bottom: 0
+
+      .field-message
+        margin: 0
+        font-size: 10px
+        text-align: center
+        margin-top: 2px
+        &--error
+          color: red
+
+      .s-select
+        height: 40px
+      
+      .s-select:not(.is-multiple):not(.is-loading)::after
+        border-color: $b4
+        border-radius: 0
+        border-width: 1px
+        width: 8px
+        height: 8px
+        right: 16px
+
+      .field__icon
+        width: 40px
+        height: 40px
+        top: 0
+        right: 0
+
+    .stripe-form .StripeElement,
+    .stripe-form .field .s-input__inner
+      border-radius: 0
+      transition: none
+      border-color: $b5
+      box-shadow: none
+      height: 40px
+      max-height: 40px
+      padding: 0 12px
+      text-align: left
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
+      font-size: 16px
+      &--focus
+        border-color: $b3
+
+    .field .s-input__inner,
+    .field .s-select select
+      border-radius: 0
+      height: 40px
+      transition-duration: 0s
+      text-align: center
+      padding: 0
+      font-family: $typeA
+      font-size: 17px
+      line-height: 18px
+      letter-spacing: -0.5px
+      border-width: 1px
+      outline-width: 1px
+      border-color: $b5
+      box-shadow: none
+      &:not(:placeholder-shown)
+        padding-top: 8px
+      &:focus
+        border-color: $b3
+      &.is-invalid
+        border-color: red
+
+    .field.field--half
+      width: calc( 50% - 4px )
+    
+    .field select
+      padding-top: 12px
+
+    .is-show-floating-label .s-label
+      text-align: center
+      margin-top: 2px
+      font-family: $typeA
+      font-size: 10px
+      text-transform: uppercase
+      &.centered-placeholder
+        font-family: $typeA
+        font-size: 17px
+        text-transform: none
+        line-height: 40px
+        margin: 0
+        top: 0
+
+    .s-label
+      transition-duration: 0s
+
+    .blank-slate
+      padding-top: 0
+      padding-bottom: 16px
+      &__icon
+        display: none
+      p
+        color: $b3
+        font-family: $typeA
+        font-size: 16px
+        line-height: 20px
+        letter-spacing: -0.275px
+        font-style: italic
+        margin: 0
+        padding: 0 16px
+
+    .s-button
+      border-radius: 0
+      border: none
+      font-family: $typeA
+      background-color: $safe1
+
+      .step__complete-order--emphasis
+        span
+          font-family: $typeA
+          font-weight: 500
+          font-style: italic
+          font-size: 24px
+          letter-spacing: -0.5px
+          text-shadow: 0 1px 1px rgba(black, 0.1)
+
+      .step__complete-order--subdued
+        span
+          text-transform: uppercase
+          font-size: 11px
+        span:last-child
+          font-size: 12px
+          // font-weight: bold
+          margin-left: 4px
+
+      .step__complete-order--shield-icon
+        position: absolute
+        left: 20px
+        top: 50%
+        transform: translate(0,-50%)
+        // opacity: 0.64
+        height: 32px
+        width: 32px
+        path[fill="#FFF"]
+          fill: $safe2
+
+      &[disabled="disabled"]
+        .step__complete-order--emphasis span
+          color: rgba(white,.7)
+        .step__complete-order--shield-icon path[fill="#FFF"]
+          fill: rgba(white,.5)
+
+        &:after
+          opacity: 0.3
+
+    .s-checkbox
+      align-items: flex-start
+      input[type=checkbox]+.s-check
+        border-radius: 0
+        border-color: $b5
+        width: 16px
+        height: 16px
+        background-size: 10px
+        transition: 0s
+      input[type=checkbox]:checked+.s-check
+        border-color: transparent
+      input[type=checkbox]:checked~.s-control-label
+        color: $b1
+
+      .s-control-label
+        text-align: left
+        line-height: 1.334
+
+    .field__input-btn
+      height: 40px
+      line-height: 16px
+      padding: 12px 16px
+      text-transform: uppercase
+      transition-duration: 0s
+
+    .order-summary
+      &__section
+        padding: 8px 0
+        border: none
+
+      .checkout-product
+        display: flex
+        align-items: center
+        padding: 4px 0
+        &-table
+          max-width: calc( 100% - 48px )
+          margin: 0 auto
+          margin-top: 16px
+        &__image
+          padding: 0
+        &-thumbnail
+          width: 48px
+          height: 64px
+          border-radius: 0
+          margin: 4px 0
+        &-thumbnail:after
+          display: none
+
+        &-thumbnail__quantity
+          width: 16px
+          height: 16px
+          padding: 0
+          line-height: 16px
+          text-align: center
+          top: -8px
+          right: -8px
+          min-width: 0
+
+        &__description
+          padding: 0
+          padding-left: 8px
+        &__name
+          font-family: $typeA
+          text-transform: uppercase
+          margin-bottom: 0
+        &__spacing-container
+          font-size: 12px
+          margin-bottom: 0
+        &__price
+          padding: 0
+          color: $b3
+
+    .order-summary__section
+      .total-line
+        display: flex
+        justify-content: center
+        text-transform: uppercase
+          
+        td
+          padding: 2px 4px
+
+        &__name
+          font-size: 12px
+          color: $b3
+
+        &-table:first-child
+          margin-top: 8px
+
+        &-table__footer .total-line
+          padding: 16px 0
+          td:before
+            display: none
+        
+        &__price
+          color: $b3
+
+        &:nth-last-child(2):nth-of-type(2) .total-line__price
+          color: $posi1
+          word-spacing: -3px
+
+        .payment-due__price
+          color: red
+
+      .policy-list
+        text-align: center
+        justify-content: center
+        padding-bottom: 16px
+        &__item:last-child
+          margin-right: 0
+        a
+          display: inline-block
+          white-space: nowrap
+          overflow: hidden
+
+        a[href*="-policy"]
+          &:after
+            content: ""
+            display: inline-block
+            width: 0
+            height: 8px
+            margin-right: -32px
+
+    .order-summary__section--total-lines
+      position: relative
+      &:before,
+      &:after,
+      .total-line-table:first-child:before,
+      .total-line-table:first-child:after
+        content: ""
+        display: block
+        width: 48px
+        border-top: 1px dotted $b5
+        margin: 0 auto
+        margin-top: 8px
+        padding-bottom: 8px
+      .total-line-table:first-child:before,
+      .total-line-table:first-child:after
+        position: absolute
+        left: 50%
+        top: 8px
+        transform: translate(-50%,0)
+        width: 8px
+        border-top-style: solid
+      .total-line-table:first-child:after
+        top: auto
+        bottom: 8px
+
+    .order-summary__section--discount
+      padding: 0
+      justify-content: center
+      display: flex
+      .fieldset
+        width: 100%
+      .tags-list
+        flex-direction: column
+        width: unset
+        margin: 0
+        background-color: rgba(80, 206, 113, .2)
+        position: relative
+        pointer-events: none
+      .layout-flex__item
+        padding: 0
+      .layout-flex__item:first-child
+        position: absolute
+      .tags-list__title
+        font-size: 9px
+        text-transform: uppercase
+        letter-spacing: 0.5px
+        color: rgba(8, 128, 24, .4)
+      .tag
+        border: none
+        background-color: transparent
+        padding: 12px 30px
+        padding-top: 20px
+        text-align: center
+        min-width: 144px
+        line-height: 16px
+        font-size: 18px
+      .tag:before,
+      .tag:after
+        content: ""
+        position: absolute
+        width: 12px
+        height: 12px
+        background-color: #f3f3f3
+        border-radius: 50%
+        top: 50%
+        left: 0
+        transform: translate(-50%,-50%)
+      .tag:after
+        left: 100%
+      .tag__wrapper
+        justify-content: center
+      .reduction-code__icon
+        display: none
+      .reduction-code__text
+        color: $posi1
+        font-family: $typeA
+      .tag__button
+        position: absolute
+        right: 0
+        top: 50%
+        transform: translate(0,-50%)
+        width: 30px
+        height: 24px
+        margin: 0
+        display: block
+        padding: 6px
+        pointer-events: all
+        svg
+          width: 12px
+          height: 12px
+          vertical-align: top
+          fill: rgba(8, 128, 24, .4)

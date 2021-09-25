@@ -85,3 +85,185 @@
       margin: 0
       path
         stroke: white
+
+  .rv-widget__filter-widget-new.rv-widget__filter-widget-new
+    margin: 8px auto
+    padding: 0
+    border: none
+    width: calc(100% - 48px)
+
+    .rv-widget__filter
+      box-shadow: inset 0 0 0 1px $n1
+      font-family: $typeA
+
+      .rv-widget__filter-select
+        select
+          border: none
+          padding: 8px 24px 8px 8px
+          line-height: 16px
+        .app-select:after
+          border-width: 1px
+          border-radius: 0
+          width: 6px
+          height: 6px
+          border-color: $b5
+          margin-top: -0.35em
+
+      .rv-widget__filter-checkbox
+        height: unset
+
+      .app-checkbox__check
+        border-radius: 0
+        width: 12px
+        height: 12px
+        margin-left: 8px
+      .app-checkbox__label
+        line-height: 16px
+        padding: 8px
+        font-size: 0
+      .app-checkbox__label:before
+        content: "Show photos"
+        line-height: 16px
+        font-size: 14px
+        vertical-align: middle
+
+    .rv-widget__review-type
+      font-family: $typeA
+      // text-transform: uppercase
+      margin-top: 0
+      font-size: 17px
+      // font-weight: bold
+      letter-spacing: -0.5px
+
+      span
+        line-height: 20px
+        padding: 10px 0
+        width: 50%
+        color: $b1
+      span:nth-of-type(2n+2)
+        text-align: right
+        border-left: 1px solid $b7
+
+      span.rv-widget__review-type--disable
+        color: $b4
+
+  .rv-widget__listing-body
+    padding: 0
+    width: calc(100% - 48px)
+    margin: 0 auto
+
+    .rv-widget__no-review-icon
+      border-radius: 0
+      background-color: currentColor
+      color: $b7
+      margin-bottom: 12px
+      &:before
+        border-top-color: currentColor
+        $arrowSize: 6px
+        border-width: $arrowSize
+        margin-left: #{$arrowSize * -1}
+
+    .rv-widget__no-review
+      font-family: $typeA
+      font-size: 24px
+      font-weight: normal
+      letter-spacing: -0.5px
+      color: $b5
+
+    .rv-widget__review-listing+.rv-widget__review-listing
+      margin-top: 12px
+
+    .rv-widget__post
+      padding: 16px
+      text-align: center
+      background-color: currentColor
+      color: $b7
+      &:before
+        left: 50%
+        transform: translate(-50%,0)
+        border-color: currentColor transparent transparent transparent
+        $arrowSize: 6px
+        border-width: $arrowSize $arrowSize 0 $arrowSize
+        bottom: #{$arrowSize * -1}
+
+    .rv-widget__post-heading
+      font-family: $typeA
+      font-weight: normal
+      font-size: 18px
+      line-height: 1.1
+      margin-bottom: 8px
+      letter-spacing: -0.5px
+    .rv-widget__post-content
+      font-size: 12px
+    .rv-widget__post-image
+      justify-content: center
+      margin-top: 12px
+      .rv-widget__post-image-container
+        border-radius: 0
+        border-color: $b6
+        background-color: #fff
+        margin-right: 1px
+        position: relative
+        &:last-child
+          margin-right: 0
+        img
+          width: 100%
+          height: 100%
+          object-fit: cover
+          object-position: center
+          position: absolute
+          top: 0
+          left: 0
+          border: 1px solid white
+
+    .rv-widget__user
+      flex-wrap: wrap
+      justify-content: center
+      margin: 0
+      position: relative
+      .rv-widget__avatar
+        margin-right: 0
+        overflow: hidden
+        position: relative
+        border-radius: 50%
+        &:after
+          content: ""
+          position: absolute
+          width: 100%
+          height: 100%
+          border-radius: 50%
+          box-shadow: inset 0 0 0 1px $b6
+          top: 0
+          left: 0
+        img
+          width: 32px
+          height: 32px
+          min-width: 32px
+          min-height: 32px
+          object-fit: cover
+          object-position: center
+
+      .rv-widget__date,
+      .rv-widget__post-star
+        position: absolute
+        top: 12px
+        line-height: 10px
+        font-size: 10px
+        margin: 0
+        left: 50%
+        transform: translate(24px,0)
+      .rv-widget__post-star
+        left: auto
+        right: 50%
+        transform: translate(-24px,0)
+        .review-icon-symbols
+          margin: 0 1px
+
+      .rv-widget__author
+        font-family: $typeA
+        letter-spacing: -0.5px
+        line-height: 1.34
+        color: $b2
+
+      .rv-widget__user-name
+        justify-content: center

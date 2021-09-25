@@ -5,10 +5,12 @@ const mutationConfig = { attributes: true, childList: true, subtree: true };
 // Callback function to execute when mutations are observed
 const mutationCallback = function(mutationsList, observer) {
   // Use traditional 'for loops' for IE 11
+  console.log("Mutation Callback")
   for(let mutation of mutationsList) {
     if (mutation.type === 'childList') {
       //console.log('A child node has been added or removed.');
-      initation(true);
+      initation(true)
+      setTimeout(initation, 2000)
     }
     else if (mutation.type === 'attributes') {
       //console.log('The ' + mutation.attributeName + ' attribute was modified.');
@@ -18,7 +20,6 @@ const mutationCallback = function(mutationsList, observer) {
 
 // Create an observer instance linked to the callback function
 const observer = new MutationObserver(mutationCallback);
-
 // Dynamic components
 let pageBody = false
 let featureImageCardSet = []
@@ -26,15 +27,37 @@ let featureImageWrapSet = []
 let featureImageSet     = []
 let activeFeatureImage  = []
 let renderFeatureImage  = []
+let searchTrigger       = false
+let searchServed        = false
+let hamburger           = false
+let hamburgerServed     = false
+
+const clickServe = (element, trigger, callback) => {
+  if (element) {
+    if (trigger == false) {
+      element.addEventListener("click", callback)
+      return true
+    }
+  } else {
+    return false
+  }
+  return false
+}
 
 const componentParse = (reinit) => {
+  console.log("Virtual reload")
   // Universal components
-  pageBody = document.querySelector(".default-layout > main.main-content").firstChild
+  pageBody = document.querySelector(".default-layout > main.main-content") || false
+  // pageBody  = storeBody.firstChild
   featureImageWrapSet = []
   featureImageSet     = []
   activeFeatureImage  = []
   renderFeatureImage  = []
+  searchTrigger       = document.querySelector('header.header-mobile .header-wrap a.search-icon')
+  hamburger           = document.querySelector("header.header-mobile label.mobile-nav")
   featureImageCardSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid")
+  searchServed        = clickServe(searchTrigger, searchServed, searchClick)
+  hamburgerServed     = clickServe(hamburger, hamburgerServed, hamburgerTrigger)
   for (let i = 0; i < featureImageCardSet.length; i++) {
     // let imageWrap = featureImageCardSet[i].firstChild
     featureImageWrapSet.push(featureImageCardSet[i].firstChild)
@@ -44,18 +67,22 @@ const componentParse = (reinit) => {
   }
 
   let footer_links = document.querySelectorAll('.footer_link a[href*="/policies/"]')
+  console.log(footer_links)
   for (let n = 0; n<footer_links.length; n++) {
     let link_text = footer_links[n].textContent
+    console.log("replace footer texts")
 
     if (link_text.includes(" policy")) {
       footer_links[n].setAttribute("replace-text", link_text.replace(" policy", ""))
     }
   }
   
-  if (pageBody.classList.contains("product-template")) {
-    if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page")
-  } else {
-    if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page")
+  if (pageBody) {
+    if (pageBody.firstChild.classList.contains("product-template")) {
+      if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page")
+    } else {
+      if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page")
+    }
   }
 }
 
@@ -65,24 +92,22 @@ const initation = (reinit=false) => {
 }
 
 // Initation on page loaded
-window.onload = function() {
-  initation();
-}
+// window.onload = function() {
+//   initation();
+// }
 
 // Begin detect page changes
 observer.observe(mutationNode, mutationConfig);
 
 // Static components
-let hamburger = document.querySelector("header.header-mobile label.mobile-nav")
-
-hamburger.addEventListener("click", () => {
+const hamburgerTrigger = () => {
   let bodyClass = document.body.classList
   if (bodyClass.contains("is-noscroll")) {
-    if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active")
-  } else {
     if (!bodyClass.contains("nav-active")) bodyClass.add("nav-active")
+  } else {
+    if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active")
   }
-})
+}
 
 // Dynamic methods
 
@@ -122,9 +147,7 @@ let trackFeatureImage = () => {
   }
 }
 
-let searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon')
-
-searchTrigger.addEventListener("click", () => {
+const searchClick = () => {
   setTimeout( () => {
     let searchModal = document.querySelector('.header-section .search-modal')
     let searchInput = document.querySelector('.header-section .search-modal__header .search-group input')
@@ -147,13 +170,10 @@ searchTrigger.addEventListener("click", () => {
         } else {
           if (searchModal.classList.contains("empty_input")) searchModal.classList.remove("empty_input")
         }
-        // searchTimeout = setTimeout( () => {
-        //   if (searchModal.classList.contains("inputing")) searchModal.classList.remove("inputing")
-        // },200)
       })
     }
   },150)
-})
+}
 
 document.addEventListener("scroll", () => {
 

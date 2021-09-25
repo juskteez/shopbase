@@ -1,0 +1,70 @@
+.checkout-layout
+  .os-header
+    text-align: center
+    
+    .os-order-number
+      text-transform: uppercase
+      margin-bottom: 0
+      color: $red
+      font-weight: bold
+      font-size: 12px
+      
+    .os-header__title
+      font-family: $typeA
+      font-style: italic
+      font-size: 40px
+      line-height: 40px
+    &__hanging-icon
+      display: none
+
+  .scoped
+    .os-step__title
+      margin: 8px 0
+      padding: 0 8px
+      font-family: $typeA
+      font-weight: normal
+      font-size: 18px
+    .os-step__description
+      padding: 0 8px
+      font-size: 12px
+      margin-bottom: 8px
+
+    .os-step__subtitle
+      margin: 0
+      font-family: $typeA
+      text-transform: uppercase
+      font-size: 10px
+      font-weight: 500
+      color: $b4
+
+      & ~ .payment-method-list li
+        justify-content: center
+
+    .section__column
+      margin: 0
+
+      address.address:first-line
+        font-weight: bold
+
+    .os-step__info, address.address,
+    .os-step__subtitle ~ .payment-method-list
+      margin-bottom: 8px
+      font-size: 12px
+      line-height: 1.675
+      color: $b1
+      &:after
+        content: ""
+        width: 32px
+        border-top: 1px dotted $b5
+        display: block
+        margin: 0 auto
+        margin-top: 8px
+
+    .section__column:last-child
+      .os-step__info, address.address,
+      .os-step__subtitle ~ .payment-method-list
+        &:last-child:after
+          display: none
+    
+    .step__footer__info
+      justify-content: center

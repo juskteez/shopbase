@@ -7,6 +7,7 @@ var mutationConfig = { attributes: true, childList: true, subtree: true };
 // Callback function to execute when mutations are observed
 var mutationCallback = function mutationCallback(mutationsList, observer) {
   // Use traditional 'for loops' for IE 11
+  console.log("Mutation Callback");
   var _iteratorNormalCompletion = true;
   var _didIteratorError = false;
   var _iteratorError = undefined;
@@ -18,6 +19,7 @@ var mutationCallback = function mutationCallback(mutationsList, observer) {
       if (mutation.type === 'childList') {
         //console.log('A child node has been added or removed.');
         initation(true);
+        setTimeout(initation, 2000);
       } else if (mutation.type === 'attributes') {
         //console.log('The ' + mutation.attributeName + ' attribute was modified.');
       }
@@ -40,7 +42,6 @@ var mutationCallback = function mutationCallback(mutationsList, observer) {
 
 // Create an observer instance linked to the callback function
 var observer = new MutationObserver(mutationCallback);
-
 // Dynamic components
 var pageBody = false;
 var featureImageCardSet = [];
@@ -48,15 +49,37 @@ var featureImageWrapSet = [];
 var featureImageSet = [];
 var activeFeatureImage = [];
 var renderFeatureImage = [];
+var searchTrigger = false;
+var searchServed = false;
+var hamburger = false;
+var hamburgerServed = false;
+
+var clickServe = function clickServe(element, trigger, callback) {
+  if (element) {
+    if (trigger == false) {
+      element.addEventListener("click", callback);
+      return true;
+    }
+  } else {
+    return false;
+  }
+  return false;
+};
 
 var componentParse = function componentParse(reinit) {
+  console.log("Virtual reload");
   // Universal components
-  pageBody = document.querySelector(".default-layout > main.main-content").firstChild;
+  pageBody = document.querySelector(".default-layout > main.main-content") || false;
+  // pageBody  = storeBody.firstChild
   featureImageWrapSet = [];
   featureImageSet = [];
   activeFeatureImage = [];
   renderFeatureImage = [];
+  searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon');
+  hamburger = document.querySelector("header.header-mobile label.mobile-nav");
   featureImageCardSet = document.querySelectorAll(".feature-set-content-wrap .feature-image.grid");
+  searchServed = clickServe(searchTrigger, searchServed, searchClick);
+  hamburgerServed = clickServe(hamburger, hamburgerServed, hamburgerTrigger);
   for (var i = 0; i < featureImageCardSet.length; i++) {
     // let imageWrap = featureImageCardSet[i].firstChild
     featureImageWrapSet.push(featureImageCardSet[i].firstChild);
@@ -66,18 +89,22 @@ var componentParse = function componentParse(reinit) {
   }
 
   var footer_links = document.querySelectorAll('.footer_link a[href*="/policies/"]');
+  console.log(footer_links);
   for (var n = 0; n < footer_links.length; n++) {
     var link_text = footer_links[n].textContent;
+    console.log("replace footer texts");
 
     if (link_text.includes(" policy")) {
       footer_links[n].setAttribute("replace-text", link_text.replace(" policy", ""));
     }
   }
 
-  if (pageBody.classList.contains("product-template")) {
-    if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page");
-  } else {
-    if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page");
+  if (pageBody) {
+    if (pageBody.firstChild.classList.contains("product-template")) {
+      if (!document.body.classList.contains("product-details-page")) document.body.classList.add("product-details-page");
+    } else {
+      if (document.body.classList.contains("product-details-page")) document.body.classList.remove("product-details-page");
+    }
   }
 };
 
@@ -89,24 +116,22 @@ var initation = function initation() {
 };
 
 // Initation on page loaded
-window.onload = function () {
-  initation();
-};
+// window.onload = function() {
+//   initation();
+// }
 
 // Begin detect page changes
 observer.observe(mutationNode, mutationConfig);
 
 // Static components
-var hamburger = document.querySelector("header.header-mobile label.mobile-nav");
-
-hamburger.addEventListener("click", function () {
+var hamburgerTrigger = function hamburgerTrigger() {
   var bodyClass = document.body.classList;
   if (bodyClass.contains("is-noscroll")) {
-    if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active");
-  } else {
     if (!bodyClass.contains("nav-active")) bodyClass.add("nav-active");
+  } else {
+    if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active");
   }
-});
+};
 
 // Dynamic methods
 
@@ -150,9 +175,7 @@ var trackFeatureImage = function trackFeatureImage() {
   }
 };
 
-var searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon');
-
-searchTrigger.addEventListener("click", function () {
+var searchClick = function searchClick() {
   setTimeout(function () {
     var searchModal = document.querySelector('.header-section .search-modal');
     var searchInput = document.querySelector('.header-section .search-modal__header .search-group input');
@@ -175,13 +198,10 @@ searchTrigger.addEventListener("click", function () {
         } else {
           if (searchModal.classList.contains("empty_input")) searchModal.classList.remove("empty_input");
         }
-        // searchTimeout = setTimeout( () => {
-        //   if (searchModal.classList.contains("inputing")) searchModal.classList.remove("inputing")
-        // },200)
       });
     }
   }, 150);
-});
+};
 
 document.addEventListener("scroll", function () {
 

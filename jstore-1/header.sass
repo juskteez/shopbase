@@ -60,10 +60,40 @@ header.header
 
     .promo_banner
       height: auto !important
-      display: block !important
+      display: flex !important
       transition-property: none !important
       padding: 4px 0 !important
+      justify-content: space-between
+      background-color: $promo_banner
+      overflow: hidden
+      position: relative
       order: 1
+    .promo_banner p[style="text-align: left;"]:first-child:nth-last-child(2)
+      flex: 1
+      padding: 0
+      text-transform: uppercase
+      transform: translate3d(0,0,0)
+      will-change: transform
+      font-family: $typeA
+    .marquee-promo
+      white-space: nowrap
+      position: absolute
+      animation: marquee_promo 7s linear infinite
+      display: flex
+      span
+        padding-left: 8px
+        padding-right: 128px
+        display: inline-block
+      &+p
+        margin-left: auto
+        background-color: $promo_banner
+        position: relative
+        text-transform: uppercase
+        font-family: $typeA
+    .promo_banner p[style="text-align: right;"]:last-child:nth-of-type(2) a
+      display: inline-block
+      padding: 0 8px
+      text-decoration: underline
 
   .logo .logo-text,
   &-mobile .logo .logo-text
@@ -80,7 +110,7 @@ header.header
     padding: 0
 
     .logo
-      margin-left: 0
+      margin: 0
       max-width: none
       & > a.flex
         display: inline-block
@@ -129,6 +159,7 @@ header.header
 
     .mobile-nav
       width: 32px
+      order: 0
 
       &::before
         content: ""

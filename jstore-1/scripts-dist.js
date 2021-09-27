@@ -52,6 +52,8 @@ var searchTrigger = false;
 var searchServed = false;
 var hamburger = false;
 var hamburgerServed = false;
+var announceBar = false;
+var announceBarServed = false;
 var awkwardLoad = false;
 
 var clickServe = function clickServe(element, trigger, callback) {
@@ -59,9 +61,19 @@ var clickServe = function clickServe(element, trigger, callback) {
     if (trigger == false) {
       element.addEventListener("click", callback);
       return true;
+    } else {
+      return true;
     }
-  } else {
-    return false;
+  }
+  return false;
+};
+var loadServe = function loadServe(elements, trigger, callback) {
+  if (elements) {
+    if (trigger == false) {
+      return callback(elements);
+    } else {
+      return true;
+    }
   }
   return false;
 };
@@ -85,6 +97,8 @@ var componentParse = function componentParse(reinit) {
   hamburger = document.querySelector("header.header-mobile label.mobile-nav");
   searchServed = clickServe(searchTrigger, searchServed, searchClick);
   hamburgerServed = clickServe(hamburger, hamburgerServed, hamburgerTrigger);
+  announceBar = document.querySelectorAll("header .promo_banner");
+  announceBarServed = loadServe(announceBar, announceBarServed, announceBarShow);
 
   featureImageWrapSet = [];
   featureImageSet = [];
@@ -147,6 +161,35 @@ var hamburgerTrigger = function hamburgerTrigger() {
   } else {
     if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active");
   }
+};
+
+var multiString = function multiString(string) {
+  var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+  if (times > 0) {
+    return string + multiString(string, times - 1);
+  } else {
+    return "";
+  }
+};
+
+var announceBarShow = function announceBarShow(bars) {
+  for (var i = 0; i < bars.length; i++) {
+    var announceLabel = bars[i].querySelector('p[style="text-align: left;"]:first-child');
+    var announceLink = bars[i].querySelector('p[style="text-align: right;"]:last-child a');
+
+    if (announceLabel && announceLink) {
+      var announceText = announceLabel.textContent;
+      var marqueeMarkup = "<span>" + announceText + "</span>";
+      announceLabel.innerHTML = multiString(marqueeMarkup, 6);
+      announceLabel.classList.add('marquee-promo');
+    }
+    // if (announceLink) console.log(announceLink.textContent)
+  }
+  if (bars) {
+    if (bars.length > 0) return true;
+  }
+  return false;
 };
 
 // Dynamic methods

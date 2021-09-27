@@ -30,6 +30,8 @@ let searchTrigger       = false
 let searchServed        = false
 let hamburger           = false
 let hamburgerServed     = false
+let announceBar         = false
+let announceBarServed   = false
 let awkwardLoad         = false
 
 const clickServe = (element, trigger, callback) => {
@@ -37,9 +39,19 @@ const clickServe = (element, trigger, callback) => {
     if (trigger == false) {
       element.addEventListener("click", callback)
       return true
+    } else {
+      return true
     }
-  } else {
-    return false
+  }
+  return false
+}
+const loadServe = (elements, trigger, callback) => {
+  if (elements) {
+    if (trigger == false) {
+      return callback(elements)
+    } else {
+      return true
+    }
   }
   return false
 }
@@ -63,6 +75,8 @@ const componentParse = (reinit) => {
   hamburger           = document.querySelector("header.header-mobile label.mobile-nav")
   searchServed        = clickServe(searchTrigger, searchServed, searchClick)
   hamburgerServed     = clickServe(hamburger, hamburgerServed, hamburgerTrigger)
+  announceBar         = document.querySelectorAll("header .promo_banner")
+  announceBarServed   = loadServe(announceBar, announceBarServed, announceBarShow)
 
   featureImageWrapSet = []
   featureImageSet     = []
@@ -123,6 +137,33 @@ const hamburgerTrigger = () => {
   } else {
     if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active")
   }
+}
+
+const multiString = ( string, times = 1 ) => {
+  if (times > 0) {
+    return string + multiString( string, times-1 )
+  } else {
+    return ""
+  }
+}
+
+const announceBarShow = (bars) => {
+  for (let i = 0; i < bars.length; i++) {
+    let announceLabel = bars[i].querySelector('p[style="text-align: left;"]:first-child')
+    let announceLink = bars[i].querySelector('p[style="text-align: right;"]:last-child a')
+
+    if (announceLabel && announceLink) {
+      let announceText = announceLabel.textContent
+      let marqueeMarkup = "<span>" + announceText + "</span>"
+      announceLabel.innerHTML = multiString(marqueeMarkup, 6)
+      announceLabel.classList.add('marquee-promo')
+    }
+    // if (announceLink) console.log(announceLink.textContent)
+  }
+  if (bars) {
+    if (bars.length > 0) return true
+  }
+  return false
 }
 
 // Dynamic methods

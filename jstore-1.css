@@ -657,6 +657,10 @@ a.btn[class*="btn"].btn-outline {
   display: none;
 }
 
+.container {
+  max-width: 580px;
+}
+
 .main-content section[class="section"] {
   display: none;
 }
@@ -3544,6 +3548,13 @@ a.btn[class*="btn"].btn-outline {
   max-width: calc(100vw - 96px);
   margin: 0 auto;
   padding: 0;
+}
+
+@media screen and (min-width: 720px) {
+  .image-with-text .feature-set-content-wrap,
+  .feature-set-content-wrap {
+    max-width: calc(50% - 8px);
+  }
 }
 
 .image-with-text .feature-set-content-wrap:not(:last-child),

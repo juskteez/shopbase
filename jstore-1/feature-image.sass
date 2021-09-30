@@ -9,6 +9,9 @@ $mobile-margin: 96px
   max-width: calc(100vw - #{$mobile-margin})
   margin: 0 auto
   padding: 0
+  @media screen and (min-width: $bp-tb)
+    max-width: calc(50% - 8px)
+
   &:not(:last-child)
     margin-bottom: 8px
   .feature-image

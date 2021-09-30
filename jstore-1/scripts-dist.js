@@ -1,6 +1,7 @@
 'use strict';
 
 // Mutation object creation
+
 var mutationNode = document.getElementsByTagName('TITLE')[0];
 var mutationConfig = { attributes: true, childList: true, subtree: true
 
@@ -175,8 +176,14 @@ var multiString = function multiString(string) {
 
 var announceBarShow = function announceBarShow(bars) {
   for (var i = 0; i < bars.length; i++) {
+    var announceItems = bars[i].querySelectorAll('p');
     var announceLabel = bars[i].querySelector('p[style="text-align: left;"]:first-child');
     var announceLink = bars[i].querySelector('p[style="text-align: right;"]:last-child a');
+    var announceSlides = bars[i].querySelectorAll('p[style="text-align: center;"]');
+
+    // if (announceSlides.length == announceItems.length && announceItems.length > 0) {
+    //   bars[i].classList.add('slide-promo--wrap')
+    // }
 
     if (announceLabel && announceLink) {
       var announceText = announceLabel.textContent;

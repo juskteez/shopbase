@@ -149,8 +149,14 @@ const multiString = ( string, times = 1 ) => {
 
 const announceBarShow = (bars) => {
   for (let i = 0; i < bars.length; i++) {
+    let announceItems = bars[i].querySelectorAll('p')
     let announceLabel = bars[i].querySelector('p[style="text-align: left;"]:first-child')
     let announceLink = bars[i].querySelector('p[style="text-align: right;"]:last-child a')
+    let announceSlides = bars[i].querySelectorAll('p[style="text-align: center;"]')
+
+    // if (announceSlides.length == announceItems.length && announceItems.length > 0) {
+    //   bars[i].classList.add('slide-promo--wrap')
+    // }
 
     if (announceLabel && announceLink) {
       let announceText = announceLabel.textContent

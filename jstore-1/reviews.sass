@@ -2,7 +2,8 @@
   padding: 8px 0
   border-top: none
   .rv-widget__listing-body .rv-widget__first-write-review,
-  .rv-widget__overall-text
+  .rv-widget__overall-text,
+  .rv-widget__form .rv-widget__form-title
     font-family: $typeA
     font-size: 24px
     line-height: 24px
@@ -267,3 +268,146 @@
 
       .rv-widget__user-name
         justify-content: center
+
+  .rv-widget__form
+    margin: 0
+    .rv-widget__form-rating-star,
+    .rv-widget__input,
+    .rv-widget__control-list .rv-widget__control-suggest,
+    .rv-widget__list_image li,
+    .rv-widget__list_image .rv-widget__add-img,
+    .rv-widget__btn
+      border-radius: 0
+
+    &--wrapper
+      border: none
+      margin: 0
+
+    .rv-widget__btn
+      font-family: $typeA
+      text-transform: uppercase
+      span
+        font-weight: normal
+        letter-spacing: 0.5px
+
+    .rv-widget__form-heading
+      flex-wrap: wrap
+      text-align: center
+      justify-content: center
+      margin-bottom: 12px
+      
+      .rv-widget__form-close
+        order: -1
+        margin-bottom: 8px
+        font-family: $typeA
+        font-size: 14px
+        font-weight: normal
+        letter-spacing: 0.5px
+        &:before
+          height: 1px
+        &:after
+          width: 1px
+
+      .rv-widget__form-title
+        width: 100%
+
+    .rv-widget__form-rating-star
+      justify-content: center
+      padding: 0
+      padding-top: 32px
+      position: relative
+      border: none
+
+      .rv-widget__form-feeling
+        position: absolute
+        margin: 0
+        pointer-events: none
+        top: 0
+        font-family: $typeA
+        text-transform: uppercase
+        letter-spacing: 1px
+
+    .rv-widget__form-group,
+    .rv-widget__form-submit
+      margin: 16px 0
+
+    .rv-widget__group-field:not(:last-child),
+    .rv-widget__group-horizontal:not(:last-child)
+      margin-bottom: 12px
+
+    .rv-widget__group-field .rv-widget__form-label
+      text-align: center
+      justify-content: center
+      position: relative
+      text-transform: uppercase
+      color: $b4
+      font-size: 11px
+      font-weight: normal
+      span
+        position: absolute
+        right: 0
+        text-transform: none
+        overflow: hidden
+        white-space: nowrap
+        pointer-events: none
+        &:after
+          content: ""
+          display: inline-block
+          width: 0
+          height: 4px
+          margin-right: -64px
+
+    .rv-widget__group-field:nth-of-type(3):nth-last-child(4) .rv-widget__form-label
+      margin-top: -12px
+      pointer-events: none
+      span
+        position: static
+
+    .rv-widget__form-group .rv-widget__input
+      text-align: center
+      vertical-align: top
+
+    .rv-widget__control.rv-widget__control-list
+      justify-content: center
+      margin: -2px 0
+      .rv-widget__control-suggest
+        margin: 2px
+        padding: 2px 5px
+        letter-spacing: -0.2px
+        background-color: $b7
+        border: none
+        box-shadow: inset 0 0 0 1px $b7
+        text-transform: lowercase
+        &::first-letter
+          text-transform: uppercase
+
+    .rv-widget__form-group .rv-widget__list_image
+      justify-content: center
+      padding-top: 4px
+      li
+        width: 56px
+        height: 56px
+      li:first-child:last-child
+        width: auto
+        height: auto
+        background-color: transparent
+        label.rv-widget__add-img
+          padding: 6px 8px
+        label.rv-widget__add-img:before
+          content: "+ Upload photos"
+          display: unset
+          position: static
+          transform: none
+          background-color: transparent
+        label.rv-widget__add-img:after
+          display: none
+
+    .rv-widget__form-group .rv-widget__radio
+      justify-content: center
+      div
+        margin: 0 4px
+      div:last-child
+        order: -1
+      label
+        margin-bottom: 0
+        padding: 3px

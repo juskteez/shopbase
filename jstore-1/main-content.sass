@@ -183,6 +183,7 @@
       transform: none
   .collection--name
     font-size: 12px
+    font-weight: normal
     text-transform: uppercase
     line-height: 1
     margin: 0 auto
@@ -190,6 +191,8 @@
     color: white !important
     max-width: calc(100% - 24px)
     padding: 3px 0
+    @media screen and (min-width: $bp-tb)
+      font-size: 16px
   
   &.collection-product-wrap
     margin-bottom: 0
@@ -198,3 +201,44 @@
   padding-bottom: 24px
   & > .row > .col-12
     margin-bottom: 20px
+
+.custom-container,
+.other-page-content
+  strong, b
+    font-weight: bold
+
+  .text-info-normal > p
+    margin-bottom: 8px
+
+  .info-tracking
+    font-family: $typeB
+
+  hr
+    background-color: $b5
+    margin: 16px 0
+
+  ul
+    padding-left: 16px
+
+.contact-us-page .other-page-content
+  text-align: center
+  & > div > p:first-child
+    font-size: 20px
+    font-family: $typeA
+    margin-top: -24px
+
+  ul
+    list-style: none
+    padding-left: 0
+    &:before,
+    &:after
+      content: ""
+      display: block
+      border-top: 1px dotted $b5
+      width: 64px
+      margin: 16px auto
+    strong
+      display: none
+
+  p>em>strong
+    color: $red

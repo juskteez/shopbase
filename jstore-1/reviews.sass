@@ -335,6 +335,16 @@
     .rv-widget__group-horizontal:not(:last-child)
       margin-bottom: 12px
 
+    .rv-widget__group-horizontal
+      @media screen and (min-width: $bp-tb)
+        justify-content: center
+        .rv-widget__group-field
+          &:nth-of-type(1n+1)
+            margin: 0
+            flex: 0 0 calc(50% - 4px)
+          &:nth-of-type(2n+1)
+            margin-right: 8px
+
     .rv-widget__group-field .rv-widget__form-label
       text-align: center
       justify-content: center

@@ -120,24 +120,10 @@ header.header
       font-size: 18px !important
       color: $b2
 
-  &-mobile .header-wrap
-    padding: 0
-
-    .logo
-      margin: 0
-      max-width: none
-      text-align: center
-      padding-left: 40px
-      & > a.flex
-        display: inline-block
+  .header-wrap,
+  .main-nav-wrapper
 
     .search-icon, .login-icon, .cart-container
-      width: 36px
-      &:hover
-        text-decoration: unset
-        transition: unset
-        color: initial
-
       .carticon-label
         position: absolute
         width: 100%
@@ -172,6 +158,30 @@ header.header
         padding: 0
         font-weight: bold
         text-align: center
+
+  &-mobile .header-wrap
+    padding: 0
+
+    .logo
+      margin: 0
+      max-width: none
+      text-align: center
+      padding-left: 40px
+      & > a.flex
+        display: inline-block
+
+    .search-icon, .login-icon, .cart-container
+      width: 36px
+      &:hover
+        text-decoration: unset
+        transition: unset
+        color: initial
+
+      &.cart-container .cart-number
+        width: 14px
+        height: 14px
+        font-size: 8px
+        line-height: 16px
 
     .mobile-nav
       width: 32px

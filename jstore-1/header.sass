@@ -23,21 +23,194 @@ $scrollbar_size: 8px
   &-mobile.mobile-nav-fixed--true .container-fluid
     position: absolute
 
+$header-block-size: 40px
+$burger-bread: #F39A52
+$burger-vegs: #8EC738
+$burger-tomato: #EA3C44
+
+.hamburger
+  position: absolute
+  width: $header-block-size
+  height: $header-block-size
+  // background-color: rgba(red,.2)
+  top: 0
+  left: 0
+  &:before,
+  &:after
+    content: ""
+    position: absolute
+    width: 12px
+    height: 1px
+    left: 50%
+    top: 50%
+    background-color: $burger-bread
+    box-shadow: 0 3.5px rgba($burger-vegs,1)
+    transform: translate(-50%, -6px)
+    transition: 0.125s all ease
+    animation: upperBurgerout 0.3s ease
+    // animation-direction: reverse
+  &:after
+    box-shadow: 0 -3.5px rgba($burger-tomato,1)
+    transform: translate(-50%, 5px)
+    animation: lowerBurgerout 0.3s ease
+    // animation-direction: reverse
+
+  @media screen and (min-width: 1200px)
+    &:hover:before
+      box-shadow: 0 5px rgba($burger-vegs,1)
+      transform: translate(-50%, -8px)
+    &:hover:after
+      box-shadow: 0 -5px rgba($burger-tomato,1)
+      transform: translate(-50%, 7px)
+
+.nav-active .hamburger
+  &:before
+    box-shadow: 0 0 rgba($burger-vegs,0)
+    transform: translate(-50%, -50%) rotate(45deg)
+    animation: upperBurger 0.3s ease forwards
+  &:after
+    box-shadow: 0 0 rgba($burger-tomato,0)
+    transform: translate(-50%, -50%) rotate(-45deg)
+    animation: lowerBurger 0.3s ease forwards
+
+@keyframes upperBurger
+  0%
+    box-shadow: 0 3.5px rgba($burger-vegs,1)
+    transform: translate(-50%, -6px)
+  75%
+    box-shadow: 0 0 rgba($burger-vegs,0)
+    transform: translate(-50%, -50%)
+  100%
+    box-shadow: 0 0 rgba($burger-vegs,0)
+    transform: translate(-50%, -50%) rotate(45deg)
+
+@keyframes upperBurgerout
+  0%
+    box-shadow: 0 0 rgba($burger-vegs,0)
+    transform: translate(-50%, -50%) rotate(45deg)
+  50%
+    box-shadow: 0 0 rgba($burger-vegs,0)
+    transform: translate(-50%, -50%)
+  100%
+    box-shadow: 0 3.5px rgba($burger-vegs,1)
+    transform: translate(-50%, -6px)
+
+@keyframes lowerBurger
+  0%
+    box-shadow: 0 -3.5px rgba($burger-tomato,1)
+    transform: translate(-50%, 5px)
+  75%
+    box-shadow: 0 0 rgba($burger-tomato,0)
+    transform: translate(-50%, -50%)
+  100%
+    box-shadow: 0 0 rgba($burger-tomato,0)
+    transform: translate(-50%, -50%) rotate(-45deg)
+
+@keyframes lowerBurgerout
+  0%
+    box-shadow: 0 0 rgba($burger-tomato,0)
+    transform: translate(-50%, -50%) rotate(-45deg)
+  50%
+    box-shadow: 0 0 rgba($burger-tomato,0)
+    transform: translate(-50%, -50%)
+  100%
+    box-shadow: 0 -3.5px rgba($burger-tomato,1)
+    transform: translate(-50%, 5px)
+
+.site-nav
+  position: absolute
+  background-color: rgba(white,.98)
+  top: 100%
+  left: 0
+  width: 100%
+  height: 100vh
+  z-index: 6
+  transition: 0.125s all ease
+  transform: translate3d(0,0,0)
+  pointer-events: none
+  overflow: hidden
+  opacity: 0
+  & &__item
+    text-transform: uppercase
+    font-family: $typeA
+    padding: 0
+    display: block
+
+  & &__link
+    color: $b1
+    transition: 0.3s all ease
+    font-size: 18px
+    line-height: 24px
+    padding: 8px 0
+    display: block
+    text-align: center
+    border-top: 1px solid rgba(black,.0)
+    transform: scaleY(0) scaleX(0.4) translate3d(0,-40%,0)
+
+@keyframes navItemIn
+  0%
+    transform: scaleY(0) scaleX(0.4) translate3d(0,-40%,0)
+    border-top-color: rgba(black,.0)
+  60%
+    transform: scaleY(1) scaleX(1) translate3d(0,0,0)
+    border-top-color: rgba(black,.0)
+  100%
+    transform: scaleY(1) scaleX(1) translate3d(0,0,0)
+    border-top-color: $b7
+
+.nav-active .site-nav
+  opacity: 1
+  pointer-events: all
+  .site-nav__link
+    animation: navItemIn 0.375s ease forwards
+    animation-delay: 0.025s
+  @for $i from 1 through 12
+    .site-nav__item:nth-of-type(#{$i}) .site-nav__link
+      animation-delay: #{0.025s + (0.075s * $i)}
+
+
 header.header
   display: flex
   flex-wrap: wrap
+  display: block !important
 
   .container-fluid
-    padding: 0 8px
+    padding: 0
+
+  .logo
+    width: unset
+    max-width: unset
   
   .main-nav-wrapper > .flex
+    padding: 0 !important
     & > *
       flex: none
       width: auto
+      padding: 0
+
+    & > .col-lg-2:first-child
+      flex: 1
+      padding-left: $header-block-size
+      justify-content: center
+      display: flex
 
     .nav
-      flex: 1
+      // flex: 1
+      width: $header-block-size
+      height: $header-block-size
       max-width: none
+      order: -1
+      position: static
+
+  .search-icon,
+  .login-icon,
+  .cart-container
+    width: $header-block-size
+    height: $header-block-size
+    position: relative
+
+  &-mobile
+    display: none
 
   &.nav-fixed--true,
   &-mobile.mobile-nav-fixed--true
@@ -51,7 +224,7 @@ header.header
       background-color: transparent
 
     .container-fluid
-      position: fixed
+      position: absolute
       top: 0
       background-color: white
 
@@ -114,26 +287,21 @@ header.header
     font-family: $typeA
     text-transform: uppercase
     font-weight: normal
-    font-size: 12px !important
+    font-size: 18px !important
     line-height: 32px
-    @media screen and (max-width: 767px)
-      font-size: 18px !important
-      color: $b2
+    color: $b1
+    @media screen and (min-width: 1024px)
+      font-size: 12px !important
 
-  .header-wrap,
+  &-mobile .header-wrap,
   .main-nav-wrapper
-
-    .search-icon, .login-icon, .cart-container
-      .carticon-label
-        position: absolute
-        width: 100%
-        height: 100%
-        top: 0
-        left: 0
-
+    .search-icon,
+    .login-icon,
+    .cart-container
       svg,
       &.login-icon
         display: none
+
       .svg-container
         position: absolute
         width: 12px
@@ -142,22 +310,37 @@ header.header
         top: 50%
         left: 50%
         transform: translate(-50%,-50%)
-      &.search-icon .svg-container
-        background-image: url("jstore-1/icons/header-search.svg")
-      &.login-icon .svg-container
-        background-image: url("jstore-1/icons/header-account.svg")
-      &.cart-container .svg-container
-        background-image: url("jstore-1/icons/header-cart.svg")
-      &.cart-container .cart-number
+
+    .cart-container
+      .carticon-label,
+      a.mini-cart
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+
+      .cart-number
         top: 8px
         right: 4px
         width: 14px
         height: 14px
         font-size: 8px
-        line-height: 16px
+        line-height: 14px
         padding: 0
         font-weight: bold
         text-align: center
+        // letter-spacing: -0.5px
+        // font-family: $typeA
+      
+      .svg-container
+        background-image: url("jstore-1/icons/header-cart.svg")
+
+    .search-icon .svg-container
+      background-image: url("jstore-1/icons/header-search.svg")
+
+    .login-icon .svg-container
+      background-image: url("jstore-1/icons/header-account.svg")
 
   &-mobile .header-wrap
     padding: 0
@@ -176,12 +359,6 @@ header.header
         text-decoration: unset
         transition: unset
         color: initial
-
-      &.cart-container .cart-number
-        width: 14px
-        height: 14px
-        font-size: 8px
-        line-height: 16px
 
     .mobile-nav
       width: 32px
@@ -223,15 +400,6 @@ header.header
   span.d-block:nth-of-type(3)
     top: 50%
     transform: translate(0,-50%) rotate(225deg) rotateY(0deg)
-
-.site-nav
-  & &__item
-    text-transform: uppercase
-    font-family: $typeA
-
-  & &__link
-    color: rgba(black, 0.48)
-    transition: 0.125s all ease
 
 .header-mobile .mobile-menu
   .popover-left__overlay

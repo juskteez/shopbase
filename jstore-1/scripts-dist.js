@@ -1,7 +1,6 @@
 'use strict';
 
 // Mutation object creation
-
 var mutationNode = document.getElementsByTagName('TITLE')[0];
 var mutationConfig = { attributes: true, childList: true, subtree: true
 
@@ -53,6 +52,8 @@ var searchTrigger = false;
 var searchServed = false;
 var hamburger = false;
 var hamburgerServed = false;
+var singleHamburger = false;
+var shamburgerServed = false;
 var announceBar = false;
 var announceBarServed = false;
 var awkwardLoad = false;
@@ -94,10 +95,22 @@ var componentParse = function componentParse(reinit) {
   pageBody = document.querySelector(".default-layout > main.main-content") || false;
   // pageBody  = storeBody.firstChild
 
+  var shamburgerSelector = "header.header .main-nav-wrapper .nav a.hamburger";
+  var nav = document.querySelector("header.header .main-nav-wrapper .nav");
+  if (nav) {
+    if (!document.querySelector(shamburgerSelector)) {
+      singleHamburger = document.createElement("A");
+      singleHamburger.setAttribute("href", "javascript:;");
+      singleHamburger.classList.add("hamburger");
+      nav.prepend(singleHamburger);
+    }
+  }
+
   searchTrigger = document.querySelector('header.header-mobile .header-wrap a.search-icon');
   hamburger = document.querySelector("header.header-mobile label.mobile-nav");
   searchServed = clickServe(searchTrigger, searchServed, searchClick);
   hamburgerServed = clickServe(hamburger, hamburgerServed, hamburgerTrigger);
+  shamburgerServed = clickServe(singleHamburger, shamburgerServed, shamburgerTrigger);
   announceBar = document.querySelectorAll("header .promo_banner");
   announceBarServed = loadServe(announceBar, announceBarServed, announceBarShow);
 
@@ -161,6 +174,17 @@ var hamburgerTrigger = function hamburgerTrigger() {
     if (!bodyClass.contains("nav-active")) bodyClass.add("nav-active");
   } else {
     if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active");
+  }
+};
+
+var shamburgerTrigger = function shamburgerTrigger() {
+  var bodyClass = document.body.classList;
+  if (!bodyClass.contains("nav-active")) {
+    bodyClass.add("nav-active");
+    if (!bodyClass.contains("is-noscroll")) bodyClass.add("is-noscroll");
+  } else {
+    bodyClass.remove("nav-active");
+    if (bodyClass.contains("is-noscroll")) bodyClass.remove("is-noscroll");
   }
 };
 

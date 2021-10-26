@@ -1,0 +1,10 @@
+mixin navTree(iterable, prefix = "")
+  ul
+    - listType = iterable.constructor.name
+    if listType == "Array"
+      each item in iterable
+        li #[a(href=(prefix!=""?prefix+"-":"")+item+".html") #{item}]
+    else if listType == "Object"
+      each value, key in iterable
+        li #{key}
+        +navTree(value, key)

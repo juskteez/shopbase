@@ -1,6 +1,7 @@
 'use strict';
 
 // Mutation object creation
+
 var mutationNode = document.getElementsByTagName('TITLE')[0];
 var mutationConfig = { attributes: true, childList: true, subtree: true
 

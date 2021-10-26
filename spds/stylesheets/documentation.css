@@ -1,2 +1,20 @@
+.doc-sidebar, .doc-main {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.doc-sidebar {
+  width: 232px;
+  background-color: #eee;
+  position: fixed;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.doc-main {
+  margin-left: 232px;
+  background-color: #ccc;
+}
 
 /*# sourceMappingURL=documentation.css.map */

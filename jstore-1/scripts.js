@@ -30,6 +30,8 @@ let searchTrigger       = false
 let searchServed        = false
 let hamburger           = false
 let hamburgerServed     = false
+let singleHamburger     = false
+let shamburgerServed    = false
 let announceBar         = false
 let announceBarServed   = false
 let awkwardLoad         = false
@@ -71,10 +73,22 @@ const componentParse = (reinit) => {
   pageBody = document.querySelector(".default-layout > main.main-content") || false
   // pageBody  = storeBody.firstChild
 
+  let shamburgerSelector = "header.header .main-nav-wrapper .nav a.hamburger"
+  let nav = document.querySelector("header.header .main-nav-wrapper .nav")
+  if (nav) {
+    if (!document.querySelector(shamburgerSelector)) {
+      singleHamburger = document.createElement("A")
+      singleHamburger.setAttribute("href", "javascript:;")
+      singleHamburger.classList.add("hamburger")
+      nav.prepend(singleHamburger)
+    }
+  }
+
   searchTrigger       = document.querySelector('header.header-mobile .header-wrap a.search-icon')
   hamburger           = document.querySelector("header.header-mobile label.mobile-nav")
   searchServed        = clickServe(searchTrigger, searchServed, searchClick)
   hamburgerServed     = clickServe(hamburger, hamburgerServed, hamburgerTrigger)
+  shamburgerServed    = clickServe(singleHamburger, shamburgerServed, shamburgerTrigger)
   announceBar         = document.querySelectorAll("header .promo_banner")
   announceBarServed   = loadServe(announceBar, announceBarServed, announceBarShow)
 
@@ -136,6 +150,17 @@ const hamburgerTrigger = () => {
     if (!bodyClass.contains("nav-active")) bodyClass.add("nav-active")
   } else {
     if (bodyClass.contains("nav-active")) bodyClass.remove("nav-active")
+  }
+}
+
+const shamburgerTrigger = () => {
+  let bodyClass = document.body.classList
+  if (!bodyClass.contains("nav-active")) {
+    bodyClass.add("nav-active")
+    if (!bodyClass.contains("is-noscroll")) bodyClass.add("is-noscroll")
+  } else {
+    bodyClass.remove("nav-active")
+    if (bodyClass.contains("is-noscroll")) bodyClass.remove("is-noscroll")
   }
 }
 

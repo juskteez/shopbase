@@ -1,3 +1,7 @@
+@import '../core/base/_colors'
+@import '../core/base/_typography'
+@import '../core/base/_animations'
+
 .doc
   &-sidebar,
   &-main
@@ -8,11 +12,23 @@
   $sidebar_width: 232px
   &-sidebar
     width: $sidebar_width
-    background-color: #eee
+    background-color: $nl100
     position: fixed
     height: 100vh
     max-height: 100vh
+    box-shadow: 0 0 0 1px rgba($nl400,.16)
+    z-index: 1
   
   &-main
     margin-left: $sidebar_width
-    background-color: #ccc
+    background-color: $nl100
+    padding-top: 24px
+
+    .container
+      width: calc(100% - 64px)
+      max-width: 960px
+      margin: 0 auto
+
+  &-page-subtitle
+    text-transform: uppercase
+    color: $nl400

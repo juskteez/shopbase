@@ -1,0 +1,86 @@
+.app
+  &-sidebar
+    display: flex
+    flex-direction: column
+  &-logo
+    padding: 24px 20px
+    img
+      height: 24px
+
+  &-search
+    padding: 0 8px
+  
+  &-menu
+    position: relative
+    overflow: hidden
+    overflow-y: auto
+    -webkit-overflow-scrolling: touch
+    padding: 8px
+    &-item,
+    &-link
+      padding: 8px 12px
+      border-radius: 12px
+    &-list &-list &-item
+      &.active-item
+        color: $pl600
+        background-color: rgba(#fff, .8)
+        pointer-events: none
+        z-index: -2
+    &-link
+      display: block
+      position: relative
+      margin: -8px -12px
+      box-shadow: 0 4px 12px rgba($nl400, 0)
+      transition: .075s all ease
+      &:hover
+        color: $nl1000
+        background-color: rgba(#fff, .8)
+        box-shadow: 0 4px 12px rgba($nl400, .075)
+      &.active-item
+        color: $pl600
+        background-color: rgba(#fff, .8)
+        pointer-events: none
+        z-index: -2
+      &:before
+        content: ""
+        position: absolute
+        width: 80%
+        height: 40%
+        background: linear-gradient(4deg, rgba($pl400,1) 0%, rgba($pl400,0) 60%)
+        border-radius: 16px
+        transition: .075s all ease
+        transform-origin: top left
+        transform: rotate(-4deg)
+        left: 1.5%
+        bottom: 2%
+        filter: blur(8px)
+        opacity: 0
+        z-index: -1
+      &:hover:before
+        opacity: 1
+        transition: 0.375s all ease
+
+    &-list &-list
+      padding-top: 6px
+      padding-bottom: 16px
+
+    &-list &-list &-list
+      padding-top: 2px
+      padding-bottom: 8px
+      font-size: $fs5
+      padding-left: 12px
+    &-list &-list &-list &-item,
+    &-list &-list &-list &-link
+      padding: 4px 12px
+      border-radius: 10px
+    &-list &-list &-list &-link
+      margin: -4px -12px
+
+    & > &-list > &-item
+      text-transform: uppercase
+      font-size: $fs5
+      font-weight: bold
+      padding: 4px 12px
+
+    &.expanded > &-list > &-item
+      color: $nl400

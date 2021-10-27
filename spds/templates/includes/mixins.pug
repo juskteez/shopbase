@@ -14,13 +14,17 @@
     return newTxt.join(" ")
   }
 mixin navTree(iterable, prefix = "")
-  ul
+  ul.app-menu-list
     - listType = iterable.constructor.name
     if listType == "Array"
       each item in iterable
         - url = (item!="introduction")?((prefix!=""?prefix.replace(/([ ()&]+)/gm, "_").replace(/[_]$/gm, "")+"-":"")+item.replace(/([ ()&]+)/gm, "_").replace(/[_]$/gm, "")+".html"):"index.html"
-        li #[a(href=url) #{capitalize(item)}]
+        - displayName = capitalize(item)
+        - activeItem = (displayName == PAGE) ? "active-item" : ""
+        li.app-menu-item #[a(href=url, class=["app-menu-link", activeItem].join(" ")) #{capitalize(item)}]
     else if listType == "Object"
       each value, key in iterable
-        li= capitalize(key)
+        - currentPage = PAGE.toLowerCase()
+        - activeItem = (value.toString().includes(currentPage)) ? "active-item" : ""
+        li(class=["app-menu-item", activeItem].join(" "))= capitalize(key)
         +navTree(value, key)

@@ -1,3 +1,189 @@
+/* Blue [PRIMARY] */
+/* Neutral [SECONDARY] */
+/* Green */
+/* Red */
+/* Yellow */
+/* CHARTS */
+/* Placeholder Color */
+::-webkit-input-placeholder {
+  opacity: 1;
+  color: #ACB5B9;
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: normal;
+}
+
+::-moz-placeholder {
+  opacity: 1;
+  color: #ACB5B9;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  line-height: normal;
+}
+
+::-ms-input-placeholder {
+  opacity: 1;
+  color: #ACB5B9;
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: normal;
+}
+
+/* Font Name */
+/* Font Size */
+/* Font Scale */
+/* Text Style */
+.type-display-l, h1, .h1 {
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: bold;
+}
+
+.type-display-m, h2, .h2 {
+  font-size: 23px;
+  line-height: 28px;
+  font-weight: bold;
+}
+
+.type-display-s, h3, .h3 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: bold;
+}
+
+.type-heading-l, h4, .h4 {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.type-heading-s, h5, .h5 {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+.type-body-l {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.type-body-m, body, .app-container {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.type-help-text {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.type-center {
+  text-align: center;
+}
+
+.type-emphasis {
+  font-weight: bold;
+}
+
+.app-container {
+  font-family: "SF Pro Text", "Segoe UI", "Roboto", "Arial", sans-serif;
+  color: #5E6A6E;
+}
+
+h1 {
+  color: #1B1F22;
+}
+
+h1.h1, h1.h2, h1.h3, h1.h4, h1.h5 {
+  margin-bottom: 16px;
+}
+
+h2, h3, h4, h5 {
+  color: #363F44;
+}
+
+h2.h1, h2.h2, h2.h3, h2.h4, h2.h5, h3.h1, h3.h2, h3.h3, h3.h4, h3.h5, h4.h1, h4.h2, h4.h3, h4.h4, h4.h5, h5.h1, h5.h2, h5.h3, h5.h4, h5.h5 {
+  margin-bottom: 8px;
+}
+
+.block p, .block ul {
+  margin-bottom: 8px;
+}
+
+a {
+  color: #363F44;
+}
+
+a:hover {
+  color: #1B1F22;
+}
+
+/* Animation Library */
+.easing {
+  -webkit-transition: 0.125s all ease;
+  -o-transition: 0.125s all ease;
+  transition: 0.125s all ease;
+}
+
+@-webkit-keyframes proceeding {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0) scaleX(2);
+    transform: translate3d(-50%, 0, 0) scaleX(2);
+    right: 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(100%, 0, 0) scaleX(1);
+    transform: translate3d(100%, 0, 0) scaleX(1);
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes proceeding {
+  0% {
+    -webkit-transform: translate3d(-50%, 0, 0) scaleX(2);
+    transform: translate3d(-50%, 0, 0) scaleX(2);
+    right: 100%;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(100%, 0, 0) scaleX(1);
+    transform: translate3d(100%, 0, 0) scaleX(1);
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.spinning {
+  -webkit-animation: 0.675s spinning linear infinite;
+  animation: 0.675s spinning linear infinite;
+}
+
+@-webkit-keyframes spinning {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(360deg);
+    transform: translate3d(0, 0, 0) rotate(360deg);
+  }
+}
+
+@keyframes spinning {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0) rotate(360deg);
+    transform: translate3d(0, 0, 0) rotate(360deg);
+  }
+}
+
 .doc-sidebar, .doc-main {
   position: relative;
   min-height: 100vh;
@@ -6,15 +192,30 @@
 
 .doc-sidebar {
   width: 232px;
-  background-color: #eee;
+  background-color: #F7F8F8;
   position: fixed;
   height: 100vh;
   max-height: 100vh;
+  -webkit-box-shadow: 0 0 0 1px rgba(172, 181, 185, 0.16);
+  box-shadow: 0 0 0 1px rgba(172, 181, 185, 0.16);
+  z-index: 1;
 }
 
 .doc-main {
   margin-left: 232px;
-  background-color: #ccc;
+  background-color: #F7F8F8;
+  padding-top: 24px;
+}
+
+.doc-main .container {
+  width: calc(100% - 64px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.doc-page-subtitle {
+  text-transform: uppercase;
+  color: #ACB5B9;
 }
 
 /*# sourceMappingURL=documentation.css.map */

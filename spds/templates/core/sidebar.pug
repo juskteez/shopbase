@@ -1,0 +1,9 @@
+mixin sidebar(menu = false, prefix = "", expandMenu = false)
+  aside(class=`app-sidebar ${prefix}-sidebar`)
+    div(class=`app-logo ${prefix}-logo`)
+      a #[img(src="assets/logo.svg")]
+    div(class=`app-search ${prefix}-search`)
+      +input("search","app-search","doc-search-field", "Search for component", true).small
+    - expandedMenu = (expandMenu) ? "expanded" : ""
+    nav(class=`app-menu ${prefix}-menu ${expandedMenu}`)
+      +navTree(menu)

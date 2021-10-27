@@ -330,6 +330,35 @@ th {
 
 .app-container {
   font-family: "SF Pro Text", "Segoe UI", "Roboto", "Arial", sans-serif;
+  color: #5E6A6E;
+}
+
+h1 {
+  color: #1B1F22;
+}
+
+h1.h1, h1.h2, h1.h3, h1.h4, h1.h5 {
+  margin-bottom: 16px;
+}
+
+h2, h3, h4, h5 {
+  color: #363F44;
+}
+
+h2.h1, h2.h2, h2.h3, h2.h4, h2.h5, h3.h1, h3.h2, h3.h3, h3.h4, h3.h5, h4.h1, h4.h2, h4.h3, h4.h4, h4.h5, h5.h1, h5.h2, h5.h3, h5.h4, h5.h5 {
+  margin-bottom: 8px;
+}
+
+.block p, .block ul {
+  margin-bottom: 8px;
+}
+
+a {
+  color: #363F44;
+}
+
+a:hover {
+  color: #1B1F22;
 }
 
 /* Animation Library */
@@ -397,5 +426,157 @@ th {
 }
 
 /* CORE COMPONENTS */
+.app-input {
+  height: 40px;
+  border-radius: 10px;
+  padding: 0 12px;
+  width: 100%;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.08);
+  background-color: rgba(94, 106, 110, 0.04);
+  color: #363F44;
+}
+
+.app-input:focus {
+  background-color: #fff;
+}
+
+.app-input-wrapper.small .app-input {
+  height: 32px;
+  border-radius: 9px;
+}
+
+.app-sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.app-logo {
+  padding: 24px 20px;
+}
+
+.app-logo img {
+  height: 24px;
+}
+
+.app-search {
+  padding: 0 8px;
+}
+
+.app-menu {
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+}
+
+.app-menu-item, .app-menu-link {
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+
+.app-menu-list .app-menu-list .app-menu-item.active-item {
+  color: #0096ED;
+  background-color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.app-menu-link {
+  display: block;
+  position: relative;
+  margin: -8px -12px;
+  -webkit-box-shadow: 0 4px 12px rgba(172, 181, 185, 0);
+  box-shadow: 0 4px 12px rgba(172, 181, 185, 0);
+  -webkit-transition: .075s all ease;
+  -o-transition: .075s all ease;
+  transition: .075s all ease;
+}
+
+.app-menu-link:hover {
+  color: #1B1F22;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: 0 4px 12px rgba(172, 181, 185, 0.075);
+  box-shadow: 0 4px 12px rgba(172, 181, 185, 0.075);
+}
+
+.app-menu-link.active-item {
+  color: #0096ED;
+  background-color: rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.app-menu-link:before {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 40%;
+  background: -webkit-linear-gradient(86deg, #2db0fa 0%, rgba(45, 176, 250, 0) 60%);
+  background: -o-linear-gradient(86deg, #2db0fa 0%, rgba(45, 176, 250, 0) 60%);
+  background: linear-gradient(4deg, #2db0fa 0%, rgba(45, 176, 250, 0) 60%);
+  border-radius: 16px;
+  -webkit-transition: .075s all ease;
+  -o-transition: .075s all ease;
+  transition: .075s all ease;
+  -webkit-transform-origin: top left;
+  -ms-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+  left: 1.5%;
+  bottom: 2%;
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  opacity: 0;
+  z-index: -1;
+}
+
+.app-menu-link:hover:before {
+  opacity: 1;
+  -webkit-transition: 0.375s all ease;
+  -o-transition: 0.375s all ease;
+  transition: 0.375s all ease;
+}
+
+.app-menu-list .app-menu-list {
+  padding-top: 6px;
+  padding-bottom: 16px;
+}
+
+.app-menu-list .app-menu-list .app-menu-list {
+  padding-top: 2px;
+  padding-bottom: 8px;
+  font-size: 12px;
+  padding-left: 12px;
+}
+
+.app-menu-list .app-menu-list .app-menu-list .app-menu-item,
+.app-menu-list .app-menu-list .app-menu-list .app-menu-link {
+  padding: 4px 12px;
+  border-radius: 10px;
+}
+
+.app-menu-list .app-menu-list .app-menu-list .app-menu-link {
+  margin: -4px -12px;
+}
+
+.app-menu > .app-menu-list > .app-menu-item {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 12px;
+}
+
+.app-menu.expanded > .app-menu-list > .app-menu-item {
+  color: #ACB5B9;
+}
 
 /*# sourceMappingURL=core.css.map */

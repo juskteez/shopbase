@@ -281,6 +281,26 @@ th {
   box-shadow: 0 0 0 1px rgba(172, 181, 185, 0.08), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.group.s > *:not(:last-child) {
+  margin-right: 4px;
+}
+
+.group.m > *:not(:last-child) {
+  margin-right: 8px;
+}
+
+.group.l > *:not(:last-child) {
+  margin-right: 12px;
+}
+
+.group.xl > *:not(:last-child) {
+  margin-right: 16px;
+}
+
+.group.xx > *:not(:last-child) {
+  margin-right: 24px;
+}
+
 /* Font Name */
 /* Font Size */
 /* Font Scale */
@@ -439,23 +459,26 @@ a:hover {
 .button {
   display: inline-block;
   height: 40px;
-  padding: 6px 16px;
   border-radius: 10px;
+  padding: 0;
+  color: #5E6A6E;
   -webkit-box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.24);
   box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.24);
   background-color: rgba(94, 106, 110, 0);
-}
-
-.button:hover {
-  -webkit-box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.4);
-  box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.4);
-  background-color: rgba(94, 106, 110, 0.04);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  -webkit-transition: .075s all ease;
+  -o-transition: .075s all ease;
+  transition: .075s all ease;
 }
 
 .button-wrap {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 10px;
+  overflow: hidden;
   height: 100%;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -463,6 +486,9 @@ a:hover {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  padding: 6px 16px;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .button-wrap > *:not(:last-child) {
@@ -470,21 +496,383 @@ a:hover {
 }
 
 .button-content {
-  color: #363F44;
+  color: #5E6A6E;
+}
+
+.button:hover {
+  -webkit-box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.48);
+  box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0.48);
+  background-color: rgba(94, 106, 110, 0.04);
 }
 
 .button:hover .button-content {
-  color: #5E6A6E;
+  color: #363F44;
+}
+
+.button:active {
+  -webkit-transform: translate3d(0, 1px, 0);
+  transform: translate3d(0, 1px, 0);
+  background-color: rgba(94, 106, 110, 0.08);
+  -webkit-transition: 0s all ease;
+  -o-transition: 0s all ease;
+  transition: 0s all ease;
 }
 
 .button.sml {
   height: 32px;
+}
+
+.button.sml .button-wrap {
   padding: 6px 12px;
 }
 
 .button.emp {
   height: 48px;
+}
+
+.button.emp .button-wrap {
   padding: 6px 20px;
+}
+
+.button.primary {
+  background-color: #0096ED;
+  -webkit-box-shadow: 0 4px 10px rgba(45, 176, 250, 0);
+  box-shadow: 0 4px 10px rgba(45, 176, 250, 0);
+}
+
+.button.primary:hover {
+  background-color: #2DB0FA;
+  -webkit-box-shadow: 0 6px 14px -6px rgba(45, 176, 250, 0.56);
+  box-shadow: 0 6px 14px -6px rgba(45, 176, 250, 0.56);
+}
+
+.button.primary .button-content {
+  color: white;
+}
+
+.button.secondary {
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 150, 237, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(0, 150, 237, 0.72);
+  background-color: rgba(0, 150, 237, 0.04);
+}
+
+.button.secondary:hover {
+  -webkit-box-shadow: inset 0 0 0 1px #0096ed;
+  box-shadow: inset 0 0 0 1px #0096ed;
+  background-color: rgba(0, 150, 237, 0.08);
+}
+
+.button.secondary .button-content {
+  color: rgba(0, 150, 237, 0.88);
+}
+
+.button.secondary:hover .button-content {
+  color: #0096ed;
+}
+
+.button.subtle {
+  -webkit-box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0);
+  box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0);
+}
+
+.button.danger {
+  -webkit-box-shadow: inset 0 0 0 1px rgba(242, 84, 95, 0.48);
+  box-shadow: inset 0 0 0 1px rgba(242, 84, 95, 0.48);
+  background-color: rgba(242, 84, 95, 0.04);
+}
+
+.button.danger:hover {
+  -webkit-box-shadow: inset 0 0 0 1px #f2545f;
+  box-shadow: inset 0 0 0 1px #f2545f;
+  background-color: rgba(242, 84, 95, 0.08);
+}
+
+.button.danger .button-content {
+  color: #f2545f;
+}
+
+.button.danger:hover .button-content {
+  color: #d12e39;
+}
+
+.button.disabled,
+.button.disabled *, .button.loading,
+.button.loading *, .button.progress,
+.button.progress * {
+  pointer-events: none;
+}
+
+.button.disabled {
+  -webkit-box-shadow: inset 0 0 0 1px rgba(172, 181, 185, 0);
+  box-shadow: inset 0 0 0 1px rgba(172, 181, 185, 0);
+  background-color: rgba(172, 181, 185, 0.16);
+  color: rgba(172, 181, 185, 0.32);
+}
+
+.button.disabled .button-content {
+  color: rgba(172, 181, 185, 0.32);
+}
+
+.button.loading, .button.progress {
+  background-color: rgba(172, 181, 185, 0.08);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(172, 181, 185, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(172, 181, 185, 0.12);
+  color: #ACB5B9;
+}
+
+.button.loading.primary, .button.progress.primary {
+  background-color: rgba(45, 176, 250, 0.48);
+  -webkit-box-shadow: 0 4px 10px rgba(45, 176, 250, 0);
+  box-shadow: 0 4px 10px rgba(45, 176, 250, 0);
+  color: white;
+}
+
+.button.loading.secondary, .button.progress.secondary {
+  background-color: rgba(45, 176, 250, 0.08);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(45, 176, 250, 0.16);
+  box-shadow: inset 0 0 0 1px rgba(45, 176, 250, 0.16);
+  color: #85D2FF;
+}
+
+.button.loading.subtle, .button.progress.subtle {
+  background-color: rgba(172, 181, 185, 0.08);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0);
+  box-shadow: inset 0 0 0 1px rgba(94, 106, 110, 0);
+}
+
+.button.loading.danger, .button.progress.danger {
+  background-color: rgba(242, 84, 95, 0.04);
+  -webkit-box-shadow: inset 0 0 0 1px rgba(242, 84, 95, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(242, 84, 95, 0.08);
+  color: #FFC2C6;
+}
+
+.button.loading .button-content, .button.progress .button-content {
+  color: currentColor;
+}
+
+.button.progress .button-wrap {
+  position: relative;
+}
+
+.button.progress .button-progress_bar {
+  content: "";
+  position: absolute;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  -webkit-animation: progressTease 1s ease infinite;
+  animation: progressTease 1s ease infinite;
+  -webkit-transform-origin: bottom left;
+  -ms-transform-origin: bottom left;
+  transform-origin: bottom left;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.button.progress .button-progress_bar:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: currentColor;
+  opacity: .24;
+}
+
+.button.progress .button-progress_bar:after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(currentColor), color-stop(4%, rgba(255, 255, 255, 0)), color-stop(50%, currentColor), color-stop(54%, rgba(255, 255, 255, 0)), to(currentColor));
+  background-image: -webkit-linear-gradient(left, currentColor 0%, rgba(255, 255, 255, 0) 4%, currentColor 50%, rgba(255, 255, 255, 0) 54%, currentColor 100%);
+  background-image: -o-linear-gradient(left, currentColor 0%, rgba(255, 255, 255, 0) 4%, currentColor 50%, rgba(255, 255, 255, 0) 54%, currentColor 100%);
+  background-image: linear-gradient(90deg, currentColor 0%, rgba(255, 255, 255, 0) 4%, currentColor 50%, rgba(255, 255, 255, 0) 54%, currentColor 100%);
+  -webkit-animation: progressing 1s ease-in-out infinite;
+  animation: progressing 1s ease-in-out infinite;
+  bottom: 0;
+  right: 0;
+  opacity: .88;
+}
+
+.button.loading .button-content,
+.button.loading .button-icon,
+.button.loading .button-icon svg,
+.button.loading .button-icon svg * {
+  color: transparent;
+  fill: transparent;
+  stroke: transparent;
+}
+
+.button.loading .button-wrap {
+  position: relative;
+}
+
+.button.loading .button-wrap:before, .button.loading .button-wrap:after {
+  content: "";
+  position: absolute;
+  border-left: 6px dotted currentColor;
+  width: 16px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  -webkit-animation: center_spin_l 2.4s cubic-bezier(0.6, 0, 0.1, 1) infinite;
+  animation: center_spin_l 2.4s cubic-bezier(0.6, 0, 0.1, 1) infinite;
+}
+
+.button.loading .button-wrap:after {
+  border-left: none;
+  border-right: 6px dotted currentColor;
+  -webkit-animation: center_spin_r 2.4s cubic-bezier(0.6, 0, 0.1, 1) infinite;
+  animation: center_spin_r 2.4s cubic-bezier(0.6, 0, 0.1, 1) infinite;
+}
+
+@-webkit-keyframes center_spin_l {
+  0% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    opacity: .314;
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+    transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+  }
+}
+
+@keyframes center_spin_l {
+  0% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+  }
+  50% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    opacity: .314;
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+    transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+  }
+}
+
+@-webkit-keyframes center_spin_r {
+  0% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    opacity: .314;
+  }
+  50% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+    transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+    opacity: .314;
+  }
+}
+
+@keyframes center_spin_r {
+  0% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    opacity: .314;
+  }
+  50% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    transform: translate3d(-50%, -50%, 0) rotate(720deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+    transform: translate3d(-50%, -50%, 0) rotate(1440deg);
+    opacity: .314;
+  }
+}
+
+@-webkit-keyframes progressing {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(50%, 0);
+    transform: translate(50%, 0);
+  }
+}
+
+@keyframes progressing {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  100% {
+    -webkit-transform: translate(50%, 0);
+    transform: translate(50%, 0);
+  }
+}
+
+@-webkit-keyframes progressTease {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  20% {
+    -webkit-transform: scaleX(1.04);
+    transform: scaleX(1.04);
+  }
+  40% {
+    -webkit-transform: scaleX(1.02);
+    transform: scaleX(1.02);
+  }
+  60% {
+    -webkit-transform: scaleX(1.06);
+    transform: scaleX(1.06);
+  }
+  80% {
+    -webkit-transform: scaleX(1.03);
+    transform: scaleX(1.03);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+@keyframes progressTease {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+  20% {
+    -webkit-transform: scaleX(1.04);
+    transform: scaleX(1.04);
+  }
+  40% {
+    -webkit-transform: scaleX(1.02);
+    transform: scaleX(1.02);
+  }
+  60% {
+    -webkit-transform: scaleX(1.06);
+    transform: scaleX(1.06);
+  }
+  80% {
+    -webkit-transform: scaleX(1.03);
+    transform: scaleX(1.03);
+  }
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+  }
 }
 
 .app-input {

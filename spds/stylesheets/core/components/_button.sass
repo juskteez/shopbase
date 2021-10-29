@@ -1,30 +1,224 @@
 .button
   display: inline-block
   height: 40px
-  padding: 6px 16px
   border-radius: 10px
+  padding: 0
+  color: $nl600
   box-shadow: inset 0 0 0 1px rgba($nl600, .24)
   background-color: rgba($nl600,0)
-  &:hover
-    box-shadow: inset 0 0 0 1px rgba($nl600, .4)
-    background-color: rgba($nl600,.04)
+  transform: translate3d(0,0,0)
+  will-change: transform
+  transition: .075s all ease
   &-wrap
     display: flex
+    border-radius: 10px
+    overflow: hidden
     height: 100%
     align-items: center
     justify-content: space-between
+    padding: 6px 16px
+    transform: translate3d(0,0,0)
   &-wrap > *:not(:last-child)
     margin-right: 8px
   &-content
-    color: $nl800
-  &:hover &-content
     color: $nl600
+
+  // States
+  &:hover
+    box-shadow: inset 0 0 0 1px rgba($nl600, .48)
+    background-color: rgba($nl600,.04)
+  &:hover &-content
+    color: $nl800
+
+  &:active
+    transform: translate3d(0,1px,0)
+    background-color: rgba($nl600,.08)
+    transition: 0s all ease
+
+  // &:not(:hover):focus
+  //   box-shadow: inset 0 0 0 1px rgba($nl600, .48), 0 0 0 3px rgba($nl200,.48)
+  //   background-color: rgba(white,1)
 
   // Sizes
   &.sml
     height: 32px
+  &.sml &-wrap
     padding: 6px 12px
 
   &.emp
     height: 48px
+  &.emp &-wrap
+    
     padding: 6px 20px
+
+  // Color
+  &.primary
+    background-color: $pl600
+    box-shadow: 0 4px 10px rgba($pl400, 0)
+    &:hover
+      background-color: $pl400
+      box-shadow: 0 6px 14px -6px rgba($pl400, .56)
+  &.primary &-content
+    color: white
+
+  &.secondary
+    box-shadow: inset 0 0 0 1px rgba($pl600, .72)
+    background-color: rgba($pl600,.04)
+    &:hover
+      box-shadow: inset 0 0 0 1px rgba($pl600, 1)
+      background-color: rgba($pl600,.08)
+  &.secondary &-content
+    color: rgba($pl600, .88)
+  &.secondary:hover &-content
+    color: rgba($pl600, 1)
+
+  &.subtle
+    box-shadow: inset 0 0 0 1px rgba($nl600, 0)
+
+  &.danger
+    box-shadow: inset 0 0 0 1px rgba($rl400, .48)
+    background-color: rgba($rl400,.04)
+    &:hover
+      box-shadow: inset 0 0 0 1px rgba($rl400, 1)
+      background-color: rgba($rl400,.08)
+  &.danger &-content
+    color: rgba($rl400, 1)
+  &.danger:hover &-content
+    color: rgba($rl600, 1)
+
+  &.disabled,
+  &.disabled *,
+  &.loading,
+  &.loading *,
+  &.progress,
+  &.progress *
+    pointer-events: none
+  &.disabled
+    box-shadow: inset 0 0 0 1px rgba($nl400, 0)
+    background-color: rgba($nl400,.16)
+    color: rgba($nl400,.32)
+  &.disabled &-content
+    color: rgba($nl400,.32)
+
+  &.loading,
+  &.progress
+    background-color: rgba($nl400,.08)
+    box-shadow: inset 0 0 0 1px rgba($nl400, .12)
+    color: $nl400
+    &.primary
+      background-color: rgba($pl400,.48)
+      box-shadow: 0 4px 10px rgba($pl400, 0)
+      color: white
+    &.secondary
+      background-color: rgba($pl400,.08)
+      box-shadow: inset 0 0 0 1px rgba($pl400, .16)
+      color: $pl200
+    &.subtle
+      background-color: rgba($nl400,.08)
+      box-shadow: inset 0 0 0 1px rgba($nl600, 0)
+    &.danger
+      background-color: rgba($rl400,.04)
+      box-shadow: inset 0 0 0 1px rgba($rl400, .08)
+      color: $rl200
+
+    .button-content
+      color: currentColor
+
+  &.progress
+    .button-wrap
+      position: relative
+    .button-progress_bar
+      content: ""
+      position: absolute
+      height: 2px
+      left: 0
+      bottom: 0
+      animation: progressTease 1s ease infinite
+      transform-origin: bottom left
+      overflow: hidden
+      border-radius: 2px
+      &:before
+        content: ""
+        position: absolute
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: currentColor
+        opacity: .24
+      &:after
+        content: ""
+        position: absolute
+        width: 200%
+        height: 100%
+        background-image: linear-gradient(90deg, currentColor 0%, rgba(white,0) 4%, currentColor 50%, rgba(white,0) 54%, currentColor 100%)
+        animation: progressing 1s ease-in-out infinite
+        bottom: 0
+        right: 0
+        opacity: .88
+
+  &.loading
+    .button-content,
+    .button-icon,
+    .button-icon svg,
+    .button-icon svg *
+      color: transparent
+      fill: transparent
+      stroke: transparent
+    .button-wrap
+      position: relative
+      &:before,
+      &:after
+        content: ""
+        position: absolute
+        border-left: 6px dotted currentColor
+        width: 16px
+        height: 10px
+        top: 50%
+        left: 50%
+        transform: translate3d(-50%,-50%,0) rotate(0deg)
+        animation: center_spin_l 2.4s cubic-bezier(.6,0,.1,1) infinite
+      &:after
+        border-left: none
+        border-right: 6px dotted currentColor
+        animation: center_spin_r 2.4s cubic-bezier(.6,0,.1,1) infinite
+
+@keyframes center_spin_l
+  0%
+    transform: translate3d(-50%,-50%,0) rotate(0deg)
+  50%
+    transform: translate3d(-50%,-50%,0) rotate(720deg)
+    opacity: .314
+  100%
+    transform: translate3d(-50%,-50%,0) rotate(1440deg)
+
+@keyframes center_spin_r
+  0%
+    transform: translate3d(-50%,-50%,0) rotate(0deg)
+    opacity: .314
+  50%
+    transform: translate3d(-50%,-50%,0) rotate(720deg)
+    opacity: 1
+  100%
+    transform: translate3d(-50%,-50%,0) rotate(1440deg)
+    opacity: .314
+
+@keyframes progressing
+  0%
+    transform: translate(0,0)
+  100%
+    transform: translate(50%,0)
+
+@keyframes progressTease
+  0%
+    transform: scaleX(1)
+  20%
+    transform: scaleX(1.04)
+  40%
+    transform: scaleX(1.02)
+  60%
+    transform: scaleX(1.06)
+  80%
+    transform: scaleX(1.03)
+  100%
+    transform: scaleX(1)

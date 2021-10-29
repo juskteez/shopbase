@@ -48,3 +48,21 @@
   margin-bottom: 24px
   border-radius: 12px
   box-shadow: 0 0 0 1px rgba($nl400,.08), 0 1px 3px rgba(black,.08)
+
+// .grid
+//   display: inline-grid
+//   grid-template-columns: auto auto auto auto auto auto
+//   &.m
+//     gap: 8px
+
+.group
+  &.s > *:not(:last-child)
+    margin-right: 4px
+  &.m > *:not(:last-child)
+    margin-right: 8px
+  &.l > *:not(:last-child)
+    margin-right: 12px
+  &.xl > *:not(:last-child)
+    margin-right: 16px
+  &.xx > *:not(:last-child)
+    margin-right: 24px

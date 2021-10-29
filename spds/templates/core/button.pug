@@ -1,12 +1,13 @@
 mixin button
+  - let _disabled = (attributes.off || false) ? "disabled" : null
   - let _url      = attributes.url || "javascript:;"
-  - let _id       = attributes.id
-  - let _class    = ["type-body-m button",attributes.class || "neutral"].join(" ").trim()
   - let _ref      = attributes.ref || "nofollow"
-  - let _target   = attributes.target
   - let _tooltip  = attributes.tooltip
+  - let _target   = attributes.target
   - let _icon     = attributes.icon
-  - let _disabled = attributes.off || false
+  - let _id       = attributes.id
+  - let _progress = attributes.progress || 0
+  - let _class    = ["type-body-m button",attributes.class || "neutral", _disabled].join(" ").trim()
   a(
     href     =_url,
     id       =_id,
@@ -17,6 +18,8 @@ mixin button
     disabled =_disabled
   )
     span.button-wrap
+      if _class.includes("progress")
+        span.button-progress_bar(style=(_progress)?`width: ${_progress}%`:"")
       if _icon
         span.icon.button-icon @
       span.button-content

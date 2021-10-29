@@ -1,15 +1,24 @@
-mixin button()
-  - let _url = attributes.url || "javascript:;"
-  - let _id = attributes.id
-  - let _class = attributes.class || ""
-  - let _ref = attributes.ref || "nofollow"
-  - let _target = attributes.target
-  - let _title = attributes.tooltip
+mixin button
+  - let _url      = attributes.url || "javascript:;"
+  - let _id       = attributes.id
+  - let _class    = ["type-body-m button",attributes.class || "neutral"].join(" ").trim()
+  - let _ref      = attributes.ref || "nofollow"
+  - let _target   = attributes.target
+  - let _tooltip  = attributes.tooltip
+  - let _icon     = attributes.icon
+  - let _disabled = attributes.off || false
   a(
-    href=_url,
-    id=_id,
-    class=["button",_class].join(" "),
-    ref="",
-    target="",
-    title=""
+    href     =_url,
+    id       =_id,
+    class    =_class,
+    target   =_target,
+    ref      =_ref,
+    title    =_tooltip,
+    disabled =_disabled
   )
+    span.button-wrap
+      if _icon
+        span.icon.button-icon @
+      span.button-content
+        block
+

@@ -32,3 +32,19 @@
   &-page-subtitle
     text-transform: uppercase
     color: $nl400
+
+.doc-main
+  .block
+    border-radius: 0
+    margin-bottom: 0
+  .block:first-child,
+  .block.lonely+.block:not(.lonely)
+    border-radius: 12px 12px 0 0
+  .block:last-child,
+  .block:
+    border-radius: 0 0 12px 12px
+    margin-bottom: 24px
+  .block.lonely
+    margin-top: 24px
+    margin-bottom: 24px
+    border-radius: 12px

@@ -218,4 +218,25 @@ a:hover {
   color: #ACB5B9;
 }
 
+.doc-main .block {
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.doc-main .block:first-child,
+.doc-main .block.lonely + .block:not(.lonely) {
+  border-radius: 12px 12px 0 0;
+}
+
+.doc-main .block:last-child {
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 24px;
+}
+
+.doc-main .block.lonely {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+
 /*# sourceMappingURL=documentation.css.map */

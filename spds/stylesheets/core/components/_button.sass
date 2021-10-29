@@ -1,0 +1,30 @@
+.button
+  display: inline-block
+  height: 40px
+  padding: 6px 16px
+  border-radius: 10px
+  box-shadow: inset 0 0 0 1px rgba($nl600, .24)
+  background-color: rgba($nl600,0)
+  &:hover
+    box-shadow: inset 0 0 0 1px rgba($nl600, .4)
+    background-color: rgba($nl600,.04)
+  &-wrap
+    display: flex
+    height: 100%
+    align-items: center
+    justify-content: space-between
+  &-wrap > *:not(:last-child)
+    margin-right: 8px
+  &-content
+    color: $nl800
+  &:hover &-content
+    color: $nl600
+
+  // Sizes
+  &.sml
+    height: 32px
+    padding: 6px 12px
+
+  &.emp
+    height: 48px
+    padding: 6px 20px

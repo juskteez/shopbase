@@ -159,8 +159,8 @@ let deviceMotionRequest = () => {
             if ( response == "granted" ) {
                 motionSensed = true;
                 window.addEventListener( "devicemotion", (e) => {
-                    accelerator.x = Number(e.acceleration.x*10).toFixed(1);
-	                accelerator.y = Number(e.acceleration.y*10).toFixed(1);
+                    accelerator.x = Number(e.acceleration.x * 100);
+	                accelerator.y = Number(e.acceleration.y * 100);
                     // accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
                 });
             }
@@ -201,7 +201,7 @@ function animate() {
         target.y = ( 1 - accelerator.y ) * 0.001;
         // mobileAcX.innerHTML = target.x;
         // mobileAcY.innerHTML = target.y;
-        controls.target.set( 0, target.y, -0.2 );
+        controls.target.set( target.x, target.y, -0.2 );
         mobileAcZ.innerHTML = "controls.target.set( "+target.x+", "+target.y+", -0.2 );";
         // console.log()
     } else {

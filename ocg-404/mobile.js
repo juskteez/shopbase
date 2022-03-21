@@ -46,6 +46,6 @@ function permission () {
 window.onload = function() {
   console.log('Page Loaded');
 
-  permission();
+  document.body.addEventListener("click", permission);
 
 }

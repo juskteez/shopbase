@@ -2,20 +2,21 @@
 //   location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 // }
 
-let acX, acY, acZ
+let mobileAcX, mobileAcY, mobileAcZ
 
 let accelerator = (data) => {
-  acX.innerHTML = data[0].toFixed(2)
-  acY.innerHTML = data[1].toFixed(2)
-  acZ.innerHTML = data[2].toFixed(2)
+  let [acX, acY, acZ] = data
+  mobileAcX.innerHTML = acX.toFixed(2)
+  mobileAcY.innerHTML = acY.toFixed(2)
+  // mobileAcZ.innerHTML = acZ.toFixed(2)
 }
 
-function permission () {
+let deviceMotionRequest = () => {
   if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
-    // (optional) Do something before API request prompt.
+    // Before API request prompt.
     DeviceMotionEvent.requestPermission()
       .then( response => {
-      // (optional) Do something after API prompt dismissed.
+      // After API prompt dismissed.
       if ( response == "granted" ) {
         window.addEventListener( "devicemotion", (e) => {
           accelerator([e.accelerationIncludingGravity.x, e.accelerationIncludingGravity.y, e.accelerationIncludingGravity.z]);
@@ -23,15 +24,15 @@ function permission () {
       }
     }).catch( console.error );
   } else {
-    alert( "DeviceMotionEvent is not defined" );
+    // DeviceMotionEvent is not supported
   }
 }
 
 window.onload = function() {
   console.log('Page Loaded');
-  acX = document.getElementById("ac_x")
-  acY = document.getElementById("ac_y")
-  acZ = document.getElementById("ac_z")
-  document.body.addEventListener("click", permission);
+  mobileAcX = document.getElementById("ac_x")
+  mobileAcY = document.getElementById("ac_y")
+  mobileAcZ = document.getElementById("ac_z")
+  document.body.addEventListener("click", deviceMotionRequest);
 
 }

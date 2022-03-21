@@ -12,6 +12,7 @@ camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight
 
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
 let model;
+let mobileAcX, mobileAcY, mobileAcZ;
 
 
 init();
@@ -45,13 +46,10 @@ function Light() {
 }
 
 function onMouseMove( event ) {
-
 	mouse.x = ( event.clientX - windowHalf.x );
 	mouse.y = ( event.clientY - windowHalf.y );
-    console.log(mouse.x);
-    console.log(mouse.y);
+    console.log(event.clientX, event.clientY);
 }
-
 
 function init() {
     const container = document.createElement( 'div' );
@@ -122,7 +120,7 @@ function init() {
     // controls.addEventListener( 'change', render ); // use if there is no animation loop
     controls.enabled = false;
     controls.enableDamping = true;
-    controls.dampingFactor = 1.0;
+    // controls.dampingFactor = 10.0;
     // controls.autoRotate = true;
     // controls.enableZoom = true;
     // controls.minDistance = 2;
@@ -140,6 +138,29 @@ function init() {
 
 }
 
+// let accelerator = (data) => {
+//     let [acX, acY, acZ] = data
+// 	mobileAcX = ( acX - windowHalf.x );
+// 	mobileAcY = ( acY - windowHalf.y );
+// }
+
+// let deviceMotionRequest = () => {
+//     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
+//         // Before API request prompt.
+//         DeviceMotionEvent.requestPermission()
+//         .then( response => {
+//         // After API prompt dismissed.
+//         if ( response == "granted" ) {
+//             window.addEventListener( "devicemotion", (e) => {
+//             accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
+//             });
+//         }
+//         }).catch( console.error );
+//     } else {
+//         // DeviceMotionEvent is not supported
+//     }
+// }
+
 function onWindowResize() {
 
     const width = window.innerWidth;
@@ -153,7 +174,6 @@ function onWindowResize() {
     render();
 
 }
-
 
 function animate() {
 
@@ -183,7 +203,6 @@ function animate() {
 
 }
 
-
 function render() {
 
     //report camera position:
@@ -196,3 +215,8 @@ function render() {
     renderer.render( scene, camera );
 
 }
+
+// window.onload = function() {
+//     console.log('Page Loaded');
+//     document.body.addEventListener("click", deviceMotionRequest);
+// }

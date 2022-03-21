@@ -2,8 +2,15 @@
 //   location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 // }
 
+acX = document.getElementById("ac_x")
+acY = document.getElementById("ac_y")
+acZ = document.getElementById("ac_z")
+
 let accelerator = (data) => {
-  console.log("Accelerating..", data)
+  // console.log("Accelerating..", data)
+  acX.innerHTML = data[0]
+  acY.innerHTML = data[1]
+  acZ.innerHTML = data[2]
 }
 
 // if (window.DeviceOrientationEvent) {
@@ -34,7 +41,7 @@ function permission () {
       // (optional) Do something after API prompt dismissed.
       if ( response == "granted" ) {
         window.addEventListener( "devicemotion", (e) => {
-          accelerator([e.acceleration.x * 2, e.acceleration.y * 2]);
+          accelerator([e.acceleration.x, e.acceleration.y, e.acceleration.z]);
         });
       }
     }).catch( console.error );
@@ -45,7 +52,6 @@ function permission () {
 
 window.onload = function() {
   console.log('Page Loaded');
-
   document.body.addEventListener("click", permission);
 
 }

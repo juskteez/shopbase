@@ -14,7 +14,7 @@ const controls = new THREE.OrbitControls( camera, renderer.domElement );
 let motionSensed = false;
 let model;
 let mobile_AcX, mobile_AcY, mobile_AcZ = 0;
-let mobileAcX, mobileAcY, mobileAcZ;
+let mobileAcX, mobileAcY, mobileAcZ, mouseX, mouseY;
 
 
 init();
@@ -196,13 +196,15 @@ function animate() {
         target.y = mobile_AcY;
         mobileAcX.innerHTML = target.x
         mobileAcY.innerHTML = target.y
+        controls.target.set( mobile_AcX, mobile_AcY );
     } else {
         target.x = ( 1 - mouse.x ) * 0.001;
         target.y = ( 1 - mouse.y ) * 0.001;
+        controls.target.set( target.x, target.y, - 0.2 );
     }
 
 
-    controls.target.set( target.x, target.y, - 0.2 );
+    // controls.target.set( target.x, target.y, - 0.2 );
 
     controls.update();
 
@@ -232,5 +234,7 @@ window.onload = function() {
     mobileAcX = document.getElementById("ac_x")
     mobileAcY = document.getElementById("ac_y")
     mobileAcZ = document.getElementById("ac_z")
+    mouseX = document.getElementById("m_x")
+    mouseY = document.getElementById("m_y")
     document.body.addEventListener("click", deviceMotionRequest);
 }

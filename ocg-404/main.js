@@ -4,6 +4,7 @@ let last_cameraPositionX;
 let frontLight, leftLight, rightLight, topLight,ambientLight, light;
 const defaultCameraPosition = new THREE.Vector3( 0.766, 1.392, 1.603 );
 const mouse = new THREE.Vector2();
+const accelerator = new THREE.Vector2();
 const target = new THREE.Vector2();
 const windowHalf = new THREE.Vector2( window.innerWidth / 2, window.innerHeight / 2 );
 
@@ -48,9 +49,11 @@ function Light() {
 }
 
 function onMouseMove( event ) {
-	mouse.x = ( event.clientX - windowHalf.x );
-	mouse.y = ( event.clientY - windowHalf.y );
-    // console.log(event.clientX, event.clientY);
+    if (!motionSensed) {
+        mouse.x = ( event.clientX - windowHalf.x );
+        mouse.y = ( event.clientY - windowHalf.y );
+        // console.log(event.clientX, event.clientY);
+    }
 }
 
 function init() {
@@ -140,12 +143,12 @@ function init() {
 
 }
 
-let accelerator = (data) => {
-    let [acX, acY, acZ] = data
-	mobile_AcX = acX / 100*-1;
-	mobile_AcY = acY / 100;
-    // console.log(mobile_AcX, mobile_AcY);
-}
+// let accelerator = (data) => {
+//     let [acX, acY, acZ] = data
+// 	mobile_AcX = acX / 10;
+// 	mobile_AcY = acY / 10;
+//     // console.log(mobile_AcX, mobile_AcY);
+// }
 
 let deviceMotionRequest = () => {
     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
@@ -156,7 +159,9 @@ let deviceMotionRequest = () => {
             if ( response == "granted" ) {
                 motionSensed = true;
                 window.addEventListener( "devicemotion", (e) => {
-                accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
+                    accelerator.x = Number(e.acceleration.x*10).toFixed(1);
+	                accelerator.y = Number(e.acceleration.y*10).toFixed(1);
+                    // accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
                 });
             }
         }).catch( console.error );
@@ -192,42 +197,34 @@ function animate() {
     }
 
     if (motionSensed) {
-        target.x = mobile_AcX;
-        target.y = mobile_AcY;
-        mobileAcX.innerHTML = target.x
-        mobileAcY.innerHTML = target.y
-        controls.target.set( mobile_AcX, mobile_AcY );
+        target.x = ( 1 - accelerator.x ) * 0.001;
+        target.y = ( 1 - accelerator.y ) * 0.001;
+        // mobileAcX.innerHTML = target.x;
+        // mobileAcY.innerHTML = target.y;
+        controls.target.set( 0, target.y, -0.2 );
+        mobileAcZ.innerHTML = "controls.target.set( "+target.x+", "+target.y+", -0.2 );";
+        // console.log()
     } else {
         target.x = ( 1 - mouse.x ) * 0.001;
         target.y = ( 1 - mouse.y ) * 0.001;
         controls.target.set( target.x, target.y, - 0.2 );
+        if (mobileAcZ) {
+            mobileAcZ.innerHTML = "controls.target.set( "+mouse.x+", "+mouse.y+", -0.2 );"
+        }
+        // controls.target.set( 0, 0, -0.2 );
     }
 
-
     // controls.target.set( target.x, target.y, - 0.2 );
-
     controls.update();
-
     requestAnimationFrame( animate );
-
-
     render();
-
-
 }
+
 
 function render() {
-
-    //report camera position:
-
-    // if (camera.position.x != last_cameraPositionX) {
-    //     console.log(camera.position);
-    //     last_cameraPositionX = camera.position.x;
-    // }
-
     renderer.render( scene, camera );
-
 }
+
 
 window.onload = function() {
     console.log('Page Loaded');

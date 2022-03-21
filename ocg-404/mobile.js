@@ -2,9 +2,9 @@
 //   location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 // }
 
-acX = document.getElementById("ac_x")
-acY = document.getElementById("ac_y")
-acZ = document.getElementById("ac_z")
+let acX = document.getElementById("ac_x")
+let acY = document.getElementById("ac_y")
+let acZ = document.getElementById("ac_z")
 
 let accelerator = (data) => {
   // console.log("Accelerating..", data)

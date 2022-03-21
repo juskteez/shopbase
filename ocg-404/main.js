@@ -38,8 +38,6 @@ function Light() {
     // const top_helper = new THREE.SpotLightHelper( topLight, 20 );
     // scene.add( top_helper );
 
-
-
     // ambientLight = new THREE.AmbientLight( 0x005BFF );
     // ambientLight.intensity = 5;
     // scene.add( ambientLight );
@@ -50,8 +48,8 @@ function onMouseMove( event ) {
 
 	mouse.x = ( event.clientX - windowHalf.x );
 	mouse.y = ( event.clientY - windowHalf.y );
-    // console.log(mouse.x);
-    // console.log(mouse.y);
+    console.log(mouse.x);
+    console.log(mouse.y);
 }
 
 
@@ -64,56 +62,56 @@ function init() {
     scene = new THREE.Scene();
 
     const loader = new THREE.GLTFLoader().setPath( 'Models/' );
-						loader.load( '404.gltf', function ( gltf ) {
-                            model = gltf;
-							scene.add( model.scene );
-                            //move model down.
-                            model.scene.position.y = -1;   
-                            //merge light with custom shader
-                            var uniforms = THREE.UniformsUtils.merge(
-                                [THREE.UniformsLib['lights'],
-                                {
-                                    lightIntensity: {type: 'f', value: 1.0},
-                                }
-                                ]
-                            )
-                            // console.log(uniforms)
-                            //new custom shader
-                            var material = new THREE.ShaderMaterial({
-                                uniforms: THREE.UniformsUtils.merge([
-                                    THREE.UniformsLib['lights'],
-                                    {
-                                        lightIntensity: {type: 'f', value: 0.6},
-                                        textureSampler: {type: 't', value: null},
-                                        color1: {
-                                            value: new THREE.Color(0x005BFF) //top
-                                          },
-                                          color2: {
-                                            value: new THREE.Color(0x00000) //bottom
-                                          }
-                                    }
-                                ]),
-                                vertexShader: vertShader,
-                                fragmentShader: fracShader,
-                                //enable light
-                                lights: true
+    loader.load( '404.gltf', function ( gltf ) {
+        model = gltf;
+        scene.add( model.scene );
+        //move model down.
+        model.scene.position.y = -1;
+        //merge light with custom shader
+        var uniforms = THREE.UniformsUtils.merge(
+            [THREE.UniformsLib['lights'],
+            {
+                lightIntensity: {type: 'f', value: 1.0},
+            }
+            ]
+        )
+        // console.log(uniforms)
+        //new custom shader
+        var material = new THREE.ShaderMaterial({
+            uniforms: THREE.UniformsUtils.merge([
+                THREE.UniformsLib['lights'],
+                {
+                    lightIntensity: {type: 'f', value: 0.6},
+                    textureSampler: {type: 't', value: null},
+                    color1: {
+                        value: new THREE.Color(0x005BFF) //top
+                        },
+                        color2: {
+                        value: new THREE.Color(0x00000) //bottom
+                        }
+                }
+            ]),
+            vertexShader: vertShader,
+            fragmentShader: fracShader,
+            //enable light
+            lights: true
 
-                              });      
-                              
-                            model.scene.traverse( function(node) {
-                                
+            });
 
-                                if (node.isMesh){
-                                    if (node.material.name == "side") {
-                                        // console.log(node.material.name);
-                                        node.material = material;
-                                    }
-                                }
-                            });
+        model.scene.traverse( function(node) {
 
-							render();
-						} );
-                                         
+
+            if (node.isMesh){
+                if (node.material.name == "side") {
+                    // console.log(node.material.name);
+                    node.material = material;
+                }
+            }
+        });
+
+        render();
+    } );
+
 
     // renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -124,6 +122,8 @@ function init() {
     // controls.addEventListener( 'change', render ); // use if there is no animation loop
     controls.enabled = false;
     controls.enableDamping = true;
+    controls.dampingFactor = 1.0;
+    // controls.autoRotate = true;
     // controls.enableZoom = true;
     // controls.minDistance = 2;
     // controls.maxDistance = 10;
@@ -141,7 +141,7 @@ function init() {
 }
 
 function onWindowResize() {
-    
+
     const width = window.innerWidth;
 	const height = window.innerHeight;
 
@@ -163,23 +163,23 @@ function animate() {
         model.scene.children[0].position.y = Math.sin(clock.getElapsedTime()*4)*0.05;
         model.scene.children[2].position.y = Math.sin((clock.getElapsedTime()*4)-1)*0.05;
         model.scene.children[1].position.y = Math.sin((clock.getElapsedTime()*4)-2)*0.05;
-        
+
     }
 
 
     target.x = ( 1 - mouse.x ) * 0.001;
     target.y = ( 1 - mouse.y ) * 0.001;
-  
+
 
     controls.target.set( target.x, target.y, - 0.2 );
-    
+
     controls.update();
 
     requestAnimationFrame( animate );
-    
+
 
     render();
-    
+
 
 }
 

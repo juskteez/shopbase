@@ -2,36 +2,13 @@
 //   location.href = "https:" + window.location.href.substring( window.location.protocol.length );
 // }
 
-let acX = document.getElementById("ac_x")
-let acY = document.getElementById("ac_y")
-let acZ = document.getElementById("ac_z")
+let acX, acY, acZ
 
 let accelerator = (data) => {
-  // console.log("Accelerating..", data)
-  acX.innerHTML = data[0]
-  acY.innerHTML = data[1]
-  acZ.innerHTML = data[2]
+  acX.innerHTML = data[0].toFixed(2)
+  acY.innerHTML = data[1].toFixed(2)
+  acZ.innerHTML = data[2].toFixed(2)
 }
-
-// if (window.DeviceOrientationEvent) {
-//   console.info("DeviceOrientationEvent supported")
-//   window.addEventListener("deviceorientation", function (event) {
-//       accelerator([event.beta, event.gamma]);
-//   }, true);
-// } else {
-//   console.info("DeviceOrientationEvent not supported")
-// }
-// if (window.DeviceMotionEvent) {
-//   console.info("DeviceMotionEvent supported")
-//   window.addEventListener('devicemotion', function (event) {
-//       accelerator([event.acceleration.x * 2, event.acceleration.y * 2]);
-//   }, true);
-// } else {
-//   console.info("DeviceMotionEvent not supported, trying MozOrientation")
-//   window.addEventListener("MozOrientation", function (orientation) {
-//       accelerator([orientation.x * 50, orientation.y * 50]);
-//   }, true);
-// }
 
 function permission () {
   if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
@@ -41,7 +18,7 @@ function permission () {
       // (optional) Do something after API prompt dismissed.
       if ( response == "granted" ) {
         window.addEventListener( "devicemotion", (e) => {
-          accelerator([e.acceleration.x, e.acceleration.y, e.acceleration.z]);
+          accelerator([e.accelerationIncludingGravity.x, e.accelerationIncludingGravity.y, e.accelerationIncludingGravity.z]);
         });
       }
     }).catch( console.error );
@@ -52,6 +29,9 @@ function permission () {
 
 window.onload = function() {
   console.log('Page Loaded');
+  acX = document.getElementById("ac_x")
+  acY = document.getElementById("ac_y")
+  acZ = document.getElementById("ac_z")
   document.body.addEventListener("click", permission);
 
 }

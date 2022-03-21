@@ -4,14 +4,14 @@
 
 let mobileAcX, mobileAcY, mobileAcZ
 
-let accelerator = (data) => {
+let accelerating = (data) => {
   let [acX, acY, acZ] = data
-  mobileAcX.innerHTML = acX.toFixed(2)
-  mobileAcY.innerHTML = acY.toFixed(2)
+  mobileAcX.innerHTML = acX / 100 * -1
+  mobileAcY.innerHTML = acY / 100
   // mobileAcZ.innerHTML = acZ.toFixed(2)
 }
 
-let deviceMotionRequest = () => {
+let deviceMotionRequesting = () => {
   if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
     // Before API request prompt.
     DeviceMotionEvent.requestPermission()
@@ -19,7 +19,7 @@ let deviceMotionRequest = () => {
       // After API prompt dismissed.
       if ( response == "granted" ) {
         window.addEventListener( "devicemotion", (e) => {
-          accelerator([e.accelerationIncludingGravity.x, e.accelerationIncludingGravity.y, e.accelerationIncludingGravity.z]);
+          accelerating([e.accelerationIncludingGravity.x, e.accelerationIncludingGravity.y, e.accelerationIncludingGravity.z]);
         });
       }
     }).catch( console.error );
@@ -33,6 +33,6 @@ window.onload = function() {
   mobileAcX = document.getElementById("ac_x")
   mobileAcY = document.getElementById("ac_y")
   mobileAcZ = document.getElementById("ac_z")
-  document.body.addEventListener("click", deviceMotionRequest);
+  document.body.addEventListener("click", deviceMotionRequesting);
 
 }

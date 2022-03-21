@@ -10,7 +10,9 @@ body {
 div {
     opacity: 0.36;
 }
-
+canvas {
+    pointer-events: none;
+}
 #content_text {
     align-content: center;
 }

@@ -11,7 +11,9 @@ renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
 camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20 );
 
 const controls = new THREE.OrbitControls( camera, renderer.domElement );
+let motionSensed = false;
 let model;
+let mobile_AcX, mobile_AcY, mobile_AcZ = 0;
 let mobileAcX, mobileAcY, mobileAcZ;
 
 
@@ -48,7 +50,7 @@ function Light() {
 function onMouseMove( event ) {
 	mouse.x = ( event.clientX - windowHalf.x );
 	mouse.y = ( event.clientY - windowHalf.y );
-    console.log(event.clientX, event.clientY);
+    // console.log(event.clientX, event.clientY);
 }
 
 function init() {
@@ -138,28 +140,31 @@ function init() {
 
 }
 
-// let accelerator = (data) => {
-//     let [acX, acY, acZ] = data
-// 	mobileAcX = ( acX - windowHalf.x );
-// 	mobileAcY = ( acY - windowHalf.y );
-// }
+let accelerator = (data) => {
+    let [acX, acY, acZ] = data
+	mobile_AcX = acX / 100*-1;
+	mobile_AcY = acY / 100;
+    // console.log(mobile_AcX, mobile_AcY);
+}
 
-// let deviceMotionRequest = () => {
-//     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
-//         // Before API request prompt.
-//         DeviceMotionEvent.requestPermission()
-//         .then( response => {
-//         // After API prompt dismissed.
-//         if ( response == "granted" ) {
-//             window.addEventListener( "devicemotion", (e) => {
-//             accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
-//             });
-//         }
-//         }).catch( console.error );
-//     } else {
-//         // DeviceMotionEvent is not supported
-//     }
-// }
+let deviceMotionRequest = () => {
+    if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
+        // Before API request prompt.
+        DeviceMotionEvent.requestPermission()
+        .then( response => {
+            // After API prompt dismissed.
+            if ( response == "granted" ) {
+                motionSensed = true;
+                window.addEventListener( "devicemotion", (e) => {
+                accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
+                });
+            }
+        }).catch( console.error );
+    } else {
+        motionSensed = false;
+        // DeviceMotionEvent is not supported
+    }
+}
 
 function onWindowResize() {
 
@@ -186,9 +191,15 @@ function animate() {
 
     }
 
-
-    target.x = ( 1 - mouse.x ) * 0.001;
-    target.y = ( 1 - mouse.y ) * 0.001;
+    if (motionSensed) {
+        target.x = mobile_AcX;
+        target.y = mobile_AcY;
+        mobileAcX.innerHTML = target.x
+        mobileAcY.innerHTML = target.y
+    } else {
+        target.x = ( 1 - mouse.x ) * 0.001;
+        target.y = ( 1 - mouse.y ) * 0.001;
+    }
 
 
     controls.target.set( target.x, target.y, - 0.2 );
@@ -216,7 +227,10 @@ function render() {
 
 }
 
-// window.onload = function() {
-//     console.log('Page Loaded');
-//     document.body.addEventListener("click", deviceMotionRequest);
-// }
+window.onload = function() {
+    console.log('Page Loaded');
+    mobileAcX = document.getElementById("ac_x")
+    mobileAcY = document.getElementById("ac_y")
+    mobileAcZ = document.getElementById("ac_z")
+    document.body.addEventListener("click", deviceMotionRequest);
+}

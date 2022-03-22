@@ -1,8 +1,12 @@
-let camera, scene, renderer;
-let clock;
-let last_cameraPositionX;
-let frontLight, leftLight, rightLight, topLight,ambientLight, light;
-let model;
+
+import "./build/three.js"
+import "./jsm/loaders/GLTFLoader.js"
+import "./jsm/controls/OrbitControls.js"
+
+let camera, scene, renderer, model;
+let clock, topLight, light;
+// let last_cameraPositionX;
+// let frontLight, leftLight, rightLight, topLight, ambientLight, light;
 
 const defaultCameraPosition = new THREE.Vector3( 0.766, 1.392, 1.603 );
 const mouse       = new THREE.Vector2();
@@ -73,7 +77,6 @@ const init = () => {
             }
             ]
         )
-        // console.log(uniforms)
         //new custom shader
         var material = new THREE.ShaderMaterial({
             uniforms: THREE.UniformsUtils.merge([
@@ -89,46 +92,70 @@ const init = () => {
                         }
                 }
             ]),
-            vertexShader: vertShader,
-            fragmentShader: fracShader,
+            vertexShader: `
+                varying vec2 vUv;
+                varying vec3 vecPos;
+                varying vec3 vecNormal;
+                void main() {
+                    vUv = uv;
+                    vecPos = (modelViewMatrix * vec4(position, 1.0)).xyz;
+                    vecNormal = (modelViewMatrix * vec4(normal, 0.0)).xyz;
+                    gl_Position = projectionMatrix * vec4(vecPos, 1.0);
+                }`,//vertShader,
+            fragmentShader: `
+                uniform vec3 color1;
+                uniform vec3 color2;
+                precision highp float;
+                varying vec2 vUv;
+                varying vec3 vecPos;
+                varying vec3 vecNormal;
+                uniform float lightIntensity;
+                uniform sampler2D textureSampler;
+                struct PointLight {
+                    vec3 color;
+                    vec3 position;
+                    float distance;
+                };
+                uniform PointLight pointLights[NUM_POINT_LIGHTS];
+                void main(void) {
+                    vec4 addedLights = vec4(0.0, 0.0, 0.0, 1.0);
+                    for(int l = 0; l < NUM_POINT_LIGHTS; l++) {
+                        vec3 lightDirection = normalize(vecPos - pointLights[l].position);
+                        addedLights.rgb += clamp(dot(-lightDirection, vecNormal), 0.0, 1.0)
+                                            * pointLights[l].color * lightIntensity;
+                    }
+                    vec4 gradient = vec4(mix(color1, color2, vUv.y), 1.0);
+                    gl_FragColor = gradient + (addedLights - 0.2);
+                }`,//fracShader,
             //enable light
             lights: true
 
             });
 
         model.scene.traverse( function(node) {
-
-
             if (node.isMesh){
-                if (node.material.name == "side") {
-                    // console.log(node.material.name);
-                    node.material = material;
-                }
+                if (node.material.name == "side") { node.material = material; }
             }
         });
 
         if (window.innerWidth < 1024) {
-            camera.zoom = 0.72;
-            nudger = 0.4;
+            camera.zoom = .72;
+            nudger = .4;
         } else {
             camera.zoom = 1;
-            nudger = 0;
+            nudger = .22;
         }
         camera.updateProjectionMatrix();
 
         render();
     } );
 
-
-    // renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
     renderer.domElement.id = "backdrop_404"
     renderer.domElement.classList.add("backdrop_canvas")
     container.appendChild( renderer.domElement );
 
-    // const controls = new THREE.OrbitControls( camera, renderer.domElement );
-    // controls.addEventListener( 'change', render ); // use if there is no animation loop
     controls.enabled = false;
     controls.enableDamping = true;
     controls.target.set( 0, 0, - 0.2 );
@@ -166,8 +193,9 @@ const deviceMotionRequest = () => {
                 accelerator.x = Number(e.gamma / 96);
                 accelerator.y = Number(e.beta / 128);
             });
-        } else {motionSensed = false;}
-        // DeviceMotionEvent is not supported
+
+        } else { motionSensed = false; } // DeviceMotionEvent is not supported
+
     }
 }
 
@@ -179,11 +207,11 @@ const onWindowResize = () => {
     windowHalf.set( width / 2, height / 2 );
 
     if (width < 1024) {
-        camera.zoom = 0.72;
-        nudger = 0.4;
+        camera.zoom = .72;
+        nudger = .4;
     } else {
         camera.zoom = 1;
-        nudger = 0;
+        nudger = .22;
     }
     camera.aspect = width / height;
 	camera.updateProjectionMatrix();
@@ -218,15 +246,23 @@ const animate = () => {
 }
 
 
-const render = () => {
-    renderer.render( scene, camera );
-}
-
+const render = () => { renderer.render( scene, camera ) }
 
 init();
 animate();
 render();
 
+let backBtn = document.querySelectorAll(".button-5.w-button")[0]
+if (backBtn) {
+    console.log(backBtn)
+    backBtn.addEventListener("mouseenter", () => {
+        if (!document.body.classList.contains("goinghome")) document.body.classList.add("goinghome")
+    });
+    backBtn.addEventListener("mouseleave", () => {
+        if (document.body.classList.contains("goinghome")) document.body.classList.remove("goinghome")
+    });
+}
+
 window.onload = () => {
-    document.body.addEventListener("click", deviceMotionRequest);
+    document.body.addEventListener("click", deviceMotionRequest)
 }

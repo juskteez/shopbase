@@ -1,0 +1,159 @@
+body
+  background-color: #00e1e1
+  transition: .8s background-color cubic-bezier(.18,0,.42,.98)
+  will-change: background-color
+  .navbar, .navbar-2
+    background-color: transparent
+    // mix-blend-mode: color-dodge
+
+  &.goinghome
+    background-color: #020a20
+
+.navbar, .navbar-2
+  .nav-link, .dropdown-toggle
+    color: rgba(0,136,255,1)
+    font-weight: normal
+    transition: 0.2s all ease
+    @media screen and (min-width: 1021px)
+      &:hover
+        color: white
+
+.hero-platform .container > img,
+.section-18, .div-block-348
+  display: none
+
+.dropdown-list-2.w--open
+  // background-color: rgba(37, 37, 37, 0.64)
+  box-shadow: none
+  .dropdown-link
+    color: rgba(0,136,255,.9) //rgba(white, .8)
+  .dropdown-link:not(:last-child)
+    border-color: rgba(0,136,255,.2)
+
+.hero-platform
+  padding-top: 8%
+  cursor: default
+
+.hero-platform .container
+  &._404
+    display: flex
+    align-items: center
+
+    h1, p
+      width: 90%
+      max-width: 520px
+      margin-left: auto
+      margin-right: auto
+    h1
+      line-height: 40px
+      font-size: 0
+      color: transparent
+      margin-bottom: 8px
+      &:before
+        content: "Oops!"
+        font-size: 40px
+        color: white
+  *
+    color: white
+    text-align: center
+  .div-block-402,
+  #w-node-b9c9e1a9-9e52-8b45-42e3-e24984b9390a-3ee61919
+    margin-top: 0
+    width: 100%
+
+.footer
+  position: fixed
+  bottom: 0
+  width: 100%
+  cursor: default
+  .grid-19
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    text-align: center
+    padding: 0
+    padding-bottom: 24px
+
+    *
+      color: white
+
+    .div-block-337
+      order: 1
+      width: 100%
+
+      p
+        text-align: center
+        opacity: .2
+        margin-top: 8px
+        margin-bottom: 0
+      img
+        display: none
+
+    & > div:not(.div-block-337)
+      width: 30%
+
+      p
+        font-size: 10px
+        opacity: .4
+        margin-bottom: 12px
+        letter-spacing: 1px
+
+      .link-ft,
+      .div-block-350
+        display: block
+        margin-bottom: 8px
+        font-size: 16px
+        a
+          opacity: .6
+          transition: .25s all ease
+        a:hover
+          opacity: 1
+        img
+          display: none
+
+.menu-button
+  transition: .4s all ease
+  .icon-2
+    color: rgba(0,136,255,1)
+
+.button-5.w-button
+  background-color: rgba(white, .1)
+  transition: .275s all cubic-bezier(.18,0,.42,.98)
+  &:hover
+    transition: 1.2s all cubic-bezier(.18,0,.42,.98)
+    background-color: rgba(0,136,255,1)
+
+html body .w-webflow-badge
+  display: none !important
+
+@media screen and (max-width: 1024px)
+  .footer
+    .div-block-334
+      padding: 0
+    .grid-19
+      padding-bottom: 0
+      .div-block-337 p
+        margin-bottom: 0
+      & > div:not(.div-block-337)
+        display: none
+
+  .hero-platform
+    padding-top: 64px
+    .container._404
+      h1
+        margin-bottom: 0
+        &::before
+          font-size: 32px
+      p
+        font-size: 15px
+        line-height: 1.5
+
+  .navbar
+    padding-right: 0
+    min-height: 58px
+
+    .nav-menu
+      isolation: isolate
+
+    .nav-menu *
+      color: black

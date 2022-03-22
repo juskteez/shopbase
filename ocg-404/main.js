@@ -1,3 +1,12 @@
+/*
+
+OpenCommerce Group 404 interactive visual 2022
+
+Author: https://github.com/IamTung-0000
+Contributor: https://github.com/juskteez
+origin: https://github.com/IamTung-0000/OCG-404
+
+*/
 
 import "./build/three.js"
 import "./jsm/loaders/GLTFLoader.js"
@@ -52,6 +61,16 @@ const onMouseMove = ( event ) => {
     if (!motionSensed) {
         mouse.x = ( event.clientX - windowHalf.x );
         mouse.y = ( event.clientY - windowHalf.y );
+    }
+}
+
+const viewAdjust = () => {
+    if (window.innerWidth < 1024) {
+        camera.zoom = .56;
+        nudger = .5;
+    } else {
+        camera.zoom = 1;
+        nudger = .22;
     }
 }
 
@@ -138,13 +157,7 @@ const init = () => {
             }
         });
 
-        if (window.innerWidth < 1024) {
-            camera.zoom = .72;
-            nudger = .4;
-        } else {
-            camera.zoom = 1;
-            nudger = .22;
-        }
+        viewAdjust();
         camera.updateProjectionMatrix();
 
         render();
@@ -187,14 +200,8 @@ const deviceMotionRequest = () => {
             }
         }).catch( console.error );
     } else {
-        if (window.DeviceMotionEvent) {
-            motionSensed = true;
-            window.addEventListener( "deviceorientation", (e) => {
-                accelerator.x = Number(e.gamma / 96);
-                accelerator.y = Number(e.beta / 128);
-            });
-
-        } else { motionSensed = false; } // DeviceMotionEvent is not supported
+        // DeviceMotionEvent is not supported
+        motionSensed = false;
 
     }
 }
@@ -206,13 +213,7 @@ const onWindowResize = () => {
 
     windowHalf.set( width / 2, height / 2 );
 
-    if (width < 1024) {
-        camera.zoom = .72;
-        nudger = .4;
-    } else {
-        camera.zoom = 1;
-        nudger = .22;
-    }
+    viewAdjust();
     camera.aspect = width / height;
 	camera.updateProjectionMatrix();
 	renderer.setSize( width, height );

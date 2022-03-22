@@ -16,6 +16,7 @@ let motionSensed = false;
 let model;
 let mobile_AcX, mobile_AcY, mobile_AcZ = 0;
 let mobileAcX, mobileAcY, mobileAcZ, mouseX, mouseY;
+let nudger = 0;
 
 
 init();
@@ -52,13 +53,12 @@ function onMouseMove( event ) {
     if (!motionSensed) {
         mouse.x = ( event.clientX - windowHalf.x );
         mouse.y = ( event.clientY - windowHalf.y );
-        // console.log(event.clientX, event.clientY);
     }
 }
 
 function init() {
-    const container = document.createElement( 'div' );
-    document.body.appendChild( container );
+    const container = document.getElementById("container_404");
+    container.classList.add("backdrop_container");
 
     camera.position.set(defaultCameraPosition.x,defaultCameraPosition.y,defaultCameraPosition.z);
 
@@ -112,6 +112,15 @@ function init() {
             }
         });
 
+        if (window.innerWidth < 1024) {
+            camera.zoom = 0.72;
+            nudger = 0.4;
+        } else {
+            camera.zoom = 1;
+            nudger = 0;
+        }
+        camera.updateProjectionMatrix();
+
         render();
     } );
 
@@ -119,17 +128,14 @@ function init() {
     // renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.domElement.id = "backdrop_404"
+    renderer.domElement.classList.add("backdrop_canvas")
     container.appendChild( renderer.domElement );
 
     // const controls = new THREE.OrbitControls( camera, renderer.domElement );
     // controls.addEventListener( 'change', render ); // use if there is no animation loop
     controls.enabled = false;
     controls.enableDamping = true;
-    // controls.dampingFactor = 10.0;
-    // controls.autoRotate = true;
-    // controls.enableZoom = true;
-    // controls.minDistance = 2;
-    // controls.maxDistance = 10;
     controls.target.set( 0, 0, - 0.2 );
 
     controls.update();
@@ -143,13 +149,6 @@ function init() {
 
 }
 
-// let accelerator = (data) => {
-//     let [acX, acY, acZ] = data
-// 	mobile_AcX = acX / 10;
-// 	mobile_AcY = acY / 10;
-//     // console.log(mobile_AcX, mobile_AcY);
-// }
-
 let deviceMotionRequest = () => {
     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
         // Before API request prompt.
@@ -158,10 +157,9 @@ let deviceMotionRequest = () => {
             // After API prompt dismissed.
             if ( response == "granted" ) {
                 motionSensed = true;
-                window.addEventListener( "devicemotion", (e) => {
-                    accelerator.x = Number(e.acceleration.x * 100);
-	                accelerator.y = Number(e.acceleration.y * 100);
-                    // accelerator([e.accelerationIncludingGravity.x * 2, e.accelerationIncludingGravity.y * 2, e.accelerationIncludingGravity.z * 1.5]);
+                window.addEventListener( "deviceorientation", (e) => {
+                    accelerator.x = Number(e.gamma / 96);
+	                accelerator.y = Number(e.beta / 128);
                 });
             }
         }).catch( console.error );
@@ -178,6 +176,13 @@ function onWindowResize() {
 
     windowHalf.set( width / 2, height / 2 );
 
+    if (width < 1024) {
+        camera.zoom = 0.72;
+        nudger = 0.4;
+    } else {
+        camera.zoom = 1;
+        nudger = 0;
+    }
     camera.aspect = width / height;
 	camera.updateProjectionMatrix();
 	renderer.setSize( width, height );
@@ -197,24 +202,14 @@ function animate() {
     }
 
     if (motionSensed) {
-        target.x = ( 1 - accelerator.x ) * 0.001;
-        target.y = ( 1 - accelerator.y ) * 0.001;
-        // mobileAcX.innerHTML = target.x;
-        // mobileAcY.innerHTML = target.y;
-        controls.target.set( target.x, target.y, -0.2 );
-        mobileAcZ.innerHTML = "controls.target.set( "+target.x+", "+target.y+", -0.2 );";
-        // console.log()
+        target.x = accelerator.x;
+        target.y = nudger + accelerator.y;
     } else {
         target.x = ( 1 - mouse.x ) * 0.001;
-        target.y = ( 1 - mouse.y ) * 0.001;
-        controls.target.set( target.x, target.y, - 0.2 );
-        if (mobileAcZ) {
-            mobileAcZ.innerHTML = "controls.target.set( "+mouse.x+", "+mouse.y+", -0.2 );"
-        }
-        // controls.target.set( 0, 0, -0.2 );
+        target.y = nudger + ( 1 - mouse.y ) * 0.001;
     }
 
-    // controls.target.set( target.x, target.y, - 0.2 );
+    controls.target.set( target.x, target.y, - 0.2 );
     controls.update();
     requestAnimationFrame( animate );
     render();

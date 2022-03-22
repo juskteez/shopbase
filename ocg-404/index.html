@@ -9,20 +9,23 @@
     </head>
     <body>
 
+        <style>
+            .backdrop_container {
+                background-image: linear-gradient(to top, #020a20, #001d45, #002c6e, #003b98, #0049c4, #005fd8, #0075ec, #008bff, #00a6ff, #00bdff, #00d0f2, #00e1e1);
+                /*background-color: #00e1e1; /*#005BFF; /*565646*/
+                margin: 0; padding: 0;
+                position: fixed;top: 0;left: 0;width: 100%;height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            }
+            .backdrop_canvas {opacity: 0.36;}
+        </style>
+        <div id="container_404" class="backdrop_container"></div>
+
         <script src="build/three.js"></script>
         <script src="jsm/loaders/GLTFLoader.js"></script>
         <script src="jsm/controls/OrbitControls.js"></script>
         <script src = "customshader/side-material.glsl"></script>
         <script src="main.js"></script>
-        <!-- <script src="mobile.js"></script> -->
-
-        <div id = "content_text"> <p>haha</p> </div>
-        <div id="acc_inspect" style="color: white;background: rgba(0,0,0,0.4);position: fixed;top:0;left:0;padding:6px;z-index:999;">
-            X: <span id="ac_x">0</span><br/>
-            Y: <span id="ac_y">0</span><br/>
-            Z: <span id="ac_z">0</span><br/><br/>
-            mX: <span id="m_x">0</span><br/>
-            mY: <span id="m_y">0</span><br/>
-        </div>
     </body>
 </html>

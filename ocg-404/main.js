@@ -2,12 +2,7 @@ let camera, scene, renderer;
 let clock;
 let last_cameraPositionX;
 let frontLight, leftLight, rightLight, topLight,ambientLight, light;
-
-let motionSensed  = false;
 let model;
-let mobile_AcX, mobile_AcY, mobile_AcZ = 0;
-let mobileAcX, mobileAcY, mobileAcZ, mouseX, mouseY;
-let nudger = 0;
 
 const defaultCameraPosition = new THREE.Vector3( 0.766, 1.392, 1.603 );
 const mouse       = new THREE.Vector2();
@@ -21,7 +16,10 @@ camera            = new THREE.PerspectiveCamera( 45, window.innerWidth / window.
 const controls    = new THREE.OrbitControls( camera, renderer.domElement );
 const container   = document.getElementById("container_404");
 
-function Light() {
+let motionSensed  = false;
+let nudger        = 0;
+
+const Light = () => {
 
     light = new THREE.PointLight(0xffffff);
     // We want it to be very close to our character
@@ -46,14 +44,14 @@ function Light() {
 
 }
 
-function onMouseMove( event ) {
+const onMouseMove = ( event ) => {
     if (!motionSensed) {
         mouse.x = ( event.clientX - windowHalf.x );
         mouse.y = ( event.clientY - windowHalf.y );
     }
 }
 
-function init() {
+const init = () => {
 
     container.classList.add("backdrop_container");
 
@@ -146,7 +144,7 @@ function init() {
 
 }
 
-let deviceMotionRequest = () => {
+const deviceMotionRequest = () => {
     container.classList.add("requested")
     if ( typeof( window.DeviceMotionEvent ) !== "undefined" && typeof( window.DeviceMotionEvent.requestPermission ) === "function" ) {
         // Before API request prompt.
@@ -173,7 +171,7 @@ let deviceMotionRequest = () => {
     }
 }
 
-function onWindowResize() {
+const onWindowResize = () => {
 
     const width = window.innerWidth;
 	const height = window.innerHeight;
@@ -194,7 +192,7 @@ function onWindowResize() {
 
 }
 
-function animate() {
+const animate = () => {
 
     // console.log(clock.getElapsedTime());
     if (model!= null ) {
@@ -220,7 +218,7 @@ function animate() {
 }
 
 
-function render() {
+const render = () => {
     renderer.render( scene, camera );
 }
 
@@ -230,11 +228,5 @@ animate();
 render();
 
 window.onload = () => {
-    console.log('Page Loaded');
-    mobileAcX = document.getElementById("ac_x")
-    mobileAcY = document.getElementById("ac_y")
-    mobileAcZ = document.getElementById("ac_z")
-    mouseX = document.getElementById("m_x")
-    mouseY = document.getElementById("m_y")
     document.body.addEventListener("click", deviceMotionRequest);
 }

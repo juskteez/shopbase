@@ -18,6 +18,30 @@
                 pointer-events: none;
                 z-index: -1;
             }
+            @media screen and (max-width: 1024px) {
+                .backdrop_container:not(.requested):after,
+                .backdrop_container:not(.requested):before {
+                    content: "";
+                    position: absolute;
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 50%;
+                    background-color: transparent;
+                    box-shadow: inset 0 0 0 2px #00e1e1;
+                    top: 56%;
+                    left: 50%;
+                    transform: translate3d(-50%,0,0) scale(0);
+                    animation: orient_hint 2s linear infinite;
+                }
+                .backdrop_container:not(.requested):before {
+                    animation-delay: 0.4s;
+                }
+            }
+            @keyframes orient_hint {
+                0% { transform: translate3d(-50%,0,0) scale(0); }
+                70% {opacity: 0;}
+                100% { transform: translate3d(-50%,0,0) scale(2);opacity: 0; }
+            }
             .backdrop_canvas {opacity: 0.36;}
         </style>
         <div id="container_404" class="backdrop_container"></div>

@@ -2,27 +2,24 @@ let camera, scene, renderer;
 let clock;
 let last_cameraPositionX;
 let frontLight, leftLight, rightLight, topLight,ambientLight, light;
-const defaultCameraPosition = new THREE.Vector3( 0.766, 1.392, 1.603 );
-const mouse = new THREE.Vector2();
-const accelerator = new THREE.Vector2();
-const target = new THREE.Vector2();
-const windowHalf = new THREE.Vector2( window.innerWidth / 2, window.innerHeight / 2 );
 
-renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
-camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20 );
-
-const controls = new THREE.OrbitControls( camera, renderer.domElement );
-let motionSensed = false;
+let motionSensed  = false;
 let model;
 let mobile_AcX, mobile_AcY, mobile_AcZ = 0;
 let mobileAcX, mobileAcY, mobileAcZ, mouseX, mouseY;
 let nudger = 0;
 
+const defaultCameraPosition = new THREE.Vector3( 0.766, 1.392, 1.603 );
+const mouse       = new THREE.Vector2();
+const accelerator = new THREE.Vector2();
+const target      = new THREE.Vector2();
+const windowHalf  = new THREE.Vector2( window.innerWidth / 2, window.innerHeight / 2 );
 
-init();
-animate();
-render();
+renderer          = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+camera            = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 20 );
 
+const controls    = new THREE.OrbitControls( camera, renderer.domElement );
+const container   = document.getElementById("container_404");
 
 function Light() {
 
@@ -57,7 +54,7 @@ function onMouseMove( event ) {
 }
 
 function init() {
-    const container = document.getElementById("container_404");
+
     container.classList.add("backdrop_container");
 
     camera.position.set(defaultCameraPosition.x,defaultCameraPosition.y,defaultCameraPosition.z);
@@ -150,6 +147,7 @@ function init() {
 }
 
 let deviceMotionRequest = () => {
+    container.classList.add("requested")
     if ( typeof( window.DeviceMotionEvent ) !== "undefined" && typeof( window.DeviceMotionEvent.requestPermission ) === "function" ) {
         // Before API request prompt.
         window.DeviceMotionEvent.requestPermission()
@@ -211,8 +209,8 @@ function animate() {
         target.x = accelerator.x;
         target.y = nudger + accelerator.y;
     } else {
-        target.x = ( 1 - mouse.x ) * 0.001;
-        target.y = nudger + ( 1 - mouse.y ) * 0.001;
+        target.x = ( 1 - mouse.x*.3 ) * 0.001;
+        target.y = nudger + ( 1 - mouse.y*.3 ) * 0.001;
     }
 
     controls.target.set( target.x, target.y, - 0.2 );
@@ -227,7 +225,11 @@ function render() {
 }
 
 
-window.onload = function() {
+init();
+animate();
+render();
+
+window.onload = () => {
     console.log('Page Loaded');
     mobileAcX = document.getElementById("ac_x")
     mobileAcY = document.getElementById("ac_y")

@@ -63,7 +63,7 @@ const init = () => {
 
     scene = new THREE.Scene();
 
-    const loader = new THREE.GLTFLoader().setPath( 'Models/' );
+    const loader = new THREE.GLTFLoader().setPath( 'https://juskteez.github.io/shopbase/ocg-404/Models/' );
     loader.load( '404.gltf', function ( gltf ) {
         model = gltf;
         scene.add( model.scene );

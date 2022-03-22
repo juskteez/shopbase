@@ -150,9 +150,9 @@ function init() {
 }
 
 let deviceMotionRequest = () => {
-    if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
+    if ( typeof( window.DeviceMotionEvent ) !== "undefined" && typeof( window.DeviceMotionEvent.requestPermission ) === "function" ) {
         // Before API request prompt.
-        DeviceMotionEvent.requestPermission()
+        window.DeviceMotionEvent.requestPermission()
         .then( response => {
             // After API prompt dismissed.
             if ( response == "granted" ) {
@@ -164,7 +164,13 @@ let deviceMotionRequest = () => {
             }
         }).catch( console.error );
     } else {
-        motionSensed = false;
+        if (window.DeviceMotionEvent) {
+            motionSensed = true;
+            window.addEventListener( "deviceorientation", (e) => {
+                accelerator.x = Number(e.gamma / 96);
+                accelerator.y = Number(e.beta / 128);
+            });
+        } else {motionSensed = false;}
         // DeviceMotionEvent is not supported
     }
 }
